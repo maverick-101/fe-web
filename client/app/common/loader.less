@@ -1,0 +1,35 @@
+@import '~font-awesome/less/font-awesome';
+
+.loading {
+  position: relative;
+  outline: 0;
+  .fa-icon();
+  &:before {
+    content: @fa-var-spinner;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-animation: fa-spin 1s infinite steps(8);
+    animation: fa-spin 1s infinite steps(8);
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    width: auto;
+    text-align: center;
+    margin-left: -9px;
+  }
+  &:after {
+    content: '';
+    z-index: 1;
+    background: inherit;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    min-height: 15px;
+  }
+}
+
+@import '~bootstrap/less/bootstrap.less';

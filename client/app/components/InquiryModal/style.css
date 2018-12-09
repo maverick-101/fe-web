@@ -1,0 +1,45 @@
+@import 'variables.css';
+
+
+.inquiryPopupClose {
+    margin: 0;
+    z-index: 100;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    opacity: 0.8;
+}
+
+.inquiryBlock {
+    & img {
+        width: 90px;
+        height: 100px;
+        padding-top: 5px;
+        padding-bottom: 25px;
+        object-fit: contain;
+        margin: auto;
+    }
+    & strong {
+        font-size: 18px;
+    }
+}
+
+.paddingfix {
+    padding: 10px 40px 0;
+    & input {
+        margin-bottom: 10px;
+        height: 50px;
+    }
+    & button {
+        height: 50px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .paddingTopfix {
+        padding: 5px 15px 0;
+    }
+}

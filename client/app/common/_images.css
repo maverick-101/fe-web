@@ -1,0 +1,34 @@
+.profile-image {
+  background: url('~user.png');
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin: 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  overflow: hidden;
+  &.border {
+    border: 2px solid var(--white);
+  }
+  &.medium {
+    height: 60px;
+    width: 60px;
+  }
+  &.large {
+    height: 100px;
+    width: 100px;
+  }
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.logo {
+  max-height: 65px;
+  max-width: 100%;
+  &.small {
+    max-height: 30px;
+  }
+}

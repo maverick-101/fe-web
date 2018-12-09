@@ -1,0 +1,26 @@
+.pagination {
+  &> li {
+    display: inline-block;
+    &> a, &> a:hover {
+      color: var(--gray);
+    }
+    &.active {
+      &> a, &> a:hover, &> a:focus {
+        background-color: var(--red);
+        border-color: var(--red);
+      }
+    }
+    &:first-child, &:last-child {
+      &> a {
+        border-radius: 0;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .pagination{
+    display: block;
+    white-space: nowrap;
+    overflow: auto;
+  }
+}

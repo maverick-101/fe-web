@@ -1,0 +1,112 @@
+@import 'variables.css';
+
+.sideBar {
+  padding-top: 30px;
+  padding-left: 15px;
+}
+
+.topSearches {
+  & li {
+    margin-bottom: 5px;
+  }
+}
+
+.appWrapper {
+  height: 100%;
+  overflow: hidden;
+}
+
+.loaderOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--white);
+  z-index: 1200;
+  & .logoCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    & .logoWrapper {
+      width: 100px;
+      height: 100px;
+      animation: heartbeat 1s infinite;
+      & svg {
+        fill: var(--red);
+      }
+    }
+  }
+}
+
+.heightFix {
+  position: relative;
+  height: 230px;
+  width: 100%;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale( .9 );
+  }
+  10% {
+    transform: scale( 1 );
+  }
+  20% {
+    transform: scale( .9 );
+  }
+  30% {
+    transform: scale( 1 );
+  }
+  40% {
+    transform: scale( .9 );
+  }
+  80% {
+    transform: scale( .9 );
+  }
+  100% {
+    transform: scale( .9 );
+  }
+}
+
+:global .loader-enter {
+  opacity: 0.01;
+}
+
+:global .loader-enter.loader-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+:global .loader-leave {
+  opacity: 1;
+}
+
+:global .loader-leave.loader-leave-active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
+}
+
+.smspace {
+  padding-right: 30px;
+}
+
+@media only screen and (max-width: 991px) {
+  .sideBar {
+    padding-top: 15px;
+    padding-left: 0;
+  }
+  .smspace {
+    padding-right: 15px;
+  }
+  .smspace2 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .sideBar {
+    display: none;
+  }
+}

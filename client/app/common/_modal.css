@@ -1,0 +1,32 @@
+.reveal {
+  width: 450px;
+  & .modal-content {
+    border-radius: 2px;
+  }
+  & .modal-header {
+    display: none;
+  }
+  & .modal-body {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .reveal {
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    & .modal-content {
+      border: none;
+      border-radius: 0;
+      width: 100%;
+      min-height: 100%;
+      & .modal-header {
+        display: block;
+      }
+      & .modal-body {
+        padding: 20px;
+      }
+    }
+  }
+}

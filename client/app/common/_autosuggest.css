@@ -1,0 +1,44 @@
+.react-autosuggest__container {
+  position: relative;
+  height: 100%;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+}
+
+.react-autosuggest__container--open .react-autosuggest__suggestions-container {
+  display: block;
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  border: 1px solid var(--lightGray);
+  background-color: var(--white);
+  z-index: 2;
+  max-height: 150px;
+  overflow: auto;
+  box-shadow: 0px 2px 4px 2px rgba(0,0,0,.2);
+}
+
+.headerSearch {
+  top: 56px !important;
+  left: 15px;
+  width: calc(100% - 15px) !important;
+  box-shadow: 0px 1px 4px 2px rgba(0,0,0,.2) !important;
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  color: var(--white);
+  background-color: var(--teal);
+}

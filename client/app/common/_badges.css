@@ -1,0 +1,6 @@
+.badge {
+  &.red {
+    color: var(--white);
+    background-color: var(--red);
+  }
+}

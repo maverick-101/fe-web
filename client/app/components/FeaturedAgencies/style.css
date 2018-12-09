@@ -1,0 +1,60 @@
+.sliderWrapper {
+  margin: 0 auto;
+  max-width: 1550px;
+}
+
+.boxLink {
+  position: relative;
+  display: inline-block;
+  & .logo {
+    max-width: 90px !important;
+    max-height: 55px;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+    opacity: 0;
+    /*&:hover {*/
+      /*filter: none;*/
+    /*}*/
+  }
+  &:hover {
+    & .webKitMaskBox {
+      opacity: none;
+      filter: none;
+      -webkit-mask-box-image: none;
+      background-color: transparent;
+    }
+    & .logo {
+      opacity: 1;
+      filter: none
+    }
+  }
+  & .webKitMaskBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: darkgray;
+    filter: grayscale(100%);
+    background-size: cover;
+    transition: all 0.3s ease;
+  }
+  & .mozillaWebKitMaskBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: grayscale(100%);
+    background-size: cover;
+    transition: all 0.3s ease;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .sliderWrapper {
+    margin: 20px auto 0;
+  }
+}

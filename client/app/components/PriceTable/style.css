@@ -1,0 +1,44 @@
+@import 'variables.css';
+
+.sidenav {
+  /*border: 1px solid var(--lightGray);
+  border-bottom: none;*/
+  & li {
+    display: block;
+    padding: 10px;
+    border: 1px solid var(--lightGray);
+    border-right: none;
+    &:not(:first-child) {
+      margin-top: -1px;
+    }
+    & .sidenav_icon {
+      float: left;
+      width: 33px;
+      height: 25px;
+      & img {
+        margin: 0 auto;
+      }
+    }
+    & a {
+      margin-left: 10px;
+      font-size: 16px;
+      color: var(--gray);
+    }
+    &.active {
+      background-color: var(--background);
+      position: relative;
+      z-index: 1;
+      margin-right: -1px;
+      & a {
+        color: var(--darkGray);
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.priceTable {
+  background: var(--white);
+  margin-bottom: 0;
+  border: 1px solid var(--stroke);
+}

@@ -1,0 +1,50 @@
+.btn {
+  border-radius: var(--defaultBorderRadius);
+  background-color: transparent;
+  min-width: 88px;
+  &.btn-default {
+    color: var(--gray);
+    border-color: var(--stroke);
+    background-color: var(--background);
+    &:hover, &:focus {
+      color: var(--darkGray);
+      background-color: var(--backgroundDarker);
+    }
+  }
+  &.btn-b {
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  &.btn-xlg {
+    padding: 18px 22px;
+    font-size: 18px;
+    line-height: 1.3333333;
+  }
+  &.red {
+    color: var(--white);
+    background-color: var(--red);
+  }
+  &.green {
+    color: var(--white);
+    background-color: var(--tealDark);
+  }
+  &.hollow {
+    border-width: 1px;
+    border-style: solid;
+    background-color: var(--white);
+    &.red {
+      color: var(--red);
+      border-color: var(--red);
+    }
+    &.green {
+      color: var(--tealDark);
+      border-color: var(--tealDark);
+    }
+  }
+  &.disabled, &[disabled] {
+    color: var(--gray);
+    border-color: var(--gray);
+    background-color: var(--lightGray);
+  }
+}

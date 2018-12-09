@@ -1,0 +1,32 @@
+.popover {
+  min-width: 225px;
+  border-radius: var(--defaultBorderRadius);
+  padding: 0;
+  margin: 0 !important;
+  border-color: var(--stroke);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  & .arrow {
+    display: none;
+  }
+  & .popover-content {
+    padding: 0 15px;
+  }
+  &.with-arrow {
+    margin-top: -10px !important;
+    min-width: 200px;
+    font-family: inherit;
+    border-radius: 0;
+  }
+  &.with-arrow > .popover-title {
+    display: none;
+  }
+  &.with-arrow > .popover-content {
+    color: var(--red);
+    padding: 10px 0 5px;
+    border-radius: 0;
+  }
+  &.with-arrow > .arrow {
+    display: block;
+  }
+}
+

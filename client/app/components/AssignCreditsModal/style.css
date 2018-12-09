@@ -1,0 +1,14 @@
+.container {
+  display: inline-block;
+  width: 20px;
+}
+
+.modal {
+  & :global .modal-body {
+    padding: 20px 15px;
+  }
+}
+
+.icon {
+  cursor: pointer;
+}

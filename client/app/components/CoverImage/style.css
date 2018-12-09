@@ -1,0 +1,45 @@
+@import 'variables.css';
+
+.bannerWrapper {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 210px);
+  & .banner {
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  & .button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    box-shadow: 1px 1px 5px;
+  }
+}
+
+.slickTile {
+  margin: 5px 10px 0 10px;
+  height: 60px;
+  width: 100px;
+  background-position: 50% 50% !important;
+  background-size: cover !important;
+  bottom: 0;
+  border-radius: 2px;
+}
+
+.arrowCurrentSlide::after {
+  content: '▼';
+  font-size: 18px;
+  color: #b5b5b5;
+}
+
+@media only screen and (max-width: 767px) {
+  .bannerWrapper {
+    height: 420px;;
+  }
+}

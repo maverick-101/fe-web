@@ -1,0 +1,44 @@
+.projBack {
+  height: 260px;
+  background-position: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  background-size: cover;
+}
+.stopOverflow {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.propTileHeader {
+    display: block;
+    font-size: 17px;
+    line-height: 1.2;
+    min-height: 24px;
+}
+.propTileSubHeader{
+    display: block;
+    margin-top: 7px;
+    color: #000;
+    min-height: 20px;
+    margin-bottom: 10px;
+}
+.tileContent {
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid transparent;
+  border-color: #ddd;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.iconGrid {
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+.iconGrid a {
+  display: inline-grid;
+  color:#ef5350;
+  margin-right: 30px;
+  text-align: center;
+  cursor: pointer;
+}

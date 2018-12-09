@@ -1,0 +1,98 @@
+@import 'variables.css';
+
+.packageLogo {
+    float: left;
+    width: 75px;
+    margin-right: 10px
+}
+
+.packageInfo {
+    float: left;
+    width: calc(100% - 85px);
+}
+
+.packageLabel {
+    background: #ef5350;
+    color: #FFF;
+    padding: 5px;
+    position: absolute;
+    top: 11px;
+    right: 0px;
+}
+
+.featuresLabel, .featuresLabel > h5 {
+    margin-bottom: 0;
+}
+
+.limitContent {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listPadding {
+    border-bottom: 1px solid #d5d9dd;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.imageContainer {
+    position: relative;
+    padding-top: 5%;
+}
+
+.image {
+    background-position: 50% 50%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width: 100%;
+}
+
+.displayflow {
+    display: flow-root;
+}
+
+.boxContainer {
+    position: relative;
+}
+
+.style.getboxshadow {
+    visibility: hidden;
+}
+
+.getboxshadow {
+    transition: 0.2s ease;
+}
+
+.getboxshadow:hover {
+    box-shadow: 0px 3px 15px rgba(20, 20, 20, 0.1);
+}
+
+.featuresContainer {
+    margin-bottom: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+    transition: 0.2s ease;
+}
+
+.featureValueContainer {
+}
+
+.featureValueInput {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ef5350;
+    outline: none !important;
+    padding: 5px;
+}
+
+.priceCol {
+    padding: 5px;
+    line-height: 1.6em;
+    border-bottom: 1px solid #d5d9dd;
+    height: 33px;
+}

@@ -1,0 +1,4 @@
+//User actions
+export const SIGNUP_USER = 'SIGNUP_USER';
+export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
+export const SIGNUP_USER_ERROR = 'SIGNUP_USER_ERROR';

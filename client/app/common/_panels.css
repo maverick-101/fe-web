@@ -1,0 +1,11 @@
+.panel {
+  border-radius: 2px;
+  &.background {
+    background-color: var(--background);
+  }
+}
+
+.panel-heading {
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+}

@@ -1,0 +1,86 @@
+@font-face {
+  font-display: swap;
+  font-family: GoogleSans;
+  src: url(./fonts/GoogleSans-Regular.ttf);
+}
+@font-face {
+  font-display: swap;
+  font-family: GoogleSansBold;
+  src: url(./fonts/GoogleSans-Bold.ttf);
+}
+
+body {
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: GoogleSans, Helvetica, Arial, sans-serif;
+  color: var(--gray);
+  overflow-x: hidden;
+  font-size: 14px;
+  font-display: swap;
+}
+
+body p {
+  font-weight: 300;
+  font-display: swap;
+}
+
+
+.gothicHeading {
+  font-family: GoogleSansBold, Helvetica, Arial, sans-serif;
+  font-display: swap;
+  /* font-family: 'CenturyGothic', sans-serif;
+  font-family: 'Product Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Poppins', sans-serif; */
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: GoogleSansBold, Helvetica, Arial, sans-serif;
+  font-display: swap;
+  /* font-family: 'CenturyGothic', sans-serif;
+  font-family: 'Product Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Poppins', sans-serif; */
+
+  font-weight: 700;
+  color: var(--darkGray);
+}
+
+p, label {
+  &.small {
+    font-size: 12px;
+  }
+  &.large {
+    font-size: 18px;
+  }
+}
+
+a {
+  font-display: swap;
+  color: var(--gray);
+  &:hover, &:focus {
+    color: var(--darkGray);
+  }
+  &.green {
+    color: var(--tealDark);
+  }
+}
+
+label {
+  font-display: swap;
+  font-weight: normal;
+  &.inline {
+    padding-top: 8px;
+  }
+}
+
+@media (min-width: 786px) {
+  .text-right-large {
+    text-align: right;
+    color: #737678;
+  }
+}

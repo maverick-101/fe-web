@@ -1,0 +1,49 @@
+.nav {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  li {
+    display: inline-block;
+    margin-bottom: -1px;
+    a {
+      display: block;
+      padding: 10px 15px;
+      border-radius: 2px 2px 0 0;
+      border: 1px solid transparent;
+      background-color: transparent;
+      &.active {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
+
+.content {
+  .pane {
+    display: none;
+    &.activePane {
+      display: block;
+    }
+  }
+}
+
+:global .pane-enter {
+  opacity: 0.01;
+}
+
+:global .pane-enter.pane-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+:global .pane-leave {
+  opacity: 1;
+}
+
+:global .pane-leave.pane-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

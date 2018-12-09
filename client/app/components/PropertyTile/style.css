@@ -1,0 +1,769 @@
+@import 'variables.css';
+
+/* List CSS */
+
+ 
+/* .premium_plus:hover, .premium:hover, .basic:hover {
+  
+} */
+ .nextArrow {
+  right: 0px;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  font-size: 22px;
+  color: #666;
+  background: rgba(255,255,255,0.7);
+  padding: 5px 10px;
+  transition: 0.2s;
+  display: block;
+  font-size: 22px;
+}
+
+.prevArrow {
+  left: 0px;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  font-size: 22px;
+  color: #666;
+  background: rgba(255,255,255,0.7);
+  padding: 5px 10px;
+  transition: 0.2s;
+  display: block;
+  font-size: 22px;
+}
+.premium_plus, .premium, .basic {
+  margin-bottom: 30px;
+  & .tileHeader {
+    display: none;
+    background: #fafafa;
+    width: 100%;
+    padding: 10px 5px;
+    & .tileType {
+      width: 55%;
+      float: left;
+      & img {
+        float: left;
+        width: 30px;
+        object-fit: contain;
+      }
+      & p {
+        margin: 0;
+        margin-left: 3px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+    & .verifiedListings {
+      margin: -10px -5px -10px 0;
+      padding: 10px 5px 10px 0;
+      width: 100px;
+      float: right;
+      & img {
+        float: left;
+        object-fit: contain;
+        width: 30px;
+        height: 18px;
+        padding-left: 10px;
+      }
+      & p {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        margin: 0;
+      }
+    }
+  }
+  & .imageContainer {
+    & .nextArrow {
+      opacity: 0;
+    }
+    
+     & .prevArrow {
+      opacity: 0;
+    }
+    width: 315px;
+    float: left;
+    position: relative;
+    & .slickTile {
+      width: 315px;
+      height: 270px;
+    }
+  }
+  & .priceTabView {
+    display: none;
+    width: 155px;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border-bottom-right-radius: 20px;
+    opacity: 0.85;
+    padding: 5px 12px;
+    background: #fff;
+    z-index: 10;
+  }
+  & .details {
+    height: 270px;
+    overflow: hidden;
+    position: relative;
+    border-left: 1px solid #dddddd;
+    & .addedBy {
+      position: absolute;
+      left: 15px;
+      bottom: 3px;
+      margin: 5px 0;
+      width: 55%;
+    }
+    & .tileTitle {
+      width: 350px;
+      padding-right: 0;
+    }
+    & .tileFeats {
+      display: block;
+      max-height: 52px;
+      overflow: hidden;
+      position: absolute;
+      transition: 0.3s ease;
+      top: 0;
+      left: 15px;
+      z-index: 1;
+      width: calc(100% - 30px);
+      background: #eee;
+      & p {
+        font-size: 12px;
+        margin: 0;
+        padding: 2.5px 0 5px;
+        color: #444;
+        text-transform: capitalize;
+      }
+      & .featType {
+        color: #999;
+        padding: 5px 0 2.5px;
+      }
+      & .fixedAmenHeight {
+        height: 50px;
+      }
+    }
+    & .clickToExpand {
+      cursor: default;
+      position: absolute;
+      top: -18px;
+      font-size: 10px;
+      right: 20px;
+      background: #eee;
+      padding: 2px 5px;
+    }
+    & .feedbackBtn {
+      position: absolute;
+      bottom: 10px;
+      right: 80px;
+      padding: 8px 7px; 
+      font-size: 11px;
+      background: #ef5350;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+    }
+    & .price {
+      overflow: hidden;
+      text-align: right;
+      padding-right: 15px;
+      font-size: 20px; 
+    }
+    & .description {
+      text-align: inherit;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    & .descEllipses {
+      display: -webkit-box;
+      height: 55px;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    & .agencyLogo {
+      border: none;
+      width: 55px; 
+      height: 55px; 
+      position: absolute; 
+      bottom: 10px; 
+      right: 10px; 
+    }
+  }
+  & .footer {
+    border-bottom: 2px solid;
+    & .listTypeCont {
+      width: 315px;
+      float: left;
+      display: block;
+      border-top: 1px solid #ddd;
+      position: relative;
+      background-color: #f6f6f6;
+      & img.listingType {
+        width: 36px;
+        float: left;
+        object-fit: contain;
+      }
+      & h3 {
+        margin: 0;
+        line-height: 40px;
+        font-size: 16px;
+      }
+      & .verifiedListings {
+        position: absolute;
+        right: 0;
+        top: -1px;
+        padding: 11px 5px 10px 0;
+        width: 100px;
+        float: right;
+        & img {
+          float: left;
+          object-fit: contain;
+          width: 30px;
+          height: 18px;
+          padding-left: 10px;
+        }
+        & p {
+          font-size: 14px;
+          font-weight: bold;
+          color: #fff;
+          margin: 0;
+        }
+      }
+    }
+    & .btnCont {
+      overflow: hidden;
+      display: block;
+      & button {
+        width: 50%;
+        height: 40px;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid #ddd;
+      }
+      & .btnImg {
+        width: 101px;
+        margin-left: auto;
+        margin-right: auto;
+        & img {
+          float: left;
+          margin-right: 5px;
+          height: 16px;
+          margin-top: 2px;
+        }
+        & p {
+          font-size: 12px;
+          padding-top: 2.5px;
+          margin-bottom: 2px;
+        }
+        & span.additionalPhones {
+          border: 1px solid #ddd;
+          background-color: #fff;
+          color: var(--red);
+          border-radius: 10px;
+          padding: 0px 6px;
+          margin-left: 5px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+.premium {
+  & .tileHeader {
+    border-bottom: 2px solid #26a59a;
+    & .tileType {
+      & img {
+        height: 18px;
+        margin-right: 3px;
+      }
+    }
+    & .verifiedListings {
+      background-color: #26a59a;
+    }
+  }
+  & .priceTabView {
+    color: #26a59a;
+  }
+  & .details {
+    & .price {
+      color: #26a59a;
+    }
+  }
+  & .footer {
+    border-bottom-color: #26a59a;
+    & .listTypeCont {
+      & img.listingType {
+        margin-left: 6px;
+        margin-right: 2px;
+        margin-top: 8px;
+        height: 20px;
+      }
+      & h3 {
+        color: #26a59a;
+      }
+      & .verifiedListings {
+        background-color: #26a59a;
+      }
+    }
+    & .priceContainer {
+      background-color: #fafafa;
+      & .price2 {
+        color: #26a59a !important;
+      }
+    }
+  }
+}
+
+.premium_plus {
+  & .tileHeader {
+    border-bottom: 2px solid #ef5350;
+    & .tileType {
+      & img {
+        height: 18px;
+        margin-right: 3px;
+      }
+    }
+    & .verifiedListings {
+      background-color: #ef5350;
+    }
+  }
+  & .priceTabView {
+    color: #ef5350;
+  }
+  & .details {
+    & .price {
+      color: #ef5350;
+    }
+  }
+  & .footer {
+    border-bottom-color: #ef5350;
+    & .listTypeCont {
+      & img.listingType {
+        margin-left: 6px;
+        margin-right: 2px;
+        margin-top: 9px;
+        height: 20px;
+      }
+      & h3 {
+        color: #ef5350;
+      }
+      & .verifiedListings {
+        background-color: #ef5350;
+      }
+    }
+    & .priceContainer {
+      background-color: #fafafa;
+      & .price2 {
+        color: #ef5350 !important;
+      }
+    }
+  }
+}
+
+.basic {
+  & .tileHeader {
+    border-bottom: 2px solid #444;
+    & .tileType {
+      & img {
+        display: none;
+      }
+      & p {
+        padding-left: 5px;
+      }
+    }
+    & .verifiedListings {
+      background-color: #444;
+    }
+  }
+  & .priceTabView {
+    color: #444;
+  }
+  & .details {
+    & .price {
+      color: #444;
+    }
+  }
+  & .footer {
+    border-bottom-color: #444;
+    & .listTypeCont {
+      & img.listingType {
+        margin: 0 6px;
+        height: 100%;
+        width: 0;
+      }
+      & h3 {
+        color: #444;
+        height: 40px;
+      }
+      & .verifiedListings {
+        background-color: #444;
+      }
+    }
+    & .priceContainer {
+      background-color: #f6f6f6;
+      & .price2 {
+        color: #444 !important;
+      }
+    }
+  }
+}
+
+/* Grid CSS */
+
+.grid {
+  max-height: 470px;
+  width: calc(33.33% - 10px);
+  margin-left: 10px;
+  float: left;
+  & .tileHeader {
+    display: inline-block;
+    margin-bottom: -6px;
+    min-height: 42px;
+  }
+  & .imageContainer, & .listTypeCont {
+    width: 100%;
+  }
+  & .slickTile {
+    width: 265.8px;
+    height: 230px;
+  }
+  & .details {
+    height: 119px;
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-left: none;
+    & .addedBy {
+      position: absolute;
+      left: 10px;
+      bottom: 3px;
+      margin: 5px 0;
+      width: calc(100% - 20px);
+    }
+    & .tileTitle {
+      width: 100%;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+    & .feedbackBtn {
+      display: none;
+    }
+    & .tileFeats {
+      display: none;
+    }
+    & .clickToExpand {
+      display: none;
+    }
+    & .description {
+      display: none;
+    }
+    & .price {
+      display: none;
+    }
+  }
+  & .footer {
+    & button {
+      width: 50%;
+      margin-right: 0;
+      padding-top: 8px;
+      border-radius: 0;
+      border: none;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd !important;
+    }
+    & .priceContainer {
+      & .price2 {
+        font-size: 18px;
+        margin: 0;
+        padding: 0 10px;
+        line-height: 38px !important;
+      }
+    }
+  }
+}
+
+.inquiryPopCont {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 98;
+  background: rgba(0,0,0,0.2)
+}
+.inquiryPop {
+  width: 0;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+}
+.inquiryPopup {
+  width: 450px;
+  margin: 0 -225px;
+  z-index: 99;
+  top: 45%;
+  transform: translateY(-50%);
+  left: 0;
+  position: absolute;
+  background: white;
+  padding: 25px;
+}
+.phoneIconWrapper {
+  height: 50px;
+  margin-top: 10px;
+  border: 1px solid #eeeeee;
+  border-left: none;
+  background-color: var(--white);
+  & i {
+    font-size: 36px;
+    margin-top: 5px;
+  }
+}
+
+.numberPopCont {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 98;
+  background: rgba(0,0,0,0.2)
+}
+.numberPop {
+  width: 0;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+}
+.numberPopup {
+  width: 450px;
+  margin: 0 -225px;
+  z-index: 99;
+  top: 45%;
+  transform: translateY(-50%);
+  left: 0;
+  position: absolute;
+  background: white;
+  padding: 25px;
+  & input {
+    height: 50px;
+    margin-bottom: 10px !important;
+  }
+  & button {
+    height: 50px;
+  }
+}
+.numberPopupClose {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0.8;
+}
+
+.paddingChange {
+  padding: 0 40px;
+}
+
+.getboxshadow {
+  transition: 0.2s;
+}
+.turnGreen {
+  width: 15px;
+  -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(1300deg) saturate(600%) contrast(2);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(130deg) saturate(800%) contrast(0.8);
+}
+@media only screen and (min-width: 768px) {
+  .getboxshadow:hover {
+    box-shadow: 2px 2px 18px rgba(20, 20, 20, 0.14);
+    & .prevArrow {
+      opacity: 1;
+    }
+    & .nextArrow {
+      opacity: 1;
+    }
+  }
+}
+
+/* Tablet CSS */
+
+@media only screen and (max-width: 1199px) {
+  .premium_plus, .premium, .basic {
+    & .imageContainer {
+      width: 290px;
+      & .slickTile {
+        width: 290px;
+      }
+    }
+    & .priceTabView {
+      display: inherit;
+    }
+    & .details {
+      & .addedBy {
+        width: calc(100% - 85px);
+      }
+      & .price {
+        display: none;
+      }
+      & .feedbackBtn {
+        bottom: 35px;
+        right: auto !important;
+        left: 15px;
+      }
+      & .agencyLogo {
+        width: 50px; 
+        height: 50px; 
+      }
+    }
+    & .footer {
+      & .listTypeCont {
+        width: 290px;
+      }
+    }
+  }
+  .grid {
+    width: calc(50% - 10px);
+    & .slickTile {
+      width: 329px;
+    }
+    & .details {
+      height: 122px;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .grid {
+    & .slickTile {
+      width: 348px;
+    }
+  }
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 767px) {
+  .slickTile {
+    width: calc(100vw - 32px) !important;
+    height: 230px;
+  }
+  .premium_plus, .premium, .basic {
+    & .tileHeader {
+      display: table;
+      min-height: 42px;
+    }
+    & .details {
+      height: 115px;
+      border-left: 0 !important;
+      border-top: 1px solid #ddd; 
+      border-left: none;
+      & .addedBy {
+        position: absolute;
+        left: 10px;
+        bottom: 3px;
+        margin: 5px 0;
+        width: calc(100% - 20px);
+      }
+      & .description {
+        margin-top: 0;
+      }
+      & .tileTitle {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    & .footer {
+      & button {
+        width: 50%;
+        margin-right: 0;
+        padding-top: 8px;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd !important;
+      }
+      & .priceContainer {
+        & .price2 {
+          color: #fff;
+          font-size: 18px;
+          margin: 0;
+          padding: 0 10px;
+          line-height: 38px !important;
+        }
+      }
+    }
+  }
+  .inquiryPopCont {
+    z-index: 1210;
+  }
+  .inquiryPop {
+    width: 0;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+  }
+  .inquiryPopup {
+    width: 100vw;
+    height: 100%;
+    margin: 0 -50vw;
+    z-index: 1211;
+    top: 0 !important;
+    transform: translateY(0%);
+    margin-top: 0;
+    padding: 20px;
+    padding-top: 50px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .numberPopCont {
+    z-index: 1210;
+  }
+  .numberPop {
+    width: 0;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+  }
+  .numberPopup {
+    width: 100vw;
+    height: 100%;
+    margin: 0 -50vw;
+    z-index: 122;
+    top: 0;
+    transform: translateY(0%);
+    margin-top: 0;
+    padding: 20px;
+    padding-top: 40px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .paddingChange {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 545px) {
+  .slickTile {
+    width: calc(100vw - 32px) !important;
+  }
+  .grid {
+    width: calc(100% - 20px);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .premium_plus, .premium, .basic {
+    & .imageContainer {
+      height: 150px !important;
+    }
+  }
+}
