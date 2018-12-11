@@ -193,7 +193,7 @@ class App extends React.Component {
 			console.log(this.props)
 			console.log(child)
 			return (
-				<div style={{minHeight:'100vh'}} className="container-fluid">
+				<div style={{minHeight:'100vh', paddingLeft: '0', paddingRight: '0'}} className="container-fluid">
 					{child}
 				</div>
 			)
