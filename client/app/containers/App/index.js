@@ -154,7 +154,7 @@ class App extends React.Component {
 			})
 			this.resize();
 		}
-		setTimeout(() => this.setState({prebootLoader: []}), 2000)
+		setTimeout(() => this.setState({prebootLoader: []}), 2)
 		this.props.getCurrentUser()
 			.then(response => {
 				// console.log(response)
