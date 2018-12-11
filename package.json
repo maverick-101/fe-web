@@ -86,6 +86,7 @@
     "webpack": "^3.10.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
     "copy-webpack-plugin": "^4.6.0",
     "html-critical-webpack-plugin": "^1.0.0",
     "purify-css": "^1.2.5",

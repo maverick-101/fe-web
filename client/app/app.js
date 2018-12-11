@@ -15,7 +15,6 @@ import 'slick-carousel/slick/slick.css'
 import 'common/common.css'
 
 import App from 'containers/App'
-import Search from 'containers/Search'
 import Loadable from 'react-loadable';
 
 const Home = Loadable({
@@ -44,7 +43,6 @@ ReactDOM.hydrate(<Provider store={store}>
 				<IndexRoute components={{full: Home}}/>
 				<Route path="/home" components={{full: Home}}/>
 			</Route>
-			<Route path='*' exact={true} components={NotFound} />
 		</Router>
 	</Provider>,
 	document.getElementById('app')
