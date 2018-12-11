@@ -26,6 +26,17 @@
 .featuredTile {
   height: 300px;
 }
+.featuredTilePriceDiv {
+  width: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #e3530d;
+  font-size: 32px;
+  font-weight: bolder;
+  padding: 5px 15px;
+  color: white;
+}
 .featuredAgenciesContainer {
   margin-top: 30px;
   margin-bottom: 30px;
