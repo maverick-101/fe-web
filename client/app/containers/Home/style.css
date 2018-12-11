@@ -11,7 +11,21 @@
   position: relative;
   height: calc(100vh - 185px);
 }
-
+.homeCoverStyle {
+  width: 100%;
+  height: 100vh;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.bgDiv {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.featuredTile {
+  height: 300px;
+}
 .featuredAgenciesContainer {
   margin-top: 30px;
   margin-bottom: 30px;
