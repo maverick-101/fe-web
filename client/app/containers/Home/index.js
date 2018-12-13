@@ -104,17 +104,17 @@ class Home extends React.Component {
 						<div className="col-sm-12 no-padding">
 							<div style={{background: `url(${require('../../../site-specs/sliced-images/traveller-package-01.png')})`, border: '1px solid #d9d9d9'}} className={`col-sm-4 ${style.featuredTile} ${style.bgDiv}`}>
 								<div className={`${style.tourTileDescriptionDiv}`}>
-									<p>3 days Trip to Hunza Valley</p>
+									<p className='text-center'>3 days Trip to Hunza Valley</p>
 								</div>
 							</div>
 							<div style={{background: `url(${require('../../../site-specs/sliced-images/traveller-package-02.png')})`, border: '1px solid #d9d9d9'}} className={`col-sm-4 ${style.featuredTile}  ${style.bgDiv}`}>
 								<div className={`${style.tourTileDescriptionDiv}`}>
-									<p>5 days Trip to Shangrilla</p>
+									<p className='text-center'>5 days Trip to Shangrilla</p>
 								</div>
 							</div>
 							<div style={{background: `url(${require('../../../site-specs/sliced-images/traveller-package-03.png')})`, border: '1px solid #d9d9d9'}} className={`col-sm-4 ${style.featuredTile}  ${style.bgDiv}`}>
 								<div className={`${style.tourTileDescriptionDiv}`}>
-									<p>5 days Trip to Naran Kaghan</p>
+									<p className='text-center'>5 days Trip to Naran Kaghan</p>
 								</div>
 						</div>
 					</div>
