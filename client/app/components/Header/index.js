@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import Modal from 'react-bootstrap/lib/Modal'
-import OverlayTrigger from 'components/OverlayTrigger'
+// import OverlayTrigger from 'components/OverlayTrigger'
 import Popover from 'react-bootstrap/lib/Popover'
 import Formsy from 'formsy-react'
 import Input from 'components/Input'
-import Autosearch from 'components/Autosearch'
+// import Autosearch from 'components/Autosearch'
 import { convertUnit } from 'helpers'
 import Cookies from 'js-cookie'
 import swal from 'sweetalert2';
@@ -321,36 +321,36 @@ class Header extends React.Component {
 		this.props.dispatch(getAreas({q, cities: 1}))
 	}
 	renderHeaderTitle() {
-		if (this.props.header.search) {
-			return (
-				<Autosearch
-					name="search"
-					placeholder="Search..."
-					data={this.props.city.areas}
-					value={`${this.props.query.q ? `${this.props.query.q},` : ''} ${this.props.query.city ? ` ${this.props.query.city}` : ''}`.replace(/\b\w/g, l => l.toUpperCase())}
-					renderInputComponent={(props) => (
-						<div className={style.headerSearch}>
-							<i className="fa fa-search fa-lg gray"></i>
-							<input type="text" autoComplete="off" {...props}/>
-						</div>
-					)}
-					getSuggestionValue={suggestion => `${suggestion.name}, ${suggestion.city.name}`.replace(/\b\w/g, l => l.toUpperCase())}
-					renderSuggestion={suggestion => `${suggestion ? suggestion.name : ''} ${suggestion ? `, ${suggestion.city.name}` : ''}`.replace(/\b\w/g, l => l.toUpperCase())}
-					focusFirstSuggestion={true}
-					onFocus={q => this.searchAreas(q)}
-					onType={q => this.searchAreas(q)}
-					onSelect={area => {
-						this.props.dispatch(setSearchQuery({area_id: area.id, city_id: area.city ? area.city.id : ''}))
-						this.props.dispatch(search())
-						this.props.dispatch(searchProperty())
-					}}
-				/>
-			)
-		} else if (this.props.header.title) {
-			return this.props.header.title
-    } else {
-			return null
-    }
+		// if (this.props.header.search) {
+		// 	return (
+		// 		<Autosearch
+		// 			name="search"
+		// 			placeholder="Search..."
+		// 			data={this.props.city.areas}
+		// 			value={`${this.props.query.q ? `${this.props.query.q},` : ''} ${this.props.query.city ? ` ${this.props.query.city}` : ''}`.replace(/\b\w/g, l => l.toUpperCase())}
+		// 			renderInputComponent={(props) => (
+		// 				<div className={style.headerSearch}>
+		// 					<i className="fa fa-search fa-lg gray"></i>
+		// 					<input type="text" autoComplete="off" {...props}/>
+		// 				</div>
+		// 			)}
+		// 			getSuggestionValue={suggestion => `${suggestion.name}, ${suggestion.city.name}`.replace(/\b\w/g, l => l.toUpperCase())}
+		// 			renderSuggestion={suggestion => `${suggestion ? suggestion.name : ''} ${suggestion ? `, ${suggestion.city.name}` : ''}`.replace(/\b\w/g, l => l.toUpperCase())}
+		// 			focusFirstSuggestion={true}
+		// 			onFocus={q => this.searchAreas(q)}
+		// 			onType={q => this.searchAreas(q)}
+		// 			onSelect={area => {
+		// 				this.props.dispatch(setSearchQuery({area_id: area.id, city_id: area.city ? area.city.id : ''}))
+		// 				this.props.dispatch(search())
+		// 				this.props.dispatch(searchProperty())
+		// 			}}
+		// 		/>
+		// 	)
+		// } else if (this.props.header.title) {
+		// 	return this.props.header.title
+    // } else {
+		// 	return null
+    // }
 	}
 	openSignup(event) {
 		event.preventDefault()
@@ -531,11 +531,11 @@ class Header extends React.Component {
 							<a href="#" onClick={event => this.openLogin(event)}>Log In</a>
 						</li>
 						<li className={`pointer ${style.showLogin}`}>
-							<OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.target)} placement="bottom" overlay={userDropdown}>
+							{/* <OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.target)} placement="bottom" overlay={userDropdown}>
 								<div ref="target" style={{margin:0, position: 'relative'}}>
                   Welcome {this.props.user.user ? this.props.user.user.first_name : ''} <i className="fa fa-caret-down"></i>
 								</div>
-							</OverlayTrigger>
+							</OverlayTrigger> */}
 						</li>
 						<li className={`pointer ${style.showLogin}`}><Link  to="/dashboard/leads"><i className="fa fa-envelope"></i>{this.props.user.notifications > 0 ? <span className="badge badge-pill red" style={{ marginLeft: '5px' }}>{this.props.user.notifications}</span>: null}</Link></li>
 					</ul>

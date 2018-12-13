@@ -7,7 +7,7 @@ import withLockScreen from 'hoc/withLockScreen'
 
 import Header from 'components/Header'
 import Footer from 'components/Footer'
-import Loader from 'components/Loader'
+// import Loader from 'components/Loader'
 import { StickyContainer, Sticky } from 'react-sticky';
 import Raven from 'raven-js';
 import { getCurrentUser, setMobile } from 'actions/user'
@@ -220,7 +220,7 @@ class App extends React.Component {
 		// console.log('parent preboot ------ ----- ' , this.state.prebootComplete)
 		return (
 			<div className={`${this.state.loader.length ? style.appWrapper : ''}`}>
-				<Loader position={'fixed'} loading={!this.state.prebootComplete} transparent={false}/>
+				{/* <Loader position={'fixed'} loading={!this.state.prebootComplete} transparent={false}/> */}
 				<ErrorBoundary>
 					<ReactCSSTransitionGroup transitionName="loader" transitionEnterTimeout={500} transitionLeaveTimeout={1000}>
 						{[]}

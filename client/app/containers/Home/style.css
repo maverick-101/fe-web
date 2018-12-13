@@ -18,28 +18,13 @@
   background-repeat: no-repeat !important;
   background-position: center !important;
 }
-.bgDiv {
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-}
-.featuredTile {
-  height: 300px;
-}
-.featuredTilePriceDiv {
-  width: auto;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: #e3530d;
-  font-size: 32px;
-  font-weight: bolder;
-  padding: 5px 15px;
-  color: white;
-}
+
+
+
+
 
 .tourTileDescriptionDiv {
-  width: -webkit-fill-available;
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
