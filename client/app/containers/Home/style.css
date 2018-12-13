@@ -37,6 +37,18 @@
   padding: 5px 15px;
   color: white;
 }
+
+.tourTileDescriptionDiv {
+  width: -webkit-fill-available;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  font-size: 30px;
+  font-weight: bolder;
+  color: white;
+  opacity: 0.7;
+}
 .featuredAgenciesContainer {
   margin-top: 30px;
   margin-bottom: 30px;
