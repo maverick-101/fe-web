@@ -7,7 +7,6 @@ import withLockScreen from 'hoc/withLockScreen'
 
 import Header from 'components/Header'
 import Footer from 'components/Footer'
-// import Loader from 'components/Loader'
 import { StickyContainer, Sticky } from 'react-sticky';
 import Raven from 'raven-js';
 import { getCurrentUser, setMobile } from 'actions/user'
@@ -225,7 +224,7 @@ class App extends React.Component {
 					<ReactCSSTransitionGroup transitionName="loader" transitionEnterTimeout={500} transitionLeaveTimeout={1000}>
 						{[]}
 					</ReactCSSTransitionGroup>
-					<Header header={{search:true}}></Header>
+					<Header></Header>
 					{this.renderlayout(
 						this.state.done && React.cloneElement(this.props.full || this.props.main, {
 							done: () => this.hideLoader()
