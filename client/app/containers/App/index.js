@@ -6,7 +6,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import withLockScreen from 'hoc/withLockScreen'
 
 import Header from 'components/Header'
-import Footer from 'components/Footer'
+// import Footer from 'components/Footer'
+import Footer from 'components/NewFooter';
 import { StickyContainer, Sticky } from 'react-sticky';
 import Raven from 'raven-js';
 import { getCurrentUser, setMobile } from 'actions/user'
@@ -231,7 +232,8 @@ class App extends React.Component {
 						})
 					)}
 					<LazyLoad height={400}>
-						<Footer style={{display: 'block !important'}} showFooterLinks={this.state.showFooterLinks}></Footer>
+						{/* <Footer style={{display: 'block !important'}} showFooterLinks={this.state.showFooterLinks}></Footer> */}
+						<Footer />
 					</LazyLoad>
 				</ErrorBoundary>
 			</div>
