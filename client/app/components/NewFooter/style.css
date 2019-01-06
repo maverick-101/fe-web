@@ -1,0 +1,12 @@
+.footer {
+    /* background-color: gray; */
+    border-top: 1px solid gray;
+    height: 75px;
+    width: 100%;
+}
+
+/* .footerLogo {
+    float: left;
+    max-width: 40px;
+    max-height: 40px;
+} */
