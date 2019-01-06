@@ -21,6 +21,10 @@ const Home = Loadable({
 	loader: () => import('containers/Home'),
 	loading: () => null
 });
+const HotelPage = Loadable({
+	loader: () => import('containers/HotelPage'),
+	loading: () => null
+});
 import config from 'config';
 
 const store = configureStore(browserHistory)
@@ -42,6 +46,7 @@ ReactDOM.hydrate(<Provider store={store}>
 			<Route path="/" components={App}>
 				<IndexRoute components={{full: Home}}/>
 				<Route path="/home" components={{full: Home}}/>
+				<Route path="/hotel/:hotelId" components={{full: HotelPage}}/>
 			</Route>
 		</Router>
 	</Provider>,
