@@ -8,7 +8,7 @@ const config = {
     lockScreen: true,
   },
   production: {
-    apiPath: '',
+    apiPath: 'ec2-52-70-110-65.compute-1.amazonaws.com',
     domain: '',
     revivePath: '',
     lockScreen: true,
