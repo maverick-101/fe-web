@@ -1,7 +1,6 @@
 .guidePackagesTile {
-    width: 88%;
-    height: 250px;
-    box-shadow: 0px 0px 10px #ddd;
+    height: 300px;
+    /* box-shadow: 0px 0px 10px #ddd; */
     border-radius: 10px;
     & .guidePackagesImg {
       height: 100%;
@@ -10,7 +9,7 @@
     }
     & .guidePackagesText {
       height: auto;
-      padding: 10px;
+      padding: 10px 0px;
     }
     & .tileText {
       position: absolute;
@@ -22,4 +21,8 @@
       text-align: center;
       padding: 5px;
     }
+  }
+
+  .shadow {
+    box-shadow: 0px 0px 10px #ddd;
   }

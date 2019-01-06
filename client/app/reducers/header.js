@@ -7,7 +7,10 @@ const absolute = (state = false, action) => {
 	case LOCATION_CHANGE:
 		if (~['/'].indexOf(action.payload.pathname)) {
 			return true
-    }
+		}
+		if (action.payload.pathname.includes('/hotel')) {
+			return true
+		}
 		else {
 			return false
 		}
@@ -20,6 +23,9 @@ const absoluteTwo = (state = false, action) => {
 	switch(action.type) {
 	case LOCATION_CHANGE:
 		if (~['/'].indexOf(action.payload.pathname)) {
+			return true
+		}
+		if (~['/hotel'].indexOf(action.payload.pathname)) {
 			return true
 		}
 		else if (~['/graana/terms'].indexOf(action.payload.pathname)) {

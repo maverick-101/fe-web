@@ -33,6 +33,11 @@ body {
     font-size: 1.0625em;
   }
 }
+.bgDiv {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
 
 .gray {
   color: var(--gray);
