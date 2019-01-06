@@ -6,6 +6,7 @@ phases:
       - npm i
   build:
     commands:
+      - export NODE_ENV=production
       - npm run build
 artifacts:
   files:
