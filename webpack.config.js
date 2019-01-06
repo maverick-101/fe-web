@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 var postcssOption = {
@@ -31,44 +30,12 @@ var plugins = [
     template: '../index.html',
     favicon: '../favicon.ico',
     inject: true,
-    excludeChunks: ['common'],
-    cache: true,
+    excludeChunks: ['common']
   }),
-  new CopyWebpackPlugin(
-    [
-      {
-        from: path.join(__dirname, 'client/static/apple-app-site-association'),
-        to: path.join(__dirname, 'public/'),
-      },
-    ],
-    {
-      copyUnmodified: false,
-    },
-  ),
-  // new PurifyCSSPlugin({
-  //   // Give paths to parse for rules. These should be absolute!
-  //   paths: glob.sync(path.join(__dirname, 'client/*.html')),
-  // }),
-  new ExtractTextPlugin('[name].css', {allChunks: true}),
-  // new HtmlCriticalWebpackPlugin({
-  //   base: path.join(path.resolve(__dirname), 'public/'),
-  //   src: 'index.html',
-  //   dest: 'index.html',
-  //   inline: true,
-  //   minify: true,
-  //   extract: true,
-  //   width: 375,
-  //   height: 565,
-  //   penthouse: {
-  //     blockJSRequests: false,
-  //   }
-  // }),
-
-  // new CSSSplitWebpackPlugin({size: 4000}),
   new CompressionPlugin({
     asset: "[path].gz[query]",
     algorithm: "gzip",
-    test: /\.js$|\.css$|\.html$/,
+    test: /\.js$|\.css$|\.html$|\.jpeg$|\.jpg$|\.png$|\.svg$/,
     threshold: 5240,
     minRatio: 0.8
   })
@@ -104,6 +71,7 @@ module.exports = {
   },
   module: {
     rules: [
+      
       {
         test: /\.js$/,
         exclude: /node_modules/,

@@ -15,11 +15,14 @@ import 'slick-carousel/slick/slick.css'
 import 'common/common.css'
 
 import App from 'containers/App'
-import Search from 'containers/Search'
 import Loadable from 'react-loadable';
 
 const Home = Loadable({
 	loader: () => import('containers/Home'),
+	loading: () => null
+});
+const HotelPage = Loadable({
+	loader: () => import('containers/HotelPage'),
 	loading: () => null
 });
 import config from 'config';
@@ -43,8 +46,8 @@ ReactDOM.hydrate(<Provider store={store}>
 			<Route path="/" components={App}>
 				<IndexRoute components={{full: Home}}/>
 				<Route path="/home" components={{full: Home}}/>
+				<Route path="/hotel/:hotelId" components={{full: HotelPage}}/>
 			</Route>
-			<Route path='*' exact={true} components={NotFound} />
 		</Router>
 	</Provider>,
 	document.getElementById('app')

@@ -1,0 +1,11 @@
+{
+    “applinks”: {
+        “apps”: [],
+        “details”: [
+            {
+                “appID”: “2H4LS6G4S4.com.GraanaApp.mobile”,
+                “paths”: [“*”],
+            }
+        ]
+    }
+}

@@ -73,6 +73,7 @@
     "react-slick": "^0.18.0",
     "react-sticky": "^6.0.1",
     "react-truncate": "^2.3.0",
+    "reactstrap": "^6.5.0",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
@@ -86,6 +87,7 @@
     "webpack": "^3.10.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
     "copy-webpack-plugin": "^4.6.0",
     "html-critical-webpack-plugin": "^1.0.0",
     "purify-css": "^1.2.5",

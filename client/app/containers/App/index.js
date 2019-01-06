@@ -6,8 +6,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import withLockScreen from 'hoc/withLockScreen'
 
 import Header from 'components/Header'
-import Footer from 'components/Footer'
-import Loader from 'components/Loader'
+// import Footer from 'components/Footer'
+import Footer from 'components/NewFooter';
 import { StickyContainer, Sticky } from 'react-sticky';
 import Raven from 'raven-js';
 import { getCurrentUser, setMobile } from 'actions/user'
@@ -154,7 +154,7 @@ class App extends React.Component {
 			})
 			this.resize();
 		}
-		setTimeout(() => this.setState({prebootLoader: []}), 2000)
+		setTimeout(() => this.setState({prebootLoader: []}), 2)
 		this.props.getCurrentUser()
 			.then(response => {
 				// console.log(response)
@@ -193,7 +193,7 @@ class App extends React.Component {
 			console.log(this.props)
 			console.log(child)
 			return (
-				<div style={{minHeight:'100vh'}} className="container-fluid">
+				<div style={{minHeight:'100vh', paddingLeft: '0', paddingRight: '0'}} className="container-fluid">
 					{child}
 				</div>
 			)
@@ -220,19 +220,20 @@ class App extends React.Component {
 		// console.log('parent preboot ------ ----- ' , this.state.prebootComplete)
 		return (
 			<div className={`${this.state.loader.length ? style.appWrapper : ''}`}>
-				<Loader position={'fixed'} loading={!this.state.prebootComplete} transparent={false}/>
+				{/* <Loader position={'fixed'} loading={!this.state.prebootComplete} transparent={false}/> */}
 				<ErrorBoundary>
 					<ReactCSSTransitionGroup transitionName="loader" transitionEnterTimeout={500} transitionLeaveTimeout={1000}>
 						{[]}
 					</ReactCSSTransitionGroup>
-					<Header header={{search:true}}></Header>
+					<Header></Header>
 					{this.renderlayout(
 						this.state.done && React.cloneElement(this.props.full || this.props.main, {
 							done: () => this.hideLoader()
 						})
 					)}
 					<LazyLoad height={400}>
-						<Footer style={{display: 'block !important'}} showFooterLinks={this.state.showFooterLinks}></Footer>
+						{/* <Footer style={{display: 'block !important'}} showFooterLinks={this.state.showFooterLinks}></Footer> */}
+						<Footer />
 					</LazyLoad>
 				</ErrorBoundary>
 			</div>
