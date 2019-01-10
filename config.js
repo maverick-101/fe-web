@@ -5,13 +5,13 @@ const config = {
     apiPath: '',
     domain: '',
     revivePath: '',
-    lockScreen: true,
+    lockScreen: false,
   },
   production: {
     apiPath: '',
     domain: '',
     revivePath: '',
-    lockScreen: true,
+    lockScreen: false,
   },
   domain: ''
 };
