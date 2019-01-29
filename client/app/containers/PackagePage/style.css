@@ -1,0 +1,28 @@
+.hotelCovers {
+  height: calc(100vh - 150px);
+  width: 100%;
+  & .coverImages {
+    width: 33.33%;
+    height: 100%;
+    float: left;
+  }
+}
+
+.featureImage {
+  height: 180px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.amenityImage {
+  height: 250px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.reviewImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 10px;
+}
