@@ -72,6 +72,7 @@ class HotelPage extends React.Component {
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>1 Bath</h4>
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>2 Beds</h4>
             </div>
+            <hr/>
           </div>
           <div className={'col-sm-4'}>
             <HotelContactCard/>
@@ -91,6 +92,7 @@ class HotelPage extends React.Component {
               <h4 className='orange'>Explore all 20 photos</h4>
             </div>
           </div>
+          <hr/>
           <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Amenities</h1>
@@ -105,6 +107,7 @@ class HotelPage extends React.Component {
                 <h4 className='orange'>Show all 9 amenities</h4>
             </div>
           </div>
+          <hr/>
           <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Location</h1>
@@ -115,6 +118,7 @@ class HotelPage extends React.Component {
               </div>
             </div>
           </div>
+          <hr/>
           <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Reviews</h1>
@@ -145,6 +149,7 @@ class HotelPage extends React.Component {
               </div>
             </div>
           </div>
+          <hr/>
           <div className='row space-8'>
           <div className='col-sm-12 space-4'>
             <h1>Recommended Destinations For You</h1>

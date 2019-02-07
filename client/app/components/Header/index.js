@@ -544,7 +544,8 @@ class Header extends React.Component {
 				<div id="appHeader" className={style.headerWrapper}>
 					<div id="HeaderLogo" className={style.headerWrapper_logo}>
 						<a href="/">
-							<img className="header-logo" src={require('../../../site-specs/sliced-images/logo.header.png')}/>
+							<img className={`header-logo ${style.headerLogo} ${style.lightLogo}`} src={require('../../../site-specs/sliced-images/logo.header.png')}/>
+							<img className={`header-logo ${style.headerLogo} ${style.darkLogo}`} src={require('../../../site-specs/sliced-images/logo.header-dark.png')}/>
 						</a>
 					</div>
 					{
