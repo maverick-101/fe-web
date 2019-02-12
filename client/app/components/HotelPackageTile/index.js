@@ -7,13 +7,13 @@ import style from './style.css'
 class Tile extends React.Component {
   render() {
     return (
-      <div className='col-sm-4'>
-        <div className={`${style.guidePackagesTile}`}>
+      <div className='col-sm-4 space-4 inline-block'>
+        <div className={`${style.hotelPackagesTile}`}>
           <div className={`${style.bgDiv} ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
           </div>
           {/* <p className={style.tileText}>{this.props.data.name}</p> */}
-          <div className={style.guidePackagesText}>
-            <div className='col-sm-7'>
+          <div className={style.hotelPackagesText}>
+            <div className='col-sm-7 col-xs-7 col-md-7'>
               <h5 style={{marginBottom: '6px'}}>{this.props.data.location}</h5>
               <p style={{marginBottom: '6px', fontWeight: '200', fontSize: '14px'}}>Starting Price <span style={{color: '#e3530d'}}>Rs.{this.props.data.price}</span></p>
             </div>

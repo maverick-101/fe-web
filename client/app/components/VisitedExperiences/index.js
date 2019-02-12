@@ -11,11 +11,11 @@ class Tile extends React.Component {
   }
   render() {
     return (
-      <div className='col-sm-3' style={{marginBottom: '30px'}}>
-        <div className={`${style.guidePackagesTile}`}>
-          <div className={`${style.bgDiv} ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
+      <div className='col-sm-3 inline-block' style={{marginBottom: '30px', minWidth: '200px'}}>
+        <div className={`${style.experiencePackagesTile}`}>
+          <div className={`${style.bgDiv} ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
           </div>
-          <div className={style.guidePackagesText}>
+          <div className={style.experiencePackagesText}>
             <div className='col'>
               <h5 style={{marginBottom: '6px'}}>{this.props.data.name}</h5>
               <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p>

@@ -9,9 +9,10 @@ import style from './style.css'
 
 class Tile extends React.Component {
   render() {
-    return (
-      <a href="/hotel/1">
-        <div style={{background: `url(${this.props.data.url})`}} className={`col-sm-4 ${style.featuredTile} ${style.bgDiv}`}>
+    return (  
+      // <a href="/hotel/1">
+      <div className='col-sm-4 inline-block space-4'>
+        <div style={{background: `url(${this.props.data.url})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
           <div className={`${style.featuredTilePriceDiv}`}>
             <p className={'no-padding no-margin'}>
             <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS</p>
@@ -20,7 +21,8 @@ class Tile extends React.Component {
             </p>
           </div>
         </div>
-      </a>
+        </div>
+      // </a>
     )
   }
 }

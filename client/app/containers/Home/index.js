@@ -6,12 +6,24 @@ import HotelPackageTile from 'components/HotelPackageTile';
 import FeaturedHotelTile from 'components/FeaturedHotelTile';
 import RecommendationTile from 'components/RecommendationTile';
 import VisitedExperiences from 'components/VisitedExperiences';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css'
+
 
 import style from './style.css'
 
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+];
 
 class Home extends React.Component {
 	constructor(props) {
+		super(props);
+		this.state = {
+			selectedOption: null
+		}
 		super(props);
 		this.data = {
 			travelerPackages: [
@@ -54,51 +66,91 @@ class Home extends React.Component {
 		}
 	}
 
+	handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
+  }
+
 	render() {
+		const { selectedOption } = this.state;
     return (
 		<div>
-			<div className="home-screen" style={{paddingLeft: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+			<div className="home-screen space-4" style={{paddingLeft: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
 				<div className={style.homeCoverStyle} style={{background: `url(${require('../../../site-specs/sliced-images/background-bg.png')})`}}>
 				</div>
-					<p style={{color: 'white', fontWeight: 'bolder', fontSize: '45px', position: 'absolute', marginTop: '-75px', letterSpacing: '4px'}}>LETS EXPLORE TOGETHER</p>
-					<button className="btn btn-lg view-btn" style={{zIndex: 10, margin: 'auto', position: 'absolute', color: 'white', paddingLeft: '50px', paddingRight: '50px', width: '211.45px', border: '1px solid white'}}>VIEW MORE</button>
+					<div className={style.coverTextWrapper}>
+					<p className={style.coverText}>WHERE TO?</p>
+					<div>
+						<p className={style.subtitle}>Type in Any Location for Travel Guide</p>
+					</div>
+					<div className={`fa fa-search fa-lg ${style.searchIconDiv}`}></div>
+					<div>
+						<Select
+							className={style.selectControl}
+							classNamePrefix={'searchControl'}
+							value={selectedOption}
+							onChange={(option) => this.handleChange(option)}
+							options={options}
+							placeholder={`Type in a location e.g. 'Naran Valley', 'Nathia Gali'`}
+						/>
+					</div>
+					</div>
+					{/* <button className="btn btn-lg view-btn" style={{zIndex: 10, margin: 'auto', position: 'absolute', color: 'white', paddingLeft: '50px', paddingRight: '50px', width: '211.45px', border: '1px solid white'}}>VIEW MORE</button> */}
 				</div>
 					<div className="col-sm-12 no-padding">
-						{this.data.featuredHotels.map((data, index) => {
-							return <FeaturedHotelTile data={data} />
-						})}
+						<div className={style.horizontalScrollContainer}>
+							{this.data.featuredHotels.map((data, index) => {
+								return <FeaturedHotelTile data={data} />
+							})}
+						</div>
 					</div>
 
 					<div className="container space-4">
-						<div className="row"/> 
-						<h1>Hotel Resorts & their Packages</h1>
-						<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
-						{this.data.hotelPackages.map((data, index) => {
-							return <HotelPackageTile data={data} />
-						})}
-					</div>
+							<h1>Hotel Resorts & their Packages</h1>
+							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
+							<div className='row'>
+								<div className={style.horizontalScrollContainer}>
+									{this.data.hotelPackages.map((data, index) => {
+										return <HotelPackageTile data={data} />
+									})}
+								</div>
+							</div>
+						</div>
 
 					<div className="container space-4">
 						<h1>Top Traveller Packages by Tour Guide</h1>
 						<p className='space-4'>Discover places with one of these popular guides</p>
-						{this.data.travelerPackages.map((data, index) => {
-							return <TravelerPackageTile data={data} />
-						})}
+
+						<div className='row'>
+							<div className={style.horizontalScrollContainer}>
+								{this.data.travelerPackages.map((data, index) => {
+									return <TravelerPackageTile data={data} />
+								})}
+							</div>
+						</div>
 					</div>
 
 					<div className="container space-4">
 						<h1>Recommended for you</h1>
-						{this.data.recommendations.map((data, index) => {
-							return <RecommendationTile data={data} />
-						})}
+						<div className='row'>
+							<div className={style.horizontalScrollContainer}>
+								{this.data.recommendations.map((data, index) => {
+									return <RecommendationTile data={data} />
+								})}
+							</div>
+						</div>
 					</div>
 
 					<div className="container space-4">
 						<h1>Top visited experiences</h1>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
-						{this.data.visitedExperiences.map((data, index) => {
-							return <VisitedExperiences data={data} />
-						})}
+						<div className='row'>
+							<div className={style.horizontalScrollContainer}>
+								{this.data.visitedExperiences.map((data, index) => {
+									return <VisitedExperiences data={data} />
+								})}
+							</div>
+						</div>
 					</div>
 
 					<div className="container space-4">

@@ -10,10 +10,18 @@
   width: auto;
   position: absolute;
   bottom: 0;
-  left: 0;
   background-color: #e3530d;
   font-size: 32px;
   font-weight: bolder;
   padding: 5px 15px;
   color: white;
 }
+
+@media only screen and (max-width: 767px) {
+  .featuredTile {
+    height: 300px;
+    min-width: 100vw;
+  }
+}
+
+
