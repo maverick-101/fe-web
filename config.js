@@ -2,7 +2,7 @@ const env = process.env.NODE_ENV || 'development';
 
 const config = {
   development: {
-    apiPath: '',
+    apiPath: 'https://api.saaditrips.com/api',
     domain: '',
     revivePath: '',
     lockScreen: false,

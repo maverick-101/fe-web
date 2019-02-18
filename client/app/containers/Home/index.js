@@ -7,10 +7,14 @@ import FeaturedHotelTile from 'components/FeaturedHotelTile';
 import RecommendationTile from 'components/RecommendationTile';
 import VisitedExperiences from 'components/VisitedExperiences';
 import Select from 'react-select';
+import axios from 'axios';
 import 'react-select/dist/react-select.css'
+
+import config from 'config'
 
 
 import style from './style.css'
+import Axios from 'axios';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -22,7 +26,9 @@ class Home extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null
+			selectedOption: null,
+			searchBarArray: [],
+			hotelPackages: [],
 		}
 		super(props);
 		this.data = {
@@ -66,6 +72,51 @@ class Home extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		axios.get(`${config.apiPath}/fetch/locations-fetch`)
+			.then((response) => {
+				var searchBarArray =  response.data.map((location) => {
+					return {value: location.ID, label: location.name}
+				})
+				this.setState({
+					searchBarArray,
+				})
+			})
+		axios.get(`${config.apiPath}/hotel/fetch`)
+		.then((response) => {
+			hotelPackages = response.data.map((item) => {
+				return {
+					name: item.name,
+					id: item.ID,
+					url: item.gallery && item.gallery.length ? item.gallery[0].url : null
+				}
+			})
+			this.setState({
+				hotelPackages,
+			})
+		})
+		axios.get(`${config.apiPath}/fetchFeaturedHotels/featuredHotel-fetchFeaturedHotels`)
+		.then((response) => {
+			// var searchBarArray =  response.data.map((location) => {
+			// 	return {value: location.ID, label: location.name}
+			// })
+			// this.setState({
+			// 	searchBarArray,
+			// })
+		})
+		axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
+		.then((response) => {
+			// var searchBarArray =  response.data.map((location) => {
+			// 	return {value: location.ID, label: location.name}
+			// })
+			// this.setState({
+			// 	searchBarArray,
+			// })
+		})
+	}
+
+	
+
 	handleChange = (selectedOption) => {
     this.setState({ selectedOption });
     console.log(`Option selected:`, selectedOption);
@@ -90,7 +141,7 @@ class Home extends React.Component {
 							classNamePrefix={'searchControl'}
 							value={selectedOption}
 							onChange={(option) => this.handleChange(option)}
-							options={options}
+							options={this.state.searchBarArray}
 							placeholder={`Type in a location e.g. 'Naran Valley', 'Nathia Gali'`}
 						/>
 					</div>
@@ -110,7 +161,7 @@ class Home extends React.Component {
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
 							<div className='row'>
 								<div className={style.horizontalScrollContainer}>
-									{this.data.hotelPackages.map((data, index) => {
+									{this.state.hotelPackages.map((data, index) => {
 										return <HotelPackageTile data={data} />
 									})}
 								</div>
