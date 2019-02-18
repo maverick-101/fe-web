@@ -84,13 +84,14 @@ class Home extends React.Component {
 			})
 		axios.get(`${config.apiPath}/hotel/fetch`)
 		.then((response) => {
-			hotelPackages = response.data.map((item) => {
+			var hotelPackages = response.data.map((item) => {
 				return {
 					name: item.name,
 					id: item.ID,
 					url: item.gallery && item.gallery.length ? item.gallery[0].url : null
 				}
 			})
+			console.log(hotelPackages)
 			this.setState({
 				hotelPackages,
 			})
@@ -123,6 +124,7 @@ class Home extends React.Component {
   }
 
 	render() {
+		console.log(this.state.hotelPackages);
 		const { selectedOption } = this.state;
     return (
 		<div>
