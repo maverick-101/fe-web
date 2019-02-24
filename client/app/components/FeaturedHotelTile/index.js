@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Card, CardText, CardBody, CardTitle, CardImg, Button} from 'reactstrap';
 import TravelerPackageTile from 'components/TravelerPackageTile';
+
+import placeholder from 'no-image.jpg'
 import HotelPackageTile from 'components/HotelPackageTile';
 
 import style from './style.css'
@@ -10,9 +12,9 @@ import style from './style.css'
 class Tile extends React.Component {
   render() {
     return (  
-      // <a href="/hotel/1">
-      <div className='col-sm-4 inline-block space-4'>
-        <div style={{background: `url(${this.props.data.url})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
+      <a href="/hotel/1">
+      <div style={{width: this.props.width}} className='inline-block text-left space-4'>
+        <div style={{background: `url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
           <div className={`${style.featuredTilePriceDiv}`}>
             <p className={'no-padding no-margin'}>
             <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS</p>
@@ -22,7 +24,7 @@ class Tile extends React.Component {
           </div>
         </div>
         </div>
-      // </a>
+       </a>
     )
   }
 }

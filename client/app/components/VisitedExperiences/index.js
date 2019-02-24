@@ -11,7 +11,8 @@ class Tile extends React.Component {
   }
   render() {
     return (
-      <div className='col-sm-3 inline-block' style={{marginBottom: '30px', minWidth: '200px'}}>
+      <a>
+      <div className='text-left' style={{marginBottom: '30px', width:'100%', minWidth: '200px'}}>
         <div className={`${style.experiencePackagesTile}`}>
           <div className={`${style.bgDiv} ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
           </div>
@@ -31,6 +32,7 @@ class Tile extends React.Component {
           </div>
         </div>
       </div>
+      </a>
     )
   }
 }

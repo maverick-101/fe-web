@@ -9,6 +9,8 @@ import VisitedExperiences from 'components/VisitedExperiences';
 import Select from 'react-select';
 import axios from 'axios';
 import 'react-select/dist/react-select.css'
+import Fader from 'components/Fader'
+import Slider from 'components/Slider'
 
 import config from 'config'
 
@@ -29,6 +31,8 @@ class Home extends React.Component {
 			selectedOption: null,
 			searchBarArray: [],
 			hotelPackages: [],
+			featuredHotels: [],
+			travelerPackages: [],
 		}
 		super(props);
 		this.data = {
@@ -46,8 +50,6 @@ class Home extends React.Component {
 			{name:'3 Days Trip to Hunza Valley', location: 'Hunza Valley', min_price:3000, url: require('../../../site-specs/sliced-images/package-thumb-01.png')},
 			{name:'5 Days Trip to Shangrila', location: 'Shangrilla Resorts', min_price:5000, url: require('../../../site-specs/sliced-images/package-thumb-02.png')},
 			{name:'3 Days Trip to Naran Kaghan', location: 'Naran Kaghan Valley', min_price:7000, url: require('../../../site-specs/sliced-images/package-thumb-03.png')},
-		],
-		featuredHotels: [
 			{name:'3 Days Trip to Hunza Valley', location: 'Hunza Valley', min_price:3000, url: require('../../../site-specs/sliced-images/package-thumb-01.png')},
 			{name:'5 Days Trip to Shangrila', location: 'Shangrilla Resorts', min_price:5000, url: require('../../../site-specs/sliced-images/package-thumb-02.png')},
 			{name:'3 Days Trip to Naran Kaghan', location: 'Naran Kaghan Valley', min_price:7000, url: require('../../../site-specs/sliced-images/package-thumb-03.png')},
@@ -81,7 +83,8 @@ class Home extends React.Component {
 				this.setState({
 					searchBarArray,
 				})
-			})
+		})
+
 		axios.get(`${config.apiPath}/hotel/fetch`)
 		.then((response) => {
 			var hotelPackages = response.data.map((item) => {
@@ -96,23 +99,22 @@ class Home extends React.Component {
 				hotelPackages,
 			})
 		})
+
 		axios.get(`${config.apiPath}/fetchFeaturedHotels/featuredHotel-fetchFeaturedHotels`)
 		.then((response) => {
-			// var searchBarArray =  response.data.map((location) => {
-			// 	return {value: location.ID, label: location.name}
-			// })
-			// this.setState({
-			// 	searchBarArray,
-			// })
+			var featuredHotels = response.data;
+			this.setState({
+				featuredHotels,
+			})
 		})
+
 		axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
 		.then((response) => {
-			// var searchBarArray =  response.data.map((location) => {
-			// 	return {value: location.ID, label: location.name}
-			// })
-			// this.setState({
-			// 	searchBarArray,
-			// })
+			var travelerPackages = response.data;
+			console.log('traveler package', travelerPackages)
+			this.setState({
+				travelerPackages,
+			})
 		})
 	}
 
@@ -124,7 +126,6 @@ class Home extends React.Component {
   }
 
 	render() {
-		console.log(this.state.hotelPackages);
 		const { selectedOption } = this.state;
     return (
 		<div>
@@ -150,11 +151,15 @@ class Home extends React.Component {
 					</div>
 					{/* <button className="btn btn-lg view-btn" style={{zIndex: 10, margin: 'auto', position: 'absolute', color: 'white', paddingLeft: '50px', paddingRight: '50px', width: '211.45px', border: '1px solid white'}}>VIEW MORE</button> */}
 				</div>
+
+
 					<div className="col-sm-12 no-padding">
 						<div className={style.horizontalScrollContainer}>
-							{this.data.featuredHotels.map((data, index) => {
-								return <FeaturedHotelTile data={data} />
-							})}
+							<Slider width={(window.innerWidth/3)-50} maxWidth={window.innerWidth-50} unSlickTill={1024}  
+							items={this.state.featuredHotels.map((data, index) => {
+								return <FeaturedHotelTile width={'100%'} data={data} />
+							})}>
+							</Slider>
 						</div>
 					</div>
 
@@ -163,9 +168,10 @@ class Home extends React.Component {
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
 							<div className='row'>
 								<div className={style.horizontalScrollContainer}>
-									{this.state.hotelPackages.map((data, index) => {
+								<Fader width={320} maxWidth={1280} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
 										return <HotelPackageTile data={data} />
-									})}
+									})}>
+								</Fader>
 								</div>
 							</div>
 						</div>
@@ -176,9 +182,10 @@ class Home extends React.Component {
 
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-								{this.data.travelerPackages.map((data, index) => {
+							<Fader width={340} maxWidth={1280} unSlickTill={1024} items=
+								{this.state.travelerPackages.map((data, index) => {
 									return <TravelerPackageTile data={data} />
-								})}
+								})}></Fader>
 							</div>
 						</div>
 					</div>
@@ -187,9 +194,10 @@ class Home extends React.Component {
 						<h1>Recommended for you</h1>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
+							<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
 								{this.data.recommendations.map((data, index) => {
 									return <RecommendationTile data={data} />
-								})}
+								})}></Fader>
 							</div>
 						</div>
 					</div>
@@ -199,16 +207,17 @@ class Home extends React.Component {
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
+							<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
 								{this.data.visitedExperiences.map((data, index) => {
 									return <VisitedExperiences data={data} />
-								})}
+								})}></Fader>
 							</div>
 						</div>
 					</div>
 
-					<div className="container space-4">
+					{/* <div className="container space-4">
 						<h4 style={{color: 'orange'}}>Show all experiences</h4>
-					</div>
+					</div> */}
 			</div>
 		)
   }

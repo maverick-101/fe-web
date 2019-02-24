@@ -256,9 +256,20 @@
 
 
 .horizontalScrollContainer {
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
+  & :global .unslick {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 0 15px;
+    & a {
+      display: inline-block;
+      width: 90%;
+      padding: 0 7.5px;
+      & img {
+        max-width: 100%;
+      }
+    }
+  }
 }
 
 .homevid {
@@ -534,6 +545,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .searchIconDiv {
+    bottom: 34px;
+    left: 30px;
+  }
   .coverText {
     font-size: 24px;
   }
@@ -545,6 +560,9 @@
     & .subtitle {
       font-size: 14px;
     }
+  }
+  .Select-menu-outer {
+    margin: -20px 20px;
   }
   .selectControl {
     width: 100vw;

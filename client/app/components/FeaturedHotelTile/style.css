@@ -8,7 +8,7 @@
 }
 .featuredTilePriceDiv {
   width: auto;
-  position: absolute;
+  display: table-cell;
   bottom: 0;
   background-color: #e3530d;
   font-size: 32px;
@@ -20,7 +20,6 @@
 @media only screen and (max-width: 767px) {
   .featuredTile {
     height: 300px;
-    min-width: 100vw;
   }
 }
 

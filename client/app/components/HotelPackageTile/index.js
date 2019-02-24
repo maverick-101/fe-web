@@ -7,7 +7,8 @@ import style from './style.css'
 class Tile extends React.Component {
   render() {
     return (
-      <div className='col-sm-3 space-4 inline-block'>
+      <a href="">
+      <div className='space-4 text-left' style={{}}> 
         <div className={`${style.hotelPackagesTile}`}>
           <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
           </div>
@@ -21,6 +22,7 @@ class Tile extends React.Component {
           </div>
         </div>
       </div>
+      </a>
     )
   }
 }
