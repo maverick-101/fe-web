@@ -132,7 +132,8 @@ class Home extends React.Component {
 	
 
 	handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
+		this.setState({ selectedOption });
+		window.location = `/location/${selectedOption.value}`
     console.log(`Option selected:`, selectedOption);
   }
 
