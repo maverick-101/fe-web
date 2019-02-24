@@ -8,7 +8,7 @@ import style from './style.css'
 class Tile extends React.Component {
   render() {
     return (
-      <a>
+      <a href={`/package/${this.props.data.ID}`}>
       <div style={{width:'100%'}} className='space-4 inline-block'>
         <div className={`${style.guidePackagesTile}`}>
           <div className={`${style.bgDiv} ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder })` }}>
