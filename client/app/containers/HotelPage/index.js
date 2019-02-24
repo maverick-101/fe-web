@@ -3,15 +3,24 @@ import { connect } from 'react-redux'
 import HotelContactCard from 'components/HotelContactCard';
 import config from 'config'
 import axios from 'axios';
+import { sanitize } from 'helpers';
+
+import placeholder from 'no-image.jpg';
 
 import style from './style.css'
 
+function humanize(str) {
+  var frags = str.split('_');
+  for (var i=0; i<frags.length; i++) {
+    frags[i] = frags[i].charAt(0).toUpperCase() + frags[i].slice(1);
+  }
+  return frags.join(' ');
+}
 
 class HotelPage extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-      hotel: {},
     }
 		this.data = {
 			hotelCovers: [
@@ -61,7 +70,7 @@ class HotelPage extends React.Component {
         hotel,
       })
     })
-    axios.get(`${config.apiPath}/hotel/fetchById/${this.props.params.hotelId}`)
+    axios.get(`${config.apiPath}/fetchByHotelId/hotelImage-fetchByHotelId/${this.props.params.hotelId}`)
     .then((response) => {
       var hotelImages = response.data;
       this.setState({
@@ -71,24 +80,25 @@ class HotelPage extends React.Component {
   }
 
 	render() {
+    var { hotel, hotelImages } = this.state;
     return (
+      <div>
+    {    hotel && hotelImages ? 
 		<div>
       <div className={`space-4 ${style.hotelCovers}`}>
-        {
+        {/* {
           this.data.hotelCovers.map((image) => {
            return <div className={`bgDiv ${style.coverImages}`} style={{background:`url(${image.url})` }}></div>
         })
-        }
+        } */}
+        <div className={`bgDiv ${style.coverImages}`} style={{background:`url(${hotel.gallery && hotel.gallery.length ? hotel.gallery[0].url : placeholder })` }}></div>
       </div>
       <div className="container space-4">
         <div className="row space-4">
           <div className='col-sm-8'>
-            <h1>Falettis Hotel Lahore</h1>
-            <h4>24 Egerton Road, Lahore, Pakistan</h4>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
+            <h1>{hotel.name}</h1>
+            <h4>{hotel.address}</h4>
+            <div dangerouslySetInnerHTML={{__html: sanitize(hotel.description)}}></div>
             <div className='row'>
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>4 guests</h4>
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>1 Bedroom</h4>
@@ -105,10 +115,10 @@ class HotelPage extends React.Component {
           <div className='col-sm-12'>
             <h1>Tour this hotel</h1>
             <div className='row'>
-            {this.data.hotelFeatures.map((image) => {
+            {hotelImages.map((image) => {
               return <div className='col-sm-2 space-4'>
-                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.url})` }}></div>
-                <h4 style={{margin: '10px, 0'}}>{image.name}</h4>
+                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.images[0].url})` }}></div>
+                <h4 style={{margin: '10px, 0'}}>{humanize(image.image_type)}</h4>
               </div>
             })}
               </div>
@@ -187,6 +197,8 @@ class HotelPage extends React.Component {
             </div>
           </div>
         </div>
+    </div>
+    : null}
     </div>
 		)
   }
