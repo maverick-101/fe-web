@@ -6,8 +6,10 @@ import style from './style.css'
 
 class Tile extends React.Component {
   render() {
+
+    console.log(this.props)
     return (
-      <a href="">
+      <a href={`/hotel/${this.props.data.id}`}>
       <div className='space-4 text-left' style={{}}> 
         <div className={`${style.hotelPackagesTile}`}>
           <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>

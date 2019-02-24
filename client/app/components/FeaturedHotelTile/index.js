@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Card, CardText, CardBody, CardTitle, CardImg, Button} from 'reactstrap';
 import TravelerPackageTile from 'components/TravelerPackageTile';
-
-import placeholder from 'no-image.jpg'
 import HotelPackageTile from 'components/HotelPackageTile';
 
 import style from './style.css'
@@ -12,7 +10,7 @@ import style from './style.css'
 class Tile extends React.Component {
   render() {
     return (  
-      <a href="/hotel/1">
+      <a href={`/hotel/${this.props.data.ID}`}>
       <div style={{width: this.props.width}} className='inline-block text-left space-4'>
         <div style={{background: `url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
           <div className={`${style.featuredTilePriceDiv}`}>

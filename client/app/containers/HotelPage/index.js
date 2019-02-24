@@ -1,13 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import HotelContactCard from 'components/HotelContactCard';
+import config from 'config'
+import axios from 'axios';
 
 import style from './style.css'
 
 
 class HotelPage extends React.Component {
 	constructor(props) {
-		super(props);
+    super(props);
+    this.state = {
+      hotel: {},
+    }
 		this.data = {
 			hotelCovers: [
 				{name:'3 Days Trip to Hunza Valley', location: 'Hunza Valley', price:3000, url: require('../../../site-specs/sliced-images/hotel-1.jpg')},
@@ -45,7 +50,25 @@ class HotelPage extends React.Component {
       {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
     ],
 		}
-	}
+  }
+  
+  componentDidMount() {
+    axios.get(`${config.apiPath}/hotel/fetchById/${this.props.params.hotelId}`)
+		.then((response) => {
+      var hotel = response.data;
+      console.log('hotel Data', hotel);
+      this.setState({
+        hotel,
+      })
+    })
+    axios.get(`${config.apiPath}/hotel/fetchById/${this.props.params.hotelId}`)
+    .then((response) => {
+      var hotelImages = response.data;
+      this.setState({
+        hotelImages,
+      })
+    })
+  }
 
 	render() {
     return (

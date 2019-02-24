@@ -164,6 +164,8 @@ class Home extends React.Component {
 				</div>
 
 
+					{
+					this.state.featuredHotels.length ?
 					<div className="col-sm-12 no-padding">
 						<div className={style.horizontalScrollContainer}>
 							<Slider width={(window.innerWidth/3)-50} maxWidth={window.innerWidth-50} unSlickTill={1024}  
@@ -173,7 +175,11 @@ class Home extends React.Component {
 							</Slider>
 						</div>
 					</div>
+					: null
+				}
 
+					{ 
+					this.state.hotelPackages.length ?
 					<div className="container space-4">
 							<h1>Hotel Resorts & their Packages</h1>
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
@@ -186,7 +192,11 @@ class Home extends React.Component {
 								</div>
 							</div>
 						</div>
+					: null
+					}
 
+				{ 
+					this.state.travelerPackages.length ?
 					<div className="container space-4">
 						<h1>Top Traveller Packages by Tour Guide</h1>
 						<p className='space-4'>Discover places with one of these popular guides</p>
@@ -200,7 +210,10 @@ class Home extends React.Component {
 							</div>
 						</div>
 					</div>
-
+					: null
+					}
+					{ 
+					this.state.locations.length ?
 					<div className="container space-4">
 						<h1>Recommended Locations for you</h1>
 						<div className='row'>
@@ -212,7 +225,11 @@ class Home extends React.Component {
 							</div>
 						</div>
 					</div>
+					: null
+					}
 
+					{
+					this.data.visitedExperiences.length ?
 					<div className="container space-4">
 						<h1>Top visited experiences</h1>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
@@ -225,6 +242,8 @@ class Home extends React.Component {
 							</div>
 						</div>
 					</div>
+					: null
+					}
 
 					{/* <div className="container space-4">
 						<h4 style={{color: 'orange'}}>Show all experiences</h4>
