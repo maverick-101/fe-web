@@ -2,7 +2,7 @@
   height: calc(100vh - 150px);
   width: 100%;
   & .coverImages {
-    width: 33.33%;
+    width: 100%;
     height: 100%;
     float: left;
   }
