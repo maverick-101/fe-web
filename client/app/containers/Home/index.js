@@ -33,6 +33,7 @@ class Home extends React.Component {
 			hotelPackages: [],
 			featuredHotels: [],
 			travelerPackages: [],
+			locations: [],
 		}
 		super(props);
 		this.data = {
@@ -116,6 +117,16 @@ class Home extends React.Component {
 				travelerPackages,
 			})
 		})
+
+		axios.get(`${config.apiPath}/fetch/locations-fetch`)
+		.then((response) => {
+			var locations = response.data;
+			console.log('locations', locations)
+			this.setState({
+				locations,
+			})
+		})
+		
 	}
 
 	
@@ -191,11 +202,11 @@ class Home extends React.Component {
 					</div>
 
 					<div className="container space-4">
-						<h1>Recommended for you</h1>
+						<h1>Recommended Locations for you</h1>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
 							<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
-								{this.data.recommendations.map((data, index) => {
+								{this.state.locations.map((data, index) => {
 									return <RecommendationTile data={data} />
 								})}></Fader>
 							</div>

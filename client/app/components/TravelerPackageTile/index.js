@@ -18,7 +18,7 @@ class Tile extends React.Component {
           </div>
           <div className={style.guidePackagesText}>
             <div className='col-sm-7 no-padding-left text-left col-xs-7 col-md-7'>
-              <h4 className='ellipses' style={{marginBottom: '6px'}}>{this.props.data.location}</h4>
+              <h4 className='ellipses' style={{marginBottom: '6px'}}>{this.props.data.package_title}</h4>
               <p style={{marginBottom: '6px', fontWeight: '200', fontSize: '14px'}}>Starting Price <span style={{color: '#e3530d'}}>Rs.{3000}</span></p>
             </div>
               <button style={{backgroundColor: '#00b3b3', color: 'white', fontSize:'14px', border: 'none', marginTop: '5px'}} className="btn col-xs-5 col-sm-5 col-md-5 btn-lg btn-primary">Book Now</button>
