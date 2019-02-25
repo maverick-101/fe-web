@@ -1,6 +1,10 @@
 import React from 'react'
 import moment from 'moment'
 import { connect } from 'react-redux'
+import RoomTile from './RoomTile'
+import Modal from 'react-bootstrap/lib/Modal'
+
+import swal from 'sweetalert2';
 
 import { DateRangePicker, isInclusivelyAfterDay, isInclusivelyBeforerDay } from 'react-dates';
 
@@ -8,6 +12,7 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
 import style from './style.css'
+// import swal from 'sweetalert2';
 
 
 class HotelContactCard extends React.Component {
@@ -16,25 +21,84 @@ class HotelContactCard extends React.Component {
 		this.state = {
 			// startDate: moment().add(-7,'days'),
       // endDate: moment(),
-      focusedInput: {},
+			focusedInput: {},
+			showConfirmationModal: true,
 		}
 		this.data = {
   } 
+}
+
+onContact() {
+	if(this.state.daysToStay) {
+		this.setState({
+			showConfirmationModal: true,
+		})
+	} else {
+		swal({
+			title: 'Please Select Dates and Guests',
+			html: 'Please select the appropriate dates and guests before proceeding',
+			type: 'info',
+		})
+	}
 }
 
 changeDates(startDate, endDate) {
 	if (this.state.startDate !== startDate || this.state.endDate !== endDate) {
 		this.setState({startDate, endDate}, () => {
 			// this.updateCharts()
+			console.log('difference is', moment(this.state.startDate).diff(this.state.endDate, 'days'))
+			this.state.startDate ? this.props.updateBookingData('start_date', this.state.startDate.format()) : null
+			this.state.endDate ? this.props.updateBookingData('end_date', this.state.endDate.format()) : null
+			this.setState({
+				daysToStay: moment(this.state.startDate).diff(this.state.endDate, 'days'), 
+			}, () => 	this.props.updateBookingData('nights_stay', this.state.daysToStay))
 		});
 	}
+}
+
+hideModal() {
+	this.setState({
+		showConfirmationModal: false,
+	})
 }
 
 	render() {
     return (
 		<div className={style.contactCard}>
+		<Modal size='lg' dialogClassName={style.modalWidth} show={this.state.showConfirmationModal} onHide={() => this.hideModal()}>
+			<Modal.Header closeButton>
+				<Modal.Title>Confirm Your Booking</Modal.Title>
+			</Modal.Header>
+			<Modal.Body>
+				<div className='clearfix'>
+					<h1 className='col-sm-12'>Available Rooms</h1>
+				{this.props.rooms.map((room, index) => {
+					return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-6'>
+						<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery[0].url}></RoomTile>
+					</div>
+				})}
+				<div className='col-sm-12'>
+					<h1 className=''>Contact Information</h1>
+					<form>
+					<div className='col-sm-6 space-4 no-padding-left'>
+						<input onChange={e => {this.props.updateBookingData('user_name', e.target.value)}} className='form-input' type="text" placeholder='Name'/>
+					</div>
+					<div className='col-sm-6 space-4 no-padding-left'>
+						<input onChange={e => {this.props.updateBookingData('user_email', e.target.value)}} className='form-input' type="email" placeholder='Email Address'/>
+					</div>
+					<div className='col-sm-6 space-4 no-padding-left'>
+						<input onChange={e => {this.props.updateBookingData('user_phone', e.target.value)}} className='form-input' type="number" placeholder='Phone (e.g 923331231231, 03331231231)'/>
+					</div>
+					<div className='col-sm-6 space-4 no-padding-left'>
+						<button type='submit' onClick={(event)=> {event.preventDefault(); this.props.submitBooking(event)}} style={{padding: '10px'}} className='btn btn-block btn-orange'>Book Now</button>
+					</div>
+					</form>
+				</div>
+				</div>
+			</Modal.Body>
+		</Modal>
 			<div className='clearfix'>				
-				<h1 className='pull-left'>Rs. 3000+</h1> 
+				<h1 className='pull-left'>Rs. {this.props.price}+</h1> 
 				<p style={{padding: '15px 0px 0px 0px'}} className='pull-left'>/ per Night</p>
 			</div>
 			<div>
@@ -69,7 +133,7 @@ changeDates(startDate, endDate) {
 					/>
 				</div>
 				<div style={{position: 'relative'}} className='space-4'>
-					<select name="month" className={`form-control ${style.guestSelect}`}>
+					<select name="month" onChange={(e) => {this.props.updateBookingData('persons', e.target.value)}} className={`form-control ${style.guestSelect}`}>
 						<option value="">Guests</option>
 						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
 							(number, index) => <option key={index} value={number}>{number}</option>
@@ -77,7 +141,7 @@ changeDates(startDate, endDate) {
 					</select>
 					<i style={{color: '#00b3b3', position: 'absolute', top: 10, right: 10}} className="fa fa-chevron-down"></i>
 				</div>
-				<button className='btn btn-block btn-orange'>REQUEST TO BOOK</button>
+				<button onClick={()=> {this.onContact()}} className='btn btn-block btn-orange'>REQUEST TO BOOK</button>
     </div>
 		)
   }
