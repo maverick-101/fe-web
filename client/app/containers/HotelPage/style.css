@@ -47,6 +47,23 @@
   height: 120px;
 }
 
+.horizontalScrollContainer {
+  & :global .unslick {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 0 15px;
+    & a {
+      display: inline-block;
+      width: 90%;
+      padding: 0 7.5px;
+      & img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .amenityDiv {
     width: 200px;
