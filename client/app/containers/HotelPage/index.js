@@ -33,6 +33,9 @@ class HotelPage extends React.Component {
       rating: 5,
       disableSubmit: true,
       hotelPackages: [],
+      hotelRooms:[],
+      hotelImages: [],
+      bookingData: {},
     }
 		this.data = {
 			hotelCovers: [
@@ -105,6 +108,40 @@ class HotelPage extends React.Component {
       this.reviewTextarea.value = ''
     })
   }
+
+  updateBookingData(name, value) {
+    var { bookingData } = this.state;
+    console.log(bookingData);
+    bookingData[name] = value;
+    this.setState({
+      bookingData,
+    })
+  }
+
+  submitBooking() {
+    var { bookingData } = this.state;
+    axios.post(`${config.apiPath}/save/hotelContact-save`, {hotelContact: JSON.stringify(bookingData)})
+    .then(() => {
+      this.contactCardRef.hideModal();
+    })
+
+    // {
+    //   ID:{
+    
+    //       type: Number,
+    //       unique:true
+    //     },
+    //   room_id: Number,
+    //   persons: Number,
+    //   start_date: Date,
+    //   end_date: Date,
+    //   nights_stay: Number,
+    //   user_id: Number,
+    //   user_phone: Number,
+    //   user_name: Number,
+    //   user_email: Number
+    // }
+  }
   
   componentDidMount() {
     axios.get(`${config.apiPath}/hotel/fetchById/${this.props.params.hotelId}`)
@@ -139,16 +176,26 @@ class HotelPage extends React.Component {
 			this.setState({
 				hotelPackages,
 			})
-		})
-    
-    axios.get(`${config.apiPath}/fetchByHotelId/hotelImage-fetchByHotelId/${this.props.params.hotelId}`)
-    .then((response) => {
-      var hotelImages = response.data;
-      this.setState({
-        hotelImages,
-      })
     })
-    axios.get(`${config.apiPath}/fetchByHotelId/hotelRating-fetchByHotelId/${this.props.params.hotelId}`)
+
+    axios.get(`${config.apiPath}/room/fetchByHotelId/${this.props.params.hotelId}`)
+		.then((response) => {
+			var hotelRooms = response.data
+			console.log(hotelRooms)
+			this.setState({
+				hotelRooms,
+			})
+    })
+    
+    
+    // axios.get(`${config.apiPath}/fetchByHotelId/hotelResources-fetchByHotelId/${this.props.params.hotelId}`)
+    // .then((response) => {
+    //   var hotelImages = response.data;
+    //   this.setState({
+    //     hotelImages,
+    //   })
+    // })
+    axios.get(`${config.apiPath}/fetchAcceptedHotelById/hotelRating-fetchAcceptedHotelById/${this.props.params.hotelId}`)
     .then((response) => {
       var fetchedReviews = response.data;
       console.log(fetchedReviews)
@@ -159,10 +206,12 @@ class HotelPage extends React.Component {
   }
 
 	render() {
-    var { hotel, hotelImages, selectedPhotos, disableSubmit } = this.state;
+    var { hotel, hotelImages, selectedPhotos, hotelRooms, disableSubmit } = this.state;
     return (
       <div>
-    {    hotel && hotelImages ? 
+    {    hotel 
+        && hotelImages
+     ? 
 		<div>
       <div className={`space-4 ${style.hotelCovers}`}>
         {/* {
@@ -187,7 +236,7 @@ class HotelPage extends React.Component {
             <hr/>
           </div>
           <div className={'col-sm-4'}>
-            <HotelContactCard/>
+            <HotelContactCard ref={r => this.contactCardRef = r}submitBooking={()=> {this.submitBooking()}} updateBookingData={(name, value) => this.updateBookingData(name, value)} rooms={hotelRooms} id={hotel.id} price={hotel.minimum_price}/>
           </div>
         </div>
         <div className='row space-4'>
@@ -201,7 +250,7 @@ class HotelPage extends React.Component {
               </div>
             })}
               </div>
-              <h4 className='orange'>Explore all 20 photos</h4>
+              {/* <h4 className='orange'>Explore all 20 photos</h4> */}
             </div>
           </div>
           <hr/>
@@ -293,13 +342,15 @@ class HotelPage extends React.Component {
           </div>
           <hr/>
           <div className='row space-8'>
-          <div className='col-sm-12 space-4'>
-            <h1>Recommended Destinations For You</h1>
-            <div className='row'>
-                <Fader width={320} maxWidth={1280} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
-										return <HotelPackageTile data={data} />
-									})}>
-								</Fader>
+            <div className='col-sm-12 space-4'>
+              <h1>Recommended Hotels For You</h1>
+              <div className='row'>
+                  <div className={style.horizontalScrollContainer}>
+                  <Fader width={320} maxWidth={1280} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
+                      return <HotelPackageTile data={data} />
+                    })}>
+                  </Fader>
+                  </div>
               </div>
             </div>
           </div>
