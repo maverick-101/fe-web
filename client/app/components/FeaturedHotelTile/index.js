@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Card, CardText, CardBody, CardTitle, CardImg, Button} from 'reactstrap';
 import TravelerPackageTile from 'components/TravelerPackageTile';
 import HotelPackageTile from 'components/HotelPackageTile';
+import placeholder from 'no-image.jpg';
+
 
 import style from './style.css'
 
