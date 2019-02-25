@@ -36,6 +36,7 @@ class HotelPage extends React.Component {
       hotelRooms:[],
       hotelImages: [],
       bookingData: {},
+      fetchedReviews: [],
     }
 		this.data = {
 			hotelCovers: [
@@ -206,7 +207,7 @@ class HotelPage extends React.Component {
   }
 
 	render() {
-    var { hotel, hotelImages, selectedPhotos, hotelRooms, disableSubmit } = this.state;
+    var { hotel, hotelImages, fetchedReviews, selectedPhotos, hotelRooms, disableSubmit } = this.state;
     return (
       <div>
     {    hotel 
@@ -236,7 +237,7 @@ class HotelPage extends React.Component {
             <hr/>
           </div>
           <div className={'col-sm-4'}>
-            <HotelContactCard ref={r => this.contactCardRef = r}submitBooking={()=> {this.submitBooking()}} updateBookingData={(name, value) => this.updateBookingData(name, value)} rooms={hotelRooms} id={hotel.id} price={hotel.minimum_price}/>
+            <HotelContactCard ref={r => this.contactCardRef = r} starRating={hotel.star_rating} submitBooking={()=> {this.submitBooking()}} updateBookingData={(name, value) => this.updateBookingData(name, value)} rooms={hotelRooms} id={hotel.id} price={hotel.minimum_price}/>
           </div>
         </div>
         <div className='row space-4'>
@@ -287,20 +288,33 @@ class HotelPage extends React.Component {
                 <div className='col-sm-12'>
                   <div className='space-4 clearfix'>
                   {
-                    this.data.reviews.map((review, index) => {
+                    this.state.fetchedReviews.map((review, index) => {
                       return (
                         <div className='col-sm-6 space-2 no-padding'>
                           <div className='row space-1'>
                             <div className='vcenter' style={{display: 'inline-block'}}>
-                              <div className={`bgDiv ${style.reviewImage}`} style={{background:`url(${review.image})` }}></div>
+                              <div className={`bgDiv ${style.reviewImage}`} style={{background:`url(${review.user ? review.user.profile_image : placeholder})` }}></div>
                             </div>
                             <div style={{display: 'inline-block', paddingTop: '15px'}} className='vcenter'>
-                              <h4 className='no-margin'>{review.user}</h4>
+                              <h4 className='no-margin'>{review.user ? review.user.name : 'Guest User'}</h4>
                               <p>5 days ago</p>
+                            </div>
+                            <div style={{display: 'inline-block', paddingTop: '30px'}} className='vcenter'>
+                              <StarRatings
+                                rating={review.rating}
+                                starRatedColor="#e3530d"
+                                numberOfStars={5}
+                                starDimension="20px"
+                                starSpacing="0px"
+                                svgIconViewBox={'0 0 20 20'}
+                                gradientPathName={window.location.pathname}
+                                svgIconPath="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218"
+                                name='rating'
+                              />
                             </div>
                           </div>
                           <div className='row'>
-                            <div className='col-sm-12'>{review.comments}</div>
+                            <div className='col-sm-12'>{review.comment}</div>
                           </div>
                         </div>
                       )
