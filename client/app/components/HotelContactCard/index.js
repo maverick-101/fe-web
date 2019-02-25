@@ -74,11 +74,13 @@ hideModal() {
 			<Modal.Body>
 				<div className='clearfix'>
 					<h1 className='col-sm-12'>Available Rooms</h1>
-				{this.props.rooms.map((room, index) => {
+				{this.props.rooms ? this.props.rooms.map((room, index) => {
 					return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-6'>
 						<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery[0].url}></RoomTile>
 					</div>
-				})}
+				})
+				: <p>No Rooms Found</p>
+			}
 				<div className='col-sm-12'>
 					<h1 className=''>Contact Information</h1>
 					<form>
