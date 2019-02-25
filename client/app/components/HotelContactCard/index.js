@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import RoomTile from './RoomTile'
 import Modal from 'react-bootstrap/lib/Modal'
 
+import StarRatings from 'react-star-ratings';
+
 import swal from 'sweetalert2';
 
 import { DateRangePicker, isInclusivelyAfterDay, isInclusivelyBeforerDay } from 'react-dates';
@@ -22,7 +24,7 @@ class HotelContactCard extends React.Component {
 			// startDate: moment().add(-7,'days'),
       // endDate: moment(),
 			focusedInput: {},
-			showConfirmationModal: true,
+			showConfirmationModal: false,
 		}
 		this.data = {
   } 
@@ -98,20 +100,21 @@ hideModal() {
 			</Modal.Body>
 		</Modal>
 			<div className='clearfix'>				
-				<h1 className='pull-left'>Rs. {this.props.price}+</h1> 
+				<h1 className='pull-left no-margin'>Rs. {this.props.price}+</h1> 
 				<p style={{padding: '15px 0px 0px 0px'}} className='pull-left'>/ per Night</p>
 			</div>
 			<div>
-				<div className='col'>
-					<p style={{ marginBottom: '6px'}}>
-						<p style={{display:'inline-block', color: '#00b3b3'}} >3.5</p> &nbsp;
-						<i style={{color: '#00b3b3'}} className="fa fa-star"></i>
-						<i style={{color: '#00b3b3'}} className="fa fa-star"></i>
-						<i style={{color: '#00b3b3'}} className="fa fa-star"></i>
-						<i className="fa fa-star"></i>
-						<i className="fa fa-star"></i>
-					</p>
-				</div>
+				<StarRatings
+					rating={this.props.starRating}
+					starRatedColor="#e3530d"
+					numberOfStars={5}
+					starDimension="20px"
+					starSpacing="0px"
+					svgIconViewBox={'0 0 20 20'}
+					gradientPathName={window.location.pathname}
+					svgIconPath="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218"
+					name='rating'
+				/>
 			</div>
 				<hr/>
 				<div className='space-2'>
