@@ -28,7 +28,7 @@ body {
     border: 0;
     border-radius: 0.25em;
     background: initial;
-    background-color: #ef5350;
+    background-color: #e3530d;
     color: #fff;
     font-size: 1.0625em;
   }
@@ -37,6 +37,15 @@ body {
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  /* border: 1px solid; */
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .bgDivContain {
