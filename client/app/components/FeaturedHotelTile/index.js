@@ -18,7 +18,7 @@ class Tile extends React.Component {
           <div className={`${style.featuredTilePriceDiv}`}>
             <p className={'no-padding no-margin'}>
             <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS</p>
-            {this.props.data.min_price}+ 
+            {this.props.data.minimum_price}+ 
               <p style={{fontSize:'12px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>/Night</p>
             </p>
           </div>
