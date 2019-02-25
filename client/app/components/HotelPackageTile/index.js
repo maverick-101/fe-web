@@ -6,8 +6,6 @@ import style from './style.css'
 
 class Tile extends React.Component {
   render() {
-
-    console.log(this.props)
     return (
       <a href={`/hotel/${this.props.data.id}`}>
       <div className='space-4 text-left' style={{}}> 
