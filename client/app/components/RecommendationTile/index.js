@@ -7,7 +7,7 @@ import placeholder from 'no-image.jpg'
 class Tile extends React.Component {
   render() {
     return (
-      <a>
+      <a href={`/location/${this.props.data.id}`}>
       <div style={{width:'100%'}} className='space-4  text-left inline-block'>
         <div className={`${style.recommendedPackagesTile}`}>
           <div className={`bgDiv ${style.recommendedPackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})` }}/>
