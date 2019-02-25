@@ -39,6 +39,12 @@ body {
   background-position: center !important;
 }
 
+.bgDivContain {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
 
 .widget-container {
   & header {
