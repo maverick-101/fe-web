@@ -189,13 +189,13 @@ class HotelPage extends React.Component {
     })
     
     
-    // axios.get(`${config.apiPath}/fetchByHotelId/hotelResources-fetchByHotelId/${this.props.params.hotelId}`)
-    // .then((response) => {
-    //   var hotelImages = response.data;
-    //   this.setState({
-    //     hotelImages,
-    //   })
-    // })
+    axios.get(`${config.apiPath}/fetchByHotelId/hotelResources-fetchByHotelId/${this.props.params.hotelId}`)
+    .then((response) => {
+      var hotelImages = response.data;
+      this.setState({
+        hotelImages,
+      })
+    })
     axios.get(`${config.apiPath}/fetchAcceptedHotelById/hotelRating-fetchAcceptedHotelById/${this.props.params.hotelId}`)
     .then((response) => {
       var fetchedReviews = response.data;
@@ -246,8 +246,8 @@ class HotelPage extends React.Component {
             <div className={`row ${style.amenitiesScroll}`}>
             {hotelImages.map((image) => {
               return <div onClick={() => { this.openLightbox(image.image_type) }} className={`col-sm-2 inline-block space-4 ${style.amenityDiv}`}>
-                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.images[0].url})` }}></div>
-                <h4 style={{margin: '10px, 0'}}>{humanize(image.image_type)}</h4>
+                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.url[image.url.length - 1][0].url})` }}></div>
+                <h4 style={{margin: '10px, 0'}}>{humanize(image._id)}</h4>
               </div>
             })}
               </div>
