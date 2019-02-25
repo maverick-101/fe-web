@@ -17,13 +17,13 @@ class Tile extends React.Component {
       <div className={`col-sm-12`}>
         <div className={`col-sm-12 no-padding ${style.roomTile} ${selectedId == room.ID ? style.roomTileActive : ''}`}>
         <div className='col-sm-6 no-padding'>
-          <div className={`bgDiv ${style.roomTileImage}`} style={{height: '165px', background: `url(${this.props.image || placeholder})`}}></div>
+          <h5 className={`${style.roomPrice}`} >Rs. 3500/Night</h5>
+          <div className={`bgDiv ${style.roomTileImage}`} style={{height: '125px', background: `url(${this.props.image || placeholder})`}}></div>
         </div>
         <div className='col-sm-6'>
           <h3 className='ellipses'>{room.title}</h3>
           <p className='ellipses'><b>Bed Type : </b> {room.bed_type} </p>
           <p  className='ellipses'><b>Beds : </b> {room.beds} </p>
-          <h5 className={`${style.roomPrice}`} >Rs. 3500/Night</h5>
         </div>
         </div>
         </div>
