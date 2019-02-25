@@ -92,10 +92,10 @@ class Home extends React.Component {
 				return {
 					name: item.name,
 					id: item.ID,
-					url: item.gallery && item.gallery.length ? item.gallery[0].url : null
+					url: item.gallery && item.gallery.length ? item.gallery[0].url : null,
+					minimum_price: item.minimum_price,
 				}
 			})
-			console.log(hotelPackages)
 			this.setState({
 				hotelPackages,
 			})
