@@ -13,7 +13,7 @@ import sanitizeHtml from 'sanitize-html';
 // }
 
 export function sanitize(html) {
-  return sanitizeHtml(html);
+  return sanitizeHtml(html, {allowedTags: ['p', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'strong']});
 }
 
 export function stripHTML(html) {
@@ -246,3 +246,34 @@ export function imgUpload(url, type, watermark = true) {
     }
   }
 }
+
+export const _amenities =  {
+    'free_breakfast': {
+      image: 'http://www.restaurantnews.com/wp-content/uploads/2017/11/Friendlys-Celebrates-Veterans-Day-with-Free-Breakfast-Lunch-or-Dinner-for-Veterans-and-Active-Military.jpg',
+    },
+    'free_wifi': {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/WiFi_Logo.svg/1200px-WiFi_Logo.svg.png',
+    },
+    'hospitals': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859564/hospital.jpg',
+    },
+    'mosque': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/mosque.jpg',
+    },
+    'park_and_playground_/_recreation': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/park_playground.jpg',
+    },
+    'gymnasium': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859564/gymnasium.jpg',
+    },
+    'shopping_mall' : {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/shopping-mall.jpg',
+    },
+    'emergency_and_rescue': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/emergency-rescue.jpg',
+    },
+    'nearby_public_transport_service': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/transport-public.jpg',
+    },
+};
+
