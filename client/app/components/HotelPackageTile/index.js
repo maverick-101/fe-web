@@ -8,17 +8,18 @@ class Tile extends React.Component {
   render() {
     return (
       <a href={`/hotel/${this.props.data.id}`}>
-      <div className='space-4 text-left' style={{}}> 
+      <div className='space-4 text-left' style={{margin: 5}}> 
         <div className={`${style.hotelPackagesTile}`}>
           <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
           </div>
           {/* <p className={style.tileText}>{this.props.data.name}</p> */}
-          <div className={style.hotelPackagesText}>
-            <div className='col-sm-7 no-padding pull-left col-xs-7 col-md-7'>
-              <h5 className='ellipses' style={{marginBottom: '6px'}}>{this.props.data.name}</h5>
-              <p className='ellipses' style={{marginBottom: '6px', fontWeight: '200', fontSize: '14px'}}>Starting Price <span style={{color: '#e3530d'}}>Rs.{this.props.data.minimum_price || 'N/A'}</span></p>
+          <div className={`clearfix ${style.hotelPackagesText}`}>
+            <h4 className='ellipses' style={{marginBottom: '4px'}}>{this.props.data.name}</h4>
+            <div style={{marginTop: '3px'}} className='col-sm-7 no-padding col-xs-7 col-md-7'>
+              <p className='ellipses' style={{marginBottom: '0px', fontWeight: '200', fontSize: '12px'}}>Starting Price</p>
+              <h5 style={{color: '#e3530d', marginTop:'0px'}}>Rs.{this.props.data.minimum_price || 'N/A'}</h5>
             </div>
-              <button style={{backgroundColor: '#00b3b3', color: 'white', border: 'none', marginTop: '5px', fontSize: '14px'}} className="col-sm-5 pull-right col-xs-5 ellipses btn btn-lg btn-primary">Book Now</button>
+              <button style={{backgroundColor: '#00b3b3', color: 'white', border: 'none', fontSize: '14px'}} className="col-sm-5 col-xs-5 ellipses btn btn-lg btn-primary">Book Now</button>
           </div>
         </div>
       </div>
