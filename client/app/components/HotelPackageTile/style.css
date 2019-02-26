@@ -1,15 +1,14 @@
 .hotelPackagesTile {
-  height: 380px;
   box-shadow: 0px 0px 10px #ddd;
-  border-radius: 10px;
+  border-radius: 2px;
   & .guidePackagesImg {
     height: 300px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
   }
   & .hotelPackagesText {
     height: auto;
-    padding: 10px;
+    padding: 5px 10px;
   }
   & .tileText {
     position: absolute;
