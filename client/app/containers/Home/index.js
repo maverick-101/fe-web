@@ -76,6 +76,7 @@ class Home extends React.Component {
 	}
 
 	componentDidMount() {
+		this.props.done();
 		axios.get(`${config.apiPath}/fetch/locations-fetch`)
 			.then((response) => {
 				var searchBarArray =  response.data.map((location) => {
