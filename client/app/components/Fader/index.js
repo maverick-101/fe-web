@@ -30,7 +30,7 @@ export default class Fader extends React.Component {
     super(props)
 
     this.state = {
-      itemsToShow: Number(props.width) ? window.innerWidth < 768 ? 3 : window.innerWidth > props.maxWidth ? parseInt((props.maxWidth - 50)/props.width) : parseInt((window.innerWidth - 50)/props.width) : 1
+      itemsToShow: Number(props.width) ? window.innerWidth < 768 ? 3 : window.innerWidth > props.maxWidth ? parseInt((props.maxWidth - 20)/props.width) : parseInt((window.innerWidth - 50)/props.width) : 1
     }
     if (window.innerWidth < 768) {
       
@@ -62,12 +62,13 @@ export default class Fader extends React.Component {
       prevArrow: <Prev />,
       initialSlide: 0,
       arrows: false,
+      autoplaySpeed: 5000,
       // fade: true,
       // className: this.props.notHere ? 'slick-slider-fade notHere' : 'slick-slider-fade',
       autoplay: true,
       speed: 800,
       lazyLoad: true,
-      centerMode: true,
+      // centerMode: true,
     }
     if(this.props.unSlickTill && window.innerWidth <= this.props.unSlickTill) {
       return (
