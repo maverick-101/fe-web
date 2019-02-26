@@ -178,6 +178,7 @@ class App extends React.Component {
 		}
 }
 	hideLoader() {
+		this.props.setPrebootFlag()
 		this.setState({loader: []})
 	}
 	renderlayout(child) {
