@@ -66,7 +66,7 @@ export default class Fader extends React.Component {
       autoplay: true,
       speed: 800,
       lazyLoad: true,
-      centerMode: true,
+      // centerMode: true,
     }
     if(this.props.unSlickTill && window.innerWidth <= this.props.unSlickTill) {
       return (
