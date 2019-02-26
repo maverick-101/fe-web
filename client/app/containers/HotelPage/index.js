@@ -145,6 +145,7 @@ class HotelPage extends React.Component {
   }
   
   componentDidMount() {
+		this.props.done();
     axios.get(`${config.apiPath}/hotel/fetchById/${this.props.params.hotelId}`)
 		.then((response) => {
       var hotel = response.data;
