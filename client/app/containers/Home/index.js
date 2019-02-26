@@ -142,7 +142,7 @@ class Home extends React.Component {
 		const { selectedOption } = this.state;
     return (
 		<div>
-			<div className="home-screen space-4" style={{paddingLeft: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+			<div className="home-screen space-2" style={{paddingLeft: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
 				<div className={style.homeCoverStyle} style={{background: `url(${require('../../../site-specs/sliced-images/background-bg.png')})`}}>
 				</div>
 					<div className={style.coverTextWrapper}>
@@ -168,9 +168,9 @@ class Home extends React.Component {
 
 					{
 					this.state.featuredHotels.length ?
-					<div className="col-sm-12 no-padding">
+					<div className="col-sm-12 space-8 no-padding">
 						<div className={`row ${style.horizontalScrollContainer}`}>
-							<Fader width={(window.innerWidth/3)-50} maxWidth={window.innerWidth-50} unSlickTill={1024}  
+							<Fader width={(window.innerWidth/3)-17} maxWidth={window.innerWidth} unSlickTill={1024}  
 							items={this.state.featuredHotels.map((data, index) => {
 								return <FeaturedHotelTile width={'100%'} data={data} />
 							})}>
@@ -183,11 +183,11 @@ class Home extends React.Component {
 					{ 
 					this.state.hotelPackages.length ?
 					<div className="container space-4">
-							<h1 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h1>
+							<h2 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h2>
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
 							<div className='row'>
 								<div className={style.horizontalScrollContainer}>
-								<Fader width={320} maxWidth={1280} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
+								<Fader width={280} maxWidth={1170} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
 										return <HotelPackageTile data={data} />
 									})}>
 								</Fader>
@@ -200,12 +200,12 @@ class Home extends React.Component {
 				{ 
 					this.state.travelerPackages.length ?
 					<div className="container space-4">
-						<h1 className={'no-margin-bottom'}>Top Traveller Packages by Tour Guide</h1>
+						<h2 className={'no-margin-bottom'}>Top Traveller Packages by Tour Guide</h2>
 						<p className='space-4'>Discover places with one of these popular guides</p>
 
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-							<Fader width={340} maxWidth={1280} unSlickTill={1024} items=
+							<Fader width={280} maxWidth={1170} unSlickTill={1024} items=
 								{this.state.travelerPackages.map((data, index) => {
 									return <TravelerPackageTile data={data} />
 								})}></Fader>
@@ -217,11 +217,11 @@ class Home extends React.Component {
 					{ 
 					this.state.locations.length ?
 					<div className="container space-4">
-						<h1 className={'no-margin-bottom'}>Recommended Locations for you</h1>
+						<h2 className={'no-margin-bottom'}>Recommended Locations for you</h2>
 						<p className='space-4'>We recommend you visit these places</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-							<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
+							<Fader width={280} maxWidth={1170} unSlickTill={1024} items=
 								{this.state.locations.map((data, index) => {
 									return <RecommendationTile data={data} />
 								})}></Fader>
@@ -234,11 +234,11 @@ class Home extends React.Component {
 					{
 					this.data.visitedExperiences.length ?
 					<div className="container space-4">
-						<h1 className={'no-margin-bottom'}>Top visited experiences</h1>
+						<h2 className={'no-margin-bottom'}>Top visited experiences</h2>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-							<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
+							<Fader width={250} maxWidth={1170} unSlickTill={1024} items=
 								{this.data.visitedExperiences.map((data, index) => {
 									return <VisitedExperiences data={data} />
 								})}></Fader>
