@@ -13,6 +13,7 @@ class Tile extends React.Component {
           <div className={`bgDiv ${style.recommendedPackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})` }}/>
           <div className={style.recommendedPackagesText}>
             <div className='col-sm-12 no-padding'>
+            <p className='orange' style={{minWidth: '200px', marginBottom: '6px'}}>Multan, Punjab</p>
             <h5 style={{minWidth: '200px', marginBottom: '6px'}}>{this.props.data.name}</h5>
               <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p>
             </div>
