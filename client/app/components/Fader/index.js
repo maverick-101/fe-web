@@ -61,6 +61,7 @@ export default class Fader extends React.Component {
       nextArrow: <Next />,
       prevArrow: <Prev />,
       initialSlide: 0,
+      arrows: false,
       // fade: true,
       // className: this.props.notHere ? 'slick-slider-fade notHere' : 'slick-slider-fade',
       autoplay: true,
