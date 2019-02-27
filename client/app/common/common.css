@@ -187,6 +187,14 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+.btn:focus {
+  color: white;
+}
+
+.btn:hover {
+  color: white;
+}
+
 .pointer {
   cursor: pointer;
 }
