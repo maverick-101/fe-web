@@ -121,10 +121,24 @@ class HotelPage extends React.Component {
 
   submitBooking() {
     var { bookingData } = this.state;
-    axios.post(`${config.apiPath}/save/hotelContact-save`, {hotelContact: JSON.stringify(bookingData)})
-    .then(() => {
-      this.contactCardRef.hideModal();
-    })
+    if(bookingData.room_id && bookingData.persons && bookingData.start_date && bookingData.end_date && bookingData.nights_stay && bookingData.user_phone  && bookingData.user_email && bookingData.user_name ) {
+      axios.post(`${config.apiPath}/save/hotelContact-save`, {hotelContact: JSON.stringify(bookingData)})
+      .then(() => {
+        swal({
+          title: 'Success',
+          html: 'Your query has been submitted. Our agent will contact you shortly',
+          type: 'success',
+        })
+        this.contactCardRef.hideModal();
+      })
+    }
+    else {
+      swal({
+        title: 'Incomplete Data',
+        html: 'Please Select a room and fill your details before proceeding',
+        type: 'info',
+      })
+    }
 
     // {
     //   ID:{
