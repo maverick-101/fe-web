@@ -17,7 +17,7 @@ import style from './style.css'
 // import swal from 'sweetalert2';
 
 
-class HotelContactCard extends React.Component {
+export default class HotelContactCard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -83,19 +83,19 @@ hideModal() {
 			}
 				<div className='col-sm-12'>
 					<h1 className=''>Contact Information</h1>
-					<form>
-					<div className='col-sm-6 space-4 no-padding-left'>
-						<input onChange={e => {this.props.updateBookingData('user_name', e.target.value)}} className='form-input' type="text" placeholder='Name'/>
-					</div>
-					<div className='col-sm-6 space-4 no-padding-left'>
-						<input onChange={e => {this.props.updateBookingData('user_email', e.target.value)}} className='form-input' type="email" placeholder='Email Address'/>
-					</div>
-					<div className='col-sm-6 space-4 no-padding-left'>
-						<input onChange={e => {this.props.updateBookingData('user_phone', e.target.value)}} className='form-input' type="number" placeholder='Phone (e.g 923331231231, 03331231231)'/>
-					</div>
-					<div className='col-sm-6 space-4 no-padding-left'>
-						<button type='submit' onClick={(event)=> {event.preventDefault(); this.props.submitBooking(event)}} style={{padding: '10px'}} className='btn btn-block btn-orange'>Book Now</button>
-					</div>
+					<form onSubmit={(event)=> {event.preventDefault(); this.props.submitBooking(event)}} >
+						<div className='col-sm-6 space-4 no-padding-left'>
+							<input onChange={e => {this.props.updateBookingData('user_name', e.target.value)}} className='form-input' type="text" placeholder='Name'/>
+						</div>
+						<div className='col-sm-6 space-4 no-padding-left'>
+							<input onChange={e => {this.props.updateBookingData('user_email', e.target.value)}} className='form-input' type="email" placeholder='Email Address'/>
+						</div>
+						<div className='col-sm-6 space-4 no-padding-left'>
+							<input onChange={e => {this.props.updateBookingData('user_phone', e.target.value)}} className='form-input' type="number" placeholder='Phone (e.g 923331231231, 03331231231)'/>
+						</div>
+						<div className='col-sm-6 space-4 no-padding-left'>
+							<button type='submit' style={{padding: '10px'}} className='btn btn-block btn-orange'>Book Now</button>
+						</div>
 					</form>
 				</div>
 				</div>
@@ -152,7 +152,4 @@ hideModal() {
   }
 }
 
-export default connect(store => {
-	return {
-	}
-})(HotelContactCard)
+// export default connect(null, null, null, {withRef: true})(HotelContactCard)
