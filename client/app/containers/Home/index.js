@@ -169,12 +169,12 @@ class Home extends React.Component {
 					{
 					this.state.featuredHotels.length ?
 					<div className="col-sm-12 no-padding">
-						<div className={style.horizontalScrollContainer}>
-							<Slider width={(window.innerWidth/3)-50} maxWidth={window.innerWidth-50} unSlickTill={1024}  
+						<div className={`row ${style.horizontalScrollContainer}`}>
+							<Fader width={(window.innerWidth/3)-50} maxWidth={window.innerWidth-50} unSlickTill={1024}  
 							items={this.state.featuredHotels.map((data, index) => {
 								return <FeaturedHotelTile width={'100%'} data={data} />
 							})}>
-							</Slider>
+							</Fader>
 						</div>
 					</div>
 					: null
@@ -183,7 +183,7 @@ class Home extends React.Component {
 					{ 
 					this.state.hotelPackages.length ?
 					<div className="container space-4">
-							<h1>Hotel Resorts & their Packages</h1>
+							<h1 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h1>
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
 							<div className='row'>
 								<div className={style.horizontalScrollContainer}>
@@ -200,7 +200,7 @@ class Home extends React.Component {
 				{ 
 					this.state.travelerPackages.length ?
 					<div className="container space-4">
-						<h1>Top Traveller Packages by Tour Guide</h1>
+						<h1 className={'no-margin-bottom'}>Top Traveller Packages by Tour Guide</h1>
 						<p className='space-4'>Discover places with one of these popular guides</p>
 
 						<div className='row'>
@@ -217,7 +217,8 @@ class Home extends React.Component {
 					{ 
 					this.state.locations.length ?
 					<div className="container space-4">
-						<h1>Recommended Locations for you</h1>
+						<h1 className={'no-margin-bottom'}>Recommended Locations for you</h1>
+						<p className='space-4'>We recommend you visit these places</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
 							<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
@@ -233,7 +234,7 @@ class Home extends React.Component {
 					{
 					this.data.visitedExperiences.length ?
 					<div className="container space-4">
-						<h1>Top visited experiences</h1>
+						<h1 className={'no-margin-bottom'}>Top visited experiences</h1>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
