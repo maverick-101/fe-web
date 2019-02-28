@@ -521,6 +521,9 @@ hr {
       position: absolute;
     }
   }
+  .image-gallery-content:not(.fullscreen) .image-gallery-image {
+    padding-top: calc(100vh - 200px) !important;
+  }
   .appClass {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
