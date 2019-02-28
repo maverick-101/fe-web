@@ -349,7 +349,7 @@ class HotelPage extends React.Component {
                               <div className={`bgDiv ${style.reviewImage}`} style={{background:`url(${review.user ? review.user.profile_image : placeholder})` }}></div>
                             </div>
                             <div style={{display: 'inline-block', paddingTop: '15px'}} className='vcenter'>
-                              <h4 className='no-margin'>{review.user ? review.user.name : 'Guest User'}</h4>
+                              <h4 className='no-margin'>{review.user ? review.user.name : (review.name || 'Guest User')}</h4>
                               <p>5 days ago</p>
                             </div>
                             <div style={{display: 'inline-block', paddingTop: '30px'}} className='vcenter'>
