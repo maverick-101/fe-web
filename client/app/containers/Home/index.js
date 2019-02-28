@@ -238,7 +238,7 @@ class Home extends React.Component {
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-							<Fader width={250} maxWidth={1170} unSlickTill={1024} items=
+							<Fader width={225} maxWidth={1170} unSlickTill={1024} items=
 								{this.data.visitedExperiences.map((data, index) => {
 									return <VisitedExperiences data={data} />
 								})}></Fader>
