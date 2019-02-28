@@ -9,6 +9,8 @@ import StarRatings from 'react-star-ratings';
 import swal from 'sweetalert2';
 import HotelPackageTile from 'components/HotelPackageTile';
 import Fader from 'components/Fader';
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 
 
@@ -29,7 +31,7 @@ class HotelPage extends React.Component {
     super(props);
     this.state = {
       selectedPhotos: [],
-      coverImagesLightboxIsOpen: false,
+      lightboxOpen: false,
       rating: 5,
       disableSubmit: true,
       hotelPackages: [],
@@ -37,6 +39,7 @@ class HotelPage extends React.Component {
       hotelImages: [],
       bookingData: {},
       fetchedReviews: [],
+      currentImage: 0,
     }
 		this.data = {
 			hotelCovers: [
@@ -77,8 +80,25 @@ class HotelPage extends React.Component {
 		}
   }
 
-  openLightbox() {
-
+  openLightbox(type) {
+    var { hotelImages } = this.state;
+    // var hotelImagesObject = Object.assign({}, hotelImages);
+    
+    var selectedPhotos = [];
+    hotelImages.map((images) => {
+      if(images._id == type) {
+        images.Resources.map((image, index) => {
+          selectedPhotos.push(image.url);
+        })
+      }
+    })
+    this.setState({
+      selectedPhotos,
+    }, () => {
+      this.setState({
+        lightboxOpen: true,
+      })
+    })
   }
 
   changeRating(rating, name) {
@@ -139,23 +159,6 @@ class HotelPage extends React.Component {
         type: 'info',
       })
     }
-
-    // {
-    //   ID:{
-    
-    //       type: Number,
-    //       unique:true
-    //     },
-    //   room_id: Number,
-    //   persons: Number,
-    //   start_date: Date,
-    //   end_date: Date,
-    //   nights_stay: Number,
-    //   user_id: Number,
-    //   user_phone: Number,
-    //   user_name: Number,
-    //   user_email: Number
-    // }
   }
   
   componentDidMount() {
@@ -165,7 +168,7 @@ class HotelPage extends React.Component {
       var hotel = response.data;
       var amenityNames = [];
       console.log('hotel Data', hotel);
-      var amenities = hotel.hotel_amenities.filter((amenity) => {
+      hotel.hotel_amenities.filter((amenity) => {
         if(amenity.value)
         {
           amenityNames.push(amenity.name.split(' ').join('_').toLocaleLowerCase())
@@ -173,9 +176,16 @@ class HotelPage extends React.Component {
         }
       })
       console.log('filtered amenities', amenityNames)
+      var hotelGallery = hotel.gallery.map((image) => {
+        return {
+          original: image.url,
+          thumbnail: image.url,
+        }
+      })
       this.setState({
         hotel,
         amenityNames,
+        hotelGallery,
       })
     })
 
@@ -222,20 +232,32 @@ class HotelPage extends React.Component {
   }
 
 	render() {
-    var { hotel, hotelImages, fetchedReviews, selectedPhotos, hotelRooms, disableSubmit } = this.state;
+    const images = [
+      {
+        original: 'http://lorempixel.com/1000/600/nature/1/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/2/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/3/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
+      }
+    ]
+    var { hotel, hotelImages, hotelGallery, fetchedReviews, selectedPhotos, hotelRooms, disableSubmit } = this.state;
     return (
       <div>
     {    hotel 
         && hotelImages
      ? 
 		<div>
-      <div className={`space-4 ${style.hotelCovers}`}>
-        {/* {
-          this.data.hotelCovers.map((image) => {
-           return <div className={`bgDiv ${style.coverImages}`} style={{background:`url(${image.url})` }}></div>
-        })
-        } */}
+      {/* <div className={`space-4 ${style.hotelCovers}`}>
         <div className={`bgDiv ${style.coverImages}`} style={{background:`url(${hotel.gallery && hotel.gallery.length ? hotel.gallery[0].url : placeholder })` }}></div>
+      </div> */}
+      <div className='space-4'>
+        <ImageGallery items={hotelGallery} />
       </div>
       <div className="container space-4">
         <div className="row space-4">
@@ -260,9 +282,10 @@ class HotelPage extends React.Component {
             <h1>Tour this hotel</h1>
             <div className={`row ${style.amenitiesScroll}`}>
             {hotelImages.map((image) => {
-              return <div onClick={() => { this.openLightbox(image.image_type) }} className={`col-sm-2 inline-block space-4 ${style.amenityDiv}`}>
-                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.url[image.url.length - 1][0].url})` }}></div>
-                <h4 style={{margin: '10px, 0'}}>{humanize(image._id)}</h4>
+              return <div onClick={() => { this.openLightbox(image._id) }} className={`col-sm-3 inline-block space-4 ${style.amenityDiv}`}>
+                {console.log('_id', image._id)}
+                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.Resources[0].url})` }}></div>
+                <p className={style.tileCaption} style={{margin: '10px, 0'}}>{humanize(image._id)}</p>
               </div>
             })}
               </div>
@@ -384,15 +407,15 @@ class HotelPage extends React.Component {
             </div>
           </div>
         </div>
-        {/* <Lightbox
+        {this.state.lightboxOpen ? <Lightbox
           mainSrc={checkForHttps(selectedPhotos[this.state.currentImage])}
-          isOpen={this.state.coverImagesLightboxIsOpen}
+          isOpen={this.state.lightboxOpen}
           nextSrc={checkForHttps(selectedPhotos[(this.state.currentImage + 1) % selectedPhotos.length])}
           prevSrc={checkForHttps(selectedPhotos[(this.state.currentImage + selectedPhotos.length - 1) % selectedPhotos.length])}
-          onCloseRequest={() => this.setState({ coverImagesLightboxIsOpen: false })}
+          onCloseRequest={() => this.setState({ lightboxOpen: false })}
           onMoveNextRequest={() => this.setState({ currentImage: (this.state.currentImage + 1) % selectedPhotos.length })}
           onMovePrevRequest={() => this.setState({ currentImage: (this.state.currentImage + selectedPhotos.length - 1) % selectedPhotos.length })}
-        /> */}
+        /> : null}
     </div>
     : null}
     </div>
