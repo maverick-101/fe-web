@@ -551,14 +551,13 @@ class Header extends React.Component {
 					{
 						!this.props.isMobile && this.props.prebootFlag ? 
 					<ul className={`list-inline pull-right hidden-xs no-margin ${style.headerWrapper_nav}`}>
-						<li><a id="Agents" href="/agents" className={["agents"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>HOME</a></li>
-						<li><a id="Developers" href="/developers" className={["developers"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>ROOMS</a></li>
-						<li><a id="Projects" href="/projects" className={["projects"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>PAGES</a></li>
+						<li><a id="home" href="/home" className={["home"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Home</a></li>
+						<li><a id="hotels" href="/hotels" className={["hotels"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Hotels</a></li>
+						<li><a id="packages" href="/packages" className={["packages"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Packages</a></li>
 						{/* <li><a id="Wanted" href="/wanted" className={`${style.headerWrapper_wantedButton}`}>Wanted</a></li> */}
-						<li><a id="Projects" href="/projects" className={["projects"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>BLOG</a></li>
-						<li><a id="Projects" href="/projects" className={["projects"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>PORTFOLIO</a></li>
-						<li><a id="Projects" href="/projects" className={["projects"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>SHOP</a></li>
-						<li><a id="Projects" href="/projects" className={["projects"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>ELEMENTS</a></li>
+						<li><a id="events" href="/events" className={["events"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Events</a></li>
+						<li><a id="blog" href="/blog" className={["blog"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Blog</a></li>
+						<li><a id="contactus" href="/contactus" className={["contactus"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Contact Us</a></li>
 					</ul> : null
 				}
 				{ 
@@ -575,7 +574,7 @@ class Header extends React.Component {
 				{ this.props.isMobile && this.props.prebootFlag ? 
 				<div style={{overflow: 'scroll'}} className={`${this.props.user.user ? style.loggedIn : ''} ${style.mobileNavWrapper} visible-xs`}>
 					<div style={{padding: '0 10px'}}>
-						<div className={style.headerWrapper_logo}>
+						{/* <div className={style.headerWrapper_logo}>
 							<a href="/">
 								<svg xmlns={`${require('logo.svg')}#logo`} id="logo" x="0px" y="0px" viewBox="0 0 801.4 222.8">
 									<g>
@@ -618,13 +617,12 @@ class Header extends React.Component {
 									</g>
 								</svg>
 							</a>
-						</div>
-						<p style={{marginTop: 10, padding: '0 10px', marginBottom: '10px', textAlign: 'center', }}>Pakistan&#39;s Smartest Property Portal</p>
+						</div> */}
+						{/* <p style={{marginTop: 10, padding: '0 10px', marginBottom: '10px', textAlign: 'center', }}>Pakistan&#39;s Smartest Property Portal</p> */}
 					</div>
 
 					<ul className={`list-unstyled ${style.mobileNav}`} onClick={() => this.slide()}>
-						{this.props.user.user ? <li className={`pointer`}>
-							{/* <OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.target)} placement="bottom" overlay={userDropdown}> */}
+						{/* {this.props.user.user ? <li className={`pointer`}>
 								<div className='text-center' style={{padding: '25px 15px', }}>
 									<Link to="/dashboard/account-settings">
 										<img style={{marginBottom:'10px', borderRadius:'50%', width:'70px', height:'70px'}} src={this.props.user.user && this.props.user.user.profile_image ? checkForHttps(this.props.user.user.profile_image) : userPlaceholder} alt="user profile image"/>
@@ -634,13 +632,38 @@ class Header extends React.Component {
 										</div>
 									</Link>
 								</div>
-							{/* </OverlayTrigger> */}
-						</li> :  <li><br /></li>} {/*<li className={`pointer`}>
+						</li> :  <li><br /></li>} */}
+						 {/*<li className={`pointer`}>
 							<p className="text-center lead" style={{fontSize: 20, padding: "25px 15px", }}>GUEST USER</p>
 						</li>*/}
 						<li className={style.lead}>
-								<Link to="/add">
-										<p className={`lead large ${style.addPropertyButton}`} style={{fontSize: 18, padding: "20px 15px", }}>Add Property</p>
+								<Link to="/home">
+										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Home</p>
+								</Link>
+						</li>
+						<li className={style.lead}>
+								<Link to="/hotels">
+										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Hotels</p>
+								</Link>
+						</li>
+						<li className={style.lead}>
+								<Link to="/packages">
+										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Packages</p>
+								</Link>
+						</li>
+						<li className={style.lead}>
+								<Link to="/events">
+										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Events</p>
+								</Link>
+						</li>
+						<li className={style.lead}>
+								<Link to="/blog">
+										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Blog</p>
+								</Link>
+						</li>
+						<li className={style.lead}>
+								<Link to="/contactus">
+										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Contact us</p>
 								</Link>
 						</li>
 						{/* <li className={style.lead}>
@@ -648,7 +671,7 @@ class Header extends React.Component {
 								<p className={`lead large ${style.wantedButton}`} style={{fontSize: 18, padding: "20px 15px", }}>Wanted</p>
 							</a>
 						</li> */}
-						{this.props.user.user ? <li className={style.lead}>
+						{/* {this.props.user.user ? <li className={style.lead}>
 							<Link to={this.props.user && this.props.user.user && this.props.user.user.agency && this.props.user.user.agency.developer ? "/dashboard/project-dashboard" : "/dashboard"}>
 								<p className="lead" style={{fontSize: 18, padding: "20px 15px", }}>Dashboard</p>
 							</Link>
@@ -665,9 +688,7 @@ class Header extends React.Component {
 						<li className={style.lead}><a href="/agents"><p className="lead" style={{fontSize: 18, padding: "20px 15px", }}>Agents</p></a></li>
 						<li className={style.lead}><a href="/developers"><p className="lead" style={{fontSize: 18, padding: "20px 15px", }}>Developers</p></a></li>
 						<li className={style.lead}><a href="/projects"><p className="lead" style={{fontSize: 18, padding: "20px 15px", }}>Projects</p></a></li>
-						{/* <li>
-							<a href="/graana/contact"><p className="text-center lead" style={{fontSize: 18, padding: "5px 10px"}}>Contact</p></a>
-						</li> */}
+					
 						{this.props.user.user ? <li>
 							<Link to="/logout">
 								<p className="lead" style={{fontSize: 18, padding: "20px 15px", }}>Logout</p>
@@ -677,12 +698,11 @@ class Header extends React.Component {
               <form onSubmit={event => this.searchByPropertyId(event)}>
 							{this.state.validating ? 
 								<div style={{position: 'absolute', top: '20px', right: '2px', display: 'inline-block', padding: '0px, 10px'}}>
-										{/* <p style={{display: 'inline-block', padding: '0px, 10px'}} className='space-0'>Validating </p> */}
 										<i className="fa fa-spinner fa-pulse fa-spin" style={{fontSize:'28px'}}/>
 								</div> : null}
                 <input type="number" required={true}  name="property_id" placeholder="Search by Property ID" autoComplete="off"/>
               </form>
-            </li>
+            </li> */}
 						{/* <li>
 							<a href="#"><p className="lead large" style={{fontSize: 18, padding: "20px 15px", marginBottom: 30, }}>Help</p></a>
 						</li> */}
