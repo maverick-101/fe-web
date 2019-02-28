@@ -11,13 +11,13 @@
 .featureImage {
   height: 180px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .amenityImage {
   height: 200px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 2px;
   border: 1px solid #ddd;
 }
 
@@ -26,6 +26,12 @@
   height: 60px;
   border-radius: 50%;
   margin: 10px;
+}
+
+.tileCaption {
+  font-size: 18px;
+  padding-top: 8px;
+  color: #333;
 }
 
 .amenityDiv {
