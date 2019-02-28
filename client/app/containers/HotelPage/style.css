@@ -53,6 +53,14 @@
   height: 120px;
 }
 
+.ratingName {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
 .horizontalScrollContainer {
   & :global .unslick {
     overflow-x: auto;

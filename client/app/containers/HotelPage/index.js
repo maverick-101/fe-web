@@ -109,11 +109,12 @@ class HotelPage extends React.Component {
   }
 
   submitReview() {
-    var { reviewText, rating } = this.state;
+    var { reviewText, rating, reviewName } = this.state;
     var obj = {
       "hotel_id": this.state.hotel.ID,
       "status": "PENDING",
       "comment": reviewText,
+      "name": reviewName,
       "rating": rating,
     }
     axios.post(`${config.apiPath}/save/hotelRating-save`, {hotelRating: JSON.stringify(obj)} )
@@ -319,6 +320,20 @@ class HotelPage extends React.Component {
             </div>
           </div>
           <hr/>
+          <div className='row space-8'>
+            <div className='col-sm-12 space-4'>
+              <h1>Recommended Hotels For You</h1>
+              <div className='row'>
+                  <div className={style.horizontalScrollContainer}>
+                  <Fader width={320} maxWidth={1280} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
+                      return <HotelPackageTile data={data} />
+                    })}>
+                  </Fader>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <hr/>
           <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Reviews</h1>
@@ -365,9 +380,12 @@ class HotelPage extends React.Component {
                   <div className="">
                    <h5>Write a Review</h5>
                     <div className='col-sm-8 no-padding'>
+                      <div className='col-sm-6 no-padding'>
+                        <input ref={r => this.reviewNameInput = r} onChange={(e) => {  this.setState({disableSubmit: e.target.value ? false : true, reviewName: e.target.value}) }} className={style.ratingName} type="text" placeholder="Name"/>
+                      </div>
                       <textarea ref={r => this.reviewTextarea = r} onChange={(e) => {  this.setState({disableSubmit: e.target.value ? false : true, reviewText: e.target.value}) }} className='hotelRatingInput' placeholder="Tell us about your experience at this place" rows="4" maxlength="500"/>
                     </div>
-                    <div className='col-sm-4'>
+                    <div style={{paddingTop: '60px'}} className='col-sm-4'>
                       <div style={{height: '85px', padding: '0 15px 15px 15px'}} className='text-center'>
                         <p>Rate this place</p>
                         <StarRatings
@@ -389,20 +407,6 @@ class HotelPage extends React.Component {
                   </div>
                   {/* <iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> */}
                 </div>
-              </div>
-            </div>
-          </div>
-          <hr/>
-          <div className='row space-8'>
-            <div className='col-sm-12 space-4'>
-              <h1>Recommended Hotels For You</h1>
-              <div className='row'>
-                  <div className={style.horizontalScrollContainer}>
-                  <Fader width={320} maxWidth={1280} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
-                      return <HotelPackageTile data={data} />
-                    })}>
-                  </Fader>
-                  </div>
               </div>
             </div>
           </div>
