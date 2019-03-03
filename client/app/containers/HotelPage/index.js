@@ -114,7 +114,7 @@ class HotelPage extends React.Component {
       "hotel_id": this.state.hotel.ID,
       "status": "PENDING",
       "comment": reviewText,
-      "name": reviewName,
+      "user_name": reviewName,
       "rating": rating,
     }
     axios.post(`${config.apiPath}/save/hotelRating-save`, {hotelRating: JSON.stringify(obj)} )
