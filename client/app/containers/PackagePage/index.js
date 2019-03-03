@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import HotelContactCard from 'components/HotelContactCard';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import axios from 'axios';
+import config from 'config';
 
 
 import style from './style.css'
@@ -71,31 +73,92 @@ class PackagePage extends React.Component {
       {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
     ],
 		}
-	}
+  }
+  
+  componentDidMount() {
+    console.log(this.props);
+    axios.get(`${config.apiPath}/fetchById/packagePage-fetchById/${this.props.params.packageId}`)
+		.then((response) => {
+      var travelPackage = response.data;
+      // var amenityNames = [];
+      // console.log('hotel Data', hotel);
+      // hotel.hotel_amenities.filter((amenity) => {
+      //   if(amenity.value)
+      //   {
+      //     amenityNames.push(amenity.name.split(' ').join('_').toLocaleLowerCase())
+      //     return true;
+      //   }
+      // })
+      // console.log('filtered amenities', amenityNames)
+      var packageGallery = travelPackage.gallery.map((image) => {
+        return {
+          original: image.url,
+          thumbnail: image.url,
+        }
+      })
+      this.setState({
+        travelPackage,
+        packageGallery,
+      })
+    })
+  }
 
 	render() {
+    var { travelPackage, packageGallery } =  this.state;
     return (
 		<div>
-      <div className={`space-4 ${style.packageCovers}`}>
+      {/* <div className={`space-4 ${style.packageCovers}`}>
         <div className={`bgDiv ${style.coverImages}`} style={{background:`url(${this.data.package.cover.url})` }}></div>
       <div className={style.coverInfo}>
         <p className={`inline-block`}>Home</p>
         <p className={'inline-block'}>Packages</p>
         <p className={'inline-block'}>Naltar Valley</p>
       </div>
+      </div> */}
+      <div className='space-4'>
+        <ImageGallery items={packageGallery} />
       </div>
       <div className="container space-4">
         <div className="row space-4">
           <div className='col-sm-8'>
-            <ImageGallery
+            {/* <ImageGallery
               items={this.images}
               ref={i => this._imageGallery = i}
               showPlayButton={false}
-            />
+            /> */}
             {/* <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
               Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p> */}
+            <h2>Summary</h2>
+            <div className='space-4'>
+              <span><h4>Day - 1</h4></span>
+              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
+              <p>
+                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
+              </p>
+            </div>
+            <div className='space-4'>
+              <span><h4>Day - 2</h4></span>
+              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
+              <p>
+                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
+              </p>
+            </div>
+            <div className='space-4'>
+              <span><h4>Day - 3</h4></span>
+              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
+              <p>
+                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
+              </p>
+            </div>
+            <div className='space-4'>
+              <span><h4>Day - 4</h4></span>
+              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
+              <p>
+                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
+              </p>
+            </div>
           </div>
           <div className={'col-sm-4'}>
             <HotelContactCard/>
@@ -113,7 +176,7 @@ class PackagePage extends React.Component {
         </div>
         <div className='row space-4'>
           <div id='description' className='space-4'>
-            <h1 className={`${style.heading} space-4`}>Description</h1>
+            <h2 className={`${style.heading} space-4`}>Description</h2>
             <h4>Overview</h4>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architectonventore veritatis et quasi architect onventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
@@ -137,12 +200,12 @@ class PackagePage extends React.Component {
           </div>
           <hr/>
           <div id='tourguide' className='space-4'>
-            <h1 className={`${style.heading} space-4`}>Location</h1>
+            <h2 className={`${style.heading} space-4`}>Location</h2>
               <iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
           </div>
           <hr/>
           <div id='tourguide' className='space-4'>
-            <h1 className={`${style.heading} space-4`}>Tour Guide</h1>
+            <h2 className={`${style.heading} space-4`}>Tour Guide</h2>
             <h5>Overview</h5>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
@@ -175,7 +238,7 @@ class PackagePage extends React.Component {
           <hr/>
           <div className='row space-4'>
             <div className='col-sm-12'>
-              <h1 className={`${style.heading} space-4`}>Reviews</h1>
+              <h2 className={`${style.heading} space-4`}>Reviews</h2>
               <div className='row'>
                 <div className='col-sm-12'>
                   {
@@ -205,7 +268,7 @@ class PackagePage extends React.Component {
           </div>
           <hr/>
           <div className='row col-sm-12 space-4'>
-            <h1 className={`${style.heading} space-4`}>Recommended Destinations For You</h1>
+            <h2 className={`${style.heading} space-4`}>Recommended Destinations For You</h2>
             <div className='row'>
             {this.data.hotelFeatures.map((image) => {
               return <div className='col-sm-2 space-4'>
