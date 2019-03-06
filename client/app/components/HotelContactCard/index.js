@@ -53,7 +53,11 @@ changeDates(startDate, endDate) {
 			this.state.endDate ? this.props.updateBookingData('end_date', this.state.endDate.format()) : null
 			this.setState({
 				daysToStay: moment(this.state.startDate).diff(this.state.endDate, 'days'), 
-			}, () => 	this.props.updateBookingData('nights_stay', this.state.daysToStay))
+			}, () => 	{
+				var durationOrNightsStay = this.props.type == 'package' ? 'duration' : 'nights_stay'
+				this.props.updateBookingData(durationOrNightsStay, this.state.daysToStay)
+			}
+			)
 		});
 	}
 }
@@ -74,13 +78,19 @@ hideModal() {
 			<Modal.Body>
 				<div className='clearfix'>
 					<h1 className='col-sm-12'>Available Rooms</h1>
-				{this.props.rooms ? this.props.rooms.map((room, index) => {
-					return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-6'>
-						<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery[0].url}></RoomTile>
-					</div>
-				})
-				: <p>No Rooms Found</p>
-			}
+					{
+						this.props.type == 'hotel' ? 
+					<div>
+					({
+							this.props.rooms ? this.props.rooms.map((room, index) => {
+							return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-6'>
+								<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery[0].url}></RoomTile>
+							</div>
+						})
+						: <p>No Rooms Found</p>
+					}) </div>
+					 : null
+					 }
 				<div className='col-sm-12'>
 					<h1 className=''>Contact Information</h1>
 					<form onSubmit={(event)=> {event.preventDefault(); this.props.submitBooking(event)}} >
