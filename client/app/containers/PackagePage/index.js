@@ -1,18 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import HotelContactCard from 'components/HotelContactCard';
+import Fader from 'components/Fader';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import axios from 'axios';
 import config from 'config';
 import StarRatings from 'react-star-ratings';
 import swal from 'sweetalert2';
-
-
-
-
+import RecommendationTile from 'components/RecommendationTile';
 import style from './style.css'
-
 
 class PackagePage extends React.Component {
 	constructor(props) {
@@ -24,6 +21,7 @@ class PackagePage extends React.Component {
       disableSubmit: true,
       rating: 5,
       bookingData: {},
+      locations: [],
     }
     
     // this.weatherWidget = `<iframe id="forecast_embed" frameborder="0" height="245" width="100%" src="https://darksky.net/widget/default/42.360082,-71.05888/us12/en.js?height=500&title=Full Forecast&textColor=333333&bgColor=FFFFFF&skyColor=333&fontFamily=Default&units=us&htColor=333333&ltColor=C7C7C7&displaySum=yes&displayHeader=yes"></iframe>`
@@ -168,6 +166,15 @@ class PackagePage extends React.Component {
         this.loadWeatherWidget(travelPackage.latitude,travelPackage.longitude)
       })
     })
+
+    axios.get(`${config.apiPath}/fetch/locations-fetch`)
+		.then((response) => {
+			var locations = response.data;
+			console.log('locations', locations)
+			this.setState({
+				locations,
+			})
+		})
   }
 
   scrollToDiv(id) {
@@ -202,7 +209,7 @@ class PackagePage extends React.Component {
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
               Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p> */}
-            <h2>Summary</h2>
+            <h2 className='space-4'>Summary</h2>
             <div dangerouslySetInnerHTML={{__html: travelPackage.summary}}></div>
           </div>
           <div className={'col-sm-4'}>
@@ -217,8 +224,8 @@ class PackagePage extends React.Component {
             />
           </div>
         </div>
-        <div>
-          <div className={`${style.tab} space-4 row`}>
+        <div className='clearfix'>
+          <div className={`${style.tab} space-4 clearfix`}>
             <div className={`${style.tabsContainer}`}>
               <p onClick={() => {this.scrollToDiv('description')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'description' ? style.activeItem : null}`}>Description</p>
               <p onClick={() => {this.scrollToDiv('location')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'location' ? style.activeItem : null}`}>Location</p>
@@ -228,7 +235,7 @@ class PackagePage extends React.Component {
             </div>
           </div>
         </div>
-        <div className='row space-4'>
+        <div className='col-sm-12 no-padding space-4'>
           <div id='description' className='space-4'>
             <h2 className={`${style.heading} space-4`}>Description</h2>
             <div dangerouslySetInnerHTML={{__html: travelPackage.description}}></div>
@@ -270,9 +277,26 @@ class PackagePage extends React.Component {
             </div>
           </div>
           <hr/>
-          <div id='guide' className='space-4'>
-            <h2 className={`${style.heading} space-4`}>Travel Guide</h2>
-            <h5>Overview</h5>
+          <div id='guide' className='space-8'>
+            <h2 className={`${style.heading} clearfix space-4`}>Travel Guide</h2>
+            {
+              this.state.travelPackage.travel_modes && this.state.travelPackage.travel_modes.length && this.state.travelPackage.travel_modes.map((mode, index) => {
+                return <div className={`col-sm-12 no-padding clearfix space-4 ${style.travelInfo}`}>
+                  <h1 className={`inline-block clearfix ${style.bolder}`}>{mode.travelmodes_title}</h1>
+                    <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                  <h1 className={`inline-block clearfix ${style.bolder}`}>{mode.travel_time}</h1>
+                    <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                  <h1 className={`inline-block clearfix ${style.bolder}`}>{mode.travel_type}</h1>
+                    <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                  <h1 className={`inline-block clearfix ${style.bolder}`}>{mode.departure}</h1>
+                    <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                  <h1 className={`inline-block clearfix ${style.bolder}`}>{mode.destination}</h1>
+                    {/* <p className={`${style.divi clearfixder} inline-block`}>&nbsp;&#9679;&nbsp;</p> */}
+                  <p>{mode.description}</p>
+                </div>
+              })
+            }
+            {/* <h5>Overview</h5>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
               Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
@@ -285,7 +309,6 @@ class PackagePage extends React.Component {
               Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p>
             <div>
-              {/* <div dangerouslySetInnerHTML={{__html: this.weatherWidget}}></div> */}
               <div id='customize-script-container'></div>
             </div>
             <h5>Overview</h5>
@@ -299,7 +322,76 @@ class PackagePage extends React.Component {
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
               Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
               Nemo enim ipsam voluptatem quia vlores eos qui ratione voluptatem sequi nesciunt.
+            </p> */}
+            <div>
+              <hr style={{width: '100%'}}></hr>
+            </div>
+          </div>
+          <div id='price' className='space-4'>
+            <h2 className={`${style.heading} space-4`}>Pricing</h2>
+            {
+              this.state.travelPackage.price && this.state.travelPackage.price.length && this.state.travelPackage.price.map((price, index) => {
+                return <div className=''>
+                  <div className={`col-sm-12 no-padding clearfix space-4 ${style.travelInfo}`}>
+                    <h1 className={`inline-block clearfix ${style.bolder}`}>{price.person} Persons</h1>
+                    <React.Fragment>
+                      <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                      <h1 className={`inline-block clearfix ${style.bolder}`}>{price.nights_stay} Nights Stay</h1>
+                    </React.Fragment>
+                    {price.wifi ? <React.Fragment>
+                      <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                      <h1 className={`inline-block clearfix ${style.bolder}`}>{'WIFI'}</h1>
+                    </React.Fragment> : null}
+                    {price.buffet ? <React.Fragment>
+                      <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                      <h1 className={`inline-block clearfix ${style.bolder}`}>{'Buffet'}</h1>
+                    </React.Fragment> : null}
+                    {price.dinner ? <React.Fragment>
+                      <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                      <h1 className={`inline-block clearfix ${style.bolder}`}>{'Dinner'}</h1>
+                    </React.Fragment> : null}
+                    {price.breakfast ? <React.Fragment>
+                      <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                      <h1 className={`inline-block clearfix ${style.bolder}`}>{'Breakfast'}</h1>
+                    </React.Fragment> : null}
+                    {price.shuttle_service ? <React.Fragment>
+                      <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
+                      <h1 className={`inline-block clearfix ${style.bolder}`}>{'Shuttle Service'}</h1>
+                    </React.Fragment> : null}
+                    <h4 className='orange'>Rs. {price.price}</h4>
+                      {/* <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p> */}
+                      <p className={''}>{price.description}</p>
+                  </div>
+                  </div>
+              })
+            }
+            {/* <h5>Overview</h5>
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p>
+            <h5>Overview</h5>
+            <p>
+              Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Nemo enim ipsam voluptatem quia viste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            </p>
+            <div>
+              <div id='customize-script-container'></div>
+            </div>
+            <h5>Overview</h5>
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Nemo enim ipsam voluptatem quia vodit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            </p>
+            <h5>Overview</h5>
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Nemo enim ipsam voluptatem quia vlores eos qui ratione voluptatem sequi nesciunt.
+            </p> */}
           </div>
           <hr/>
           <div className='row space-4'>
@@ -340,9 +432,9 @@ class PackagePage extends React.Component {
                       )
                     })
                   }
-                  <div style={{padding: '0 20px'}}>
+                  {this.state.fetchedReviews.length ? <div style={{padding: '0 20px'}}>
                     <hr style={{width: '100%'}}/>
-                  </div>
+                  </div> : null}
                   <div className="">
                    <h5>Write a Review</h5>
                     <div className='col-sm-8 no-padding'>
@@ -377,16 +469,16 @@ class PackagePage extends React.Component {
             </div>
           </div>
           <hr/>
-          <div className='row col-sm-12 space-4'>
+          <div className='col-sm-12 row space-4'>
             <h2 className={`${style.heading} space-4`}>Recommended Destinations For You</h2>
             <div className='row'>
-            {this.data.hotelFeatures.map((image) => {
-              return <div className='col-sm-2 space-4'>
-                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.url})` }}></div>
-                <h4 style={{margin: '10px, 0'}}>{image.name}</h4>
-              </div>
-            })}
-              </div>
+							<div className={style.horizontalScrollContainer}>
+							<Fader width={275} maxWidth={1170} unSlickTill={1024} items=
+								{this.state.locations.map((data, index) => {
+									return <RecommendationTile data={data} />
+								})}></Fader>
+							</div>
+						</div>
             </div>
         </div>
       </div>
