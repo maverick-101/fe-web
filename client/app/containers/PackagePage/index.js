@@ -6,6 +6,9 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import axios from 'axios';
 import config from 'config';
 import StarRatings from 'react-star-ratings';
+import swal from 'sweetalert2';
+
+
 
 
 import style from './style.css'
@@ -20,6 +23,7 @@ class PackagePage extends React.Component {
       fetchedReviews: [],
       disableSubmit: true,
       rating: 5,
+      bookingData: {},
     }
     
     // this.weatherWidget = `<iframe id="forecast_embed" frameborder="0" height="245" width="100%" src="https://darksky.net/widget/default/42.360082,-71.05888/us12/en.js?height=500&title=Full Forecast&textColor=333333&bgColor=FFFFFF&skyColor=333&fontFamily=Default&units=us&htColor=333333&ltColor=C7C7C7&displaySum=yes&displayHeader=yes"></iframe>`
@@ -113,22 +117,44 @@ class PackagePage extends React.Component {
       rating,
     })
   }
+
+  updateBookingData(name, value) {
+    var { bookingData } = this.state;
+    console.log(bookingData);
+    bookingData[name] = value;
+    this.setState({
+      bookingData,
+    })
+  }
+
+  submitBooking() {
+    var { bookingData } = this.state;
+    bookingData['packageId'] = this.props.params.packageId;
+    if(bookingData.packageId && bookingData.persons && bookingData.start_date && bookingData.end_date && bookingData.duration && bookingData.user_phone  && bookingData.user_email && bookingData.user_name ) {
+      axios.post(`${config.apiPath}/save/packageContact-save`, {packageContact: JSON.stringify(bookingData)})
+      .then(() => {
+        swal({
+          title: 'Success',
+          html: 'Your query has been submitted. Our agent will contact you shortly',
+          type: 'success',
+        })
+        this.contactCardRef.hideModal();
+      })
+    }
+    else {
+      swal({
+        title: 'Incomplete Data',
+        html: 'Please Select a room and fill your details before proceeding',
+        type: 'info',
+      })
+    }
+  }
   
   componentDidMount() {
     console.log(this.props);
     axios.get(`${config.apiPath}/fetchById/packagePage-fetchById/${this.props.params.packageId}`)
 		.then((response) => {
       var travelPackage = response.data;
-      // var amenityNames = [];
-      // console.log('hotel Data', hotel);
-      // hotel.hotel_amenities.filter((amenity) => {
-      //   if(amenity.value)
-      //   {
-      //     amenityNames.push(amenity.name.split(' ').join('_').toLocaleLowerCase())
-      //     return true;
-      //   }
-      // })
-      // console.log('filtered amenities', amenityNames)
       var packageGallery = travelPackage.gallery.map((image) => {
         return {
           original: image.url,
@@ -177,37 +203,18 @@ class PackagePage extends React.Component {
               Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p> */}
             <h2>Summary</h2>
-            <div className='space-4'>
-              <span><h4>Day - 1</h4></span>
-              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
-              <p>
-                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
-              </p>
-            </div>
-            <div className='space-4'>
-              <span><h4>Day - 2</h4></span>
-              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
-              <p>
-                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
-              </p>
-            </div>
-            <div className='space-4'>
-              <span><h4>Day - 3</h4></span>
-              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
-              <p>
-                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
-              </p>
-            </div>
-            <div className='space-4'>
-              <span><h4>Day - 4</h4></span>
-              <span><h4>Islamabad – Balakot – Naran (250kms/10-11hrs)</h4></span>
-              <p>
-                We will depart from Islamabad for Naran. Passing through Hassan Abdal, Haripur and Abbottabad we will reach Mansehra. After a brief stop for lunch in Mansehra, we will resume our drive and reach Balakot, the gateway to Kaghan Valley. Continuing our drive, we will reach Naran and check in to hotel for night stay.
-              </p>
-            </div>
+            <div dangerouslySetInnerHTML={{__html: travelPackage.summary}}></div>
           </div>
           <div className={'col-sm-4'}>
-            <HotelContactCard/>
+            <HotelContactCard 
+              ref={r => this.contactCardRef = r}
+              starRating={travelPackage.star_rating}
+              submitBooking={()=> {this.submitBooking()}}
+              updateBookingData={(name, value) => this.updateBookingData(name, value)}
+              id={travelPackage.id}
+              price={travelPackage.minimum_price}
+              type='package'
+            />
           </div>
         </div>
         <div>
@@ -300,26 +307,6 @@ class PackagePage extends React.Component {
               <h2 className={`${style.heading} space-4`}>Reviews</h2>
               <div className='row'>
                 <div className='col-sm-12'>
-                  {/* {
-                    this.data.reviews.map((review, index) => {
-                      return (
-                        <div className='col-sm-6 space-2 no-padding'>
-                          <div className='row space-1'>
-                            <div className='vcenter' style={{display: 'inline-block'}}>
-                              <div className={`bgDiv ${style.reviewImage}`} style={{background:`url(${review.image})` }}></div>
-                            </div>
-                            <div style={{display: 'inline-block', paddingTop: '15px'}} className='vcenter'>
-                              <h4 className='no-margin'>{review.user}</h4>
-                              <p>5 days ago</p>
-                            </div>
-                          </div>
-                          <div className='row'>
-                            <div className='col-sm-12'>{review.comments}</div>
-                          </div>
-                        </div>
-                      )
-                    })
-                  } */}
                   {
                     this.state.fetchedReviews.map((review, index) => {
                       return (
