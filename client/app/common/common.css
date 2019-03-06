@@ -632,7 +632,7 @@ hr {
   left: 0;
   width: 100%;
   height: 64px;
-  background: rgba(255,255,255,0.95);
+  background: rgba(0,0,0,0.55);
 }
 .image-gallery-thumbnail {
   width: 90px;
