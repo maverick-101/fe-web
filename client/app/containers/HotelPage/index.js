@@ -275,7 +275,16 @@ class HotelPage extends React.Component {
             <hr/>
           </div>
           <div className={'col-sm-4'}>
-            <HotelContactCard ref={r => this.contactCardRef = r} starRating={hotel.star_rating} submitBooking={()=> {this.submitBooking()}} updateBookingData={(name, value) => this.updateBookingData(name, value)} rooms={hotelRooms} id={hotel.id} price={hotel.minimum_price}/>
+            <HotelContactCard
+              ref={r => this.contactCardRef = r}
+              starRating={hotel.star_rating}
+              submitBooking={()=> {this.submitBooking()}}
+              updateBookingData={(name, value) => this.updateBookingData(name, value)} 
+              rooms={hotelRooms} 
+              id={hotel.id}
+              price={hotel.minimum_price}
+              type='hotel'
+            />
           </div>
         </div>
         <div className='row space-4'>
