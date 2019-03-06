@@ -38,6 +38,18 @@
   height: 120px;
 }
 
+.divider {
+  font-size: 8px;
+  margin: 0 10px;
+}
+
+.travelInfo {
+ & h1 {
+   font-size: 16px;
+   margin: 0 0 10px 0;
+ }
+}
+
 .tab {
   margin-top: 70px;
   border-bottom: 2px solid #eee;
