@@ -286,7 +286,6 @@ class HotelPage extends React.Component {
             <div className={`row ${style.amenitiesScroll}`}>
             {hotelImages.map((image) => {
               return <div onClick={() => { this.openLightbox(image._id) }} className={`col-sm-3 inline-block space-4 ${style.amenityDiv}`}>
-                {console.log('_id', image._id)}
                 <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.Resources[0].url})` }}></div>
                 <p className={style.tileCaption} style={{margin: '10px, 0'}}>{humanize(image._id)}</p>
               </div>
