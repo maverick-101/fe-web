@@ -166,7 +166,6 @@ class HotelPage extends React.Component {
 		.then((response) => {
       var hotel = response.data;
       var amenityNames = [];
-      console.log('hotel Data', hotel);
       hotel.hotel_amenities.filter((amenity) => {
         if(amenity.value)
         {
