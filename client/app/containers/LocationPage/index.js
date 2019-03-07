@@ -88,7 +88,6 @@ class LocationPage extends React.Component {
 		axios.get(`${config.apiPath}/fetchById/location-fetchById/${this.props.params.locationId}`)
 		.then((response) => {
 			var location = response.data[0];
-			console.log('locations', location[0])
 			this.setState({
 				location,
 			})
