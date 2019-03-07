@@ -165,8 +165,6 @@ class App extends React.Component {
 		}
 
 		if(this.props.full) {
-			console.log(this.props)
-			console.log(child)
 			return (
 				<div style={{minHeight:'100vh', paddingLeft: '0', paddingRight: '0'}} className="container-fluid">
 					{child}
