@@ -102,7 +102,6 @@ class HotelPage extends React.Component {
   }
 
   changeRating(rating, name) {
-    console.log(rating)
     this.setState({
       rating,
     })
