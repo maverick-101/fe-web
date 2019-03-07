@@ -117,7 +117,6 @@ class PackagePage extends React.Component {
 
   updateBookingData(name, value) {
     var { bookingData } = this.state;
-    console.log(bookingData);
     bookingData[name] = value;
     this.setState({
       bookingData,
