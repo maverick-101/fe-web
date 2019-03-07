@@ -219,7 +219,6 @@ class HotelPage extends React.Component {
     axios.get(`${config.apiPath}/fetchAcceptedHotelById/hotelRating-fetchAcceptedHotelById/${this.props.params.hotelId}`)
     .then((response) => {
       var fetchedReviews = response.data;
-      console.log(fetchedReviews)
       this.setState({
         fetchedReviews,
       })
