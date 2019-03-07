@@ -195,7 +195,6 @@ class HotelPage extends React.Component {
 					url: item.gallery && item.gallery.length ? item.gallery[0].url : null
 				}
 			})
-			console.log(hotelPackages)
 			this.setState({
 				hotelPackages,
 			})
