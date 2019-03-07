@@ -173,7 +173,6 @@ class HotelPage extends React.Component {
           return true;
         }
       })
-      console.log('filtered amenities', amenityNames)
       var hotelGallery = hotel.gallery.map((image) => {
         return {
           original: image.url,
