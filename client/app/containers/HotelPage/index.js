@@ -203,7 +203,6 @@ class HotelPage extends React.Component {
     axios.get(`${config.apiPath}/room/fetchByHotelId/${this.props.params.hotelId}`)
 		.then((response) => {
 			var hotelRooms = response.data
-			console.log(hotelRooms)
 			this.setState({
 				hotelRooms,
 			})
