@@ -149,6 +149,7 @@ class PackagePage extends React.Component {
   }
   
   componentDidMount() {
+    this.props.done();
     axios.get(`${config.apiPath}/fetchById/packagePage-fetchById/${this.props.params.packageId}`)
 		.then((response) => {
       var travelPackage = response.data;
