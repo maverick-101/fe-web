@@ -48,7 +48,6 @@ changeDates(startDate, endDate) {
 	if (this.state.startDate !== startDate || this.state.endDate !== endDate) {
 		this.setState({startDate, endDate}, () => {
 			// this.updateCharts()
-			console.log('difference is', moment(this.state.startDate).diff(this.state.endDate, 'days'))
 			this.state.startDate ? this.props.updateBookingData('start_date', this.state.startDate.format()) : null
 			this.state.endDate ? this.props.updateBookingData('end_date', this.state.endDate.format()) : null
 			this.setState({
