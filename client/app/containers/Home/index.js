@@ -113,7 +113,6 @@ class Home extends React.Component {
 		axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
 		.then((response) => {
 			var travelerPackages = response.data;
-			console.log('traveler package', travelerPackages)
 			this.setState({
 				travelerPackages,
 			})
