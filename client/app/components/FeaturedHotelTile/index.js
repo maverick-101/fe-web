@@ -4,6 +4,7 @@ import { Card, CardText, CardBody, CardTitle, CardImg, Button} from 'reactstrap'
 import TravelerPackageTile from 'components/TravelerPackageTile';
 import HotelPackageTile from 'components/HotelPackageTile';
 import placeholder from 'no-image.jpg';
+import { convertPrice } from 'helpers';
 
 
 import style from './style.css'
@@ -17,8 +18,8 @@ class Tile extends React.Component {
         <div style={{background: `url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
           <div className={`${style.featuredTilePriceDiv}`}>
             <p className={'no-padding no-margin'}>
-            <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS</p>
-            {this.props.data.minimum_price}+ 
+            <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS.</p>
+            {convertPrice(this.props.data.minimum_price, 'PKR')}+ 
               <p style={{fontSize:'12px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>/Night</p>
             </p>
           </div>
