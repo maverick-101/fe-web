@@ -24,19 +24,25 @@ export function stripHTML(html) {
   }
 }
 
-export function convertPrice(price, currency, currencyRates) {
+export function convertPrice(price, currency = 'PKR', currencyRates) {
   if(currency == 'PKR') {
     if(price >= 10000000) {
       // return `${Math.round(price/10000000*100)/100}${price == 20000000 ? '+' : ''} crore`;
-      return `${Math.round(price/10000000*100)/100} crore`;
+      return ` ${Math.round(price/10000000*100)/100} crore `;
     }
     if(price >= 100000) {
       // return `${Math.round(price/100000*100)/100}${price == 300000 ? '+' : ''} lac`;
-      return `${Math.round(price/100000*100)/100} lac`;
+      return ` ${Math.round(price/100000*100)/100} lac `;
     }
-    // if(price >= 1000) {
-    //   return `${Math.round(price/1000*100)/100}k`;
-    // }
+    if(price >= 1000) {
+      // return ` ${Math.round(price/1000*100)/100} Thousand `;
+      // return 
+      var a = price.toString().split('');
+      a.splice((a.length-3), 0, ',');
+      // console.log('b',a);
+      // console.log('bb',a.splice((a.length-3), 0, ','));
+      return a.join('');
+    }
     return price;
   }
   else {
