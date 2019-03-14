@@ -37,11 +37,9 @@ export function convertPrice(price, currency = 'PKR', currencyRates) {
     if(price >= 1000) {
       // return ` ${Math.round(price/1000*100)/100} Thousand `;
       // return 
-      var a = price.toString().split('');
-      a.splice((a.length-3), 0, ',');
-      // console.log('b',a);
-      // console.log('bb',a.splice((a.length-3), 0, ','));
-      return a.join('');
+      var parsedPrice = price.toString().split('');
+      parsedPrice.splice((parsedPrice.length-3), 0, ',');
+      return parsedPrice.join('');
     }
     return price;
   }
