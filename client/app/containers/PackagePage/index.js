@@ -10,6 +10,7 @@ import StarRatings from 'react-star-ratings';
 import swal from 'sweetalert2';
 import RecommendationTile from 'components/RecommendationTile';
 import style from './style.css'
+import { convertPrice } from 'helpers'
 
 class PackagePage extends React.Component {
 	constructor(props) {
@@ -355,7 +356,7 @@ class PackagePage extends React.Component {
                       <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
                       <h1 className={`inline-block clearfix ${style.bolder}`}>{'Shuttle Service'}</h1>
                     </React.Fragment> : null}
-                    <h4 className='orange'>Rs. {price.price}</h4>
+                    <h4 className='orange'>Rs. {convertPrice(price.price, 'PKR')}</h4>
                       {/* <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p> */}
                       <p className={''}>{price.description}</p>
                   </div>
