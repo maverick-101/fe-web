@@ -118,7 +118,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      config$: path.resolve(__dirname, 'config.js')
+      config$: path.resolve(__dirname, 'config.js'),
+      helpers$: path.resolve(__dirname, 'client/app/helpers.js'),
     },
     modules: ['static', 'client/app', 'node_modules']
   },
