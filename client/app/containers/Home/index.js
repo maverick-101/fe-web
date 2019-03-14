@@ -134,10 +134,7 @@ class Home extends React.Component {
 						/>
 					</div>
 					</div>
-					{/* <button className="btn btn-lg view-btn" style={{zIndex: 10, margin: 'auto', position: 'absolute', color: 'white', paddingLeft: '50px', paddingRight: '50px', width: '211.45px', border: '1px solid white'}}>VIEW MORE</button> */}
 				</div>
-
-
 					{
 					this.state.featuredHotels.length ?
 					<div className="col-sm-12 space-8 no-padding">
