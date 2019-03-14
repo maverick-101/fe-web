@@ -8,6 +8,8 @@ import StarRatings from 'react-star-ratings';
 
 import swal from 'sweetalert2';
 
+import { convertPrice } from 'helpers'
+
 import { DateRangePicker, isInclusivelyAfterDay, isInclusivelyBeforerDay } from 'react-dates';
 
 import 'react-dates/initialize';
@@ -111,7 +113,7 @@ hideModal() {
 			</Modal.Body>
 		</Modal>
 			<div className='clearfix'>				
-				<h1 className='pull-left no-margin'>Rs. {this.props.price}+</h1> 
+				<h1 className='pull-left no-margin'>Rs. {convertPrice(this.props.price, 'PKR')}+</h1> 
 				<p style={{padding: '15px 0px 0px 0px'}} className='pull-left'>/ per Night</p>
 			</div>
 			<div>
