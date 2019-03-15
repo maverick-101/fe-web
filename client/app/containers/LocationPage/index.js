@@ -26,6 +26,7 @@ class LocationPage extends React.Component {
 			locations: [],
 			location: {},
 			travelerPackages: [],
+			hotelPackages: [],
     }
 		this.data = {
 			travelerPackages: [
@@ -85,6 +86,22 @@ class LocationPage extends React.Component {
 				locations,
 			})
 		})
+
+		axios.get(`${config.apiPath}/hotel/fetch`)
+		.then((response) => {
+			var hotelPackages = response.data.map((item) => {
+				return {
+					name: item.name,
+					id: item.ID,
+					url: item.gallery && item.gallery.length ? item.gallery[0].url : null,
+					minimum_price: item.minimum_price,
+				}
+			})
+			this.setState({
+				hotelPackages,
+			})
+		})
+
 		axios.get(`${config.apiPath}/fetchById/location-fetchById/${this.props.params.locationId}`)
 		.then((response) => {
 			var location = response.data[0];
