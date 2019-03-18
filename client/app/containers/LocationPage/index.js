@@ -71,13 +71,13 @@ class LocationPage extends React.Component {
 
 	componentDidMount() {
 
-		axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
-		.then((response) => {
-			var travelerPackages = response.data;
-			this.setState({
-				travelerPackages,
-			})
-		})
+		// axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
+		// .then((response) => {
+		// 	var travelerPackages = response.data;
+		// 	this.setState({
+		// 		travelerPackages,
+		// 	})
+		// })
 
 		axios.get(`${config.apiPath}/fetch/locations-fetch`)
 		.then((response) => {
@@ -87,7 +87,7 @@ class LocationPage extends React.Component {
 			})
 		})
 
-		axios.get(`${config.apiPath}/hotel/fetch`)
+		axios.get(`${config.apiPath}/hotel/fetchByLocation/${this.props.params.locationId}`)
 		.then((response) => {
 			var hotelPackages = response.data.map((item) => {
 				return {
@@ -99,6 +99,14 @@ class LocationPage extends React.Component {
 			})
 			this.setState({
 				hotelPackages,
+			})
+		})
+
+		axios.get(`${config.apiPath}/fetchByLocation/packagePage-fetchByLocation/${this.props.params.locationId}`)
+		.then((response) => {
+			var travelerPackages = response.data;
+			this.setState({
+				travelerPackages,
 			})
 		})
 
