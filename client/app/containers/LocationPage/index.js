@@ -117,7 +117,7 @@ class LocationPage extends React.Component {
 		console.log('location form satate', location)
     return (
 		<div>
-        <div className={`col-sm-2 ${style.smallColumn}`}>
+        {/* <div className={`col-sm-2 ${style.smallColumn}`}>
           <div className='space-4'></div>
           <div className='space-4'>
             <h5 className='space-2'>Dates</h5>
@@ -148,16 +148,36 @@ class LocationPage extends React.Component {
               <i style={{color: '#00b3b3', position: 'absolute', top: 10, right: 10}} className="fa fa-chevron-down"></i>
             </div>
           </div>
-        </div>
-        <div className={`col-sm-10  ${style.largeColumn}`}>
-					<div className="container space-4">
+        </div> */}
+        <div className={`${style.largeColumn}`}>
+					{/* <div className="container space-4">
 						<h1>Top Rated Experiences in {location.name}</h1>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
 								{this.data.visitedExperiences.map((data, index) => {
 									return <VisitedExperiences data={data} />
 								})}></Fader>
-					</div>
+					</div> */}
+					{ 
+					this.state.hotelPackages.length ?
+					<div className="container space-4">
+							<h2 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h2>
+							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
+							<div className='row'>
+								<div className={style.horizontalScrollContainer}>
+								{/* <Fader width={280} maxWidth={1170} unSlickTill={1024} items={ */}
+									{this.state.hotelPackages.map((data, index) => {
+										return <div className='col-sm-3 no-padding'>
+										<HotelPackageTile data={data} />
+										</div>
+									})}
+									{/* }>
+								</Fader> */}
+								</div>
+							</div>
+						</div>
+					: null
+					}
 					<div className="container space-4">
 						<h4 style={{color: 'orange'}}>Show all experiences</h4>
 					</div>
