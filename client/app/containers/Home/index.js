@@ -11,7 +11,7 @@ import axios from 'axios';
 import 'react-select/dist/react-select.css'
 import Fader from 'components/Fader'
 import Slider from 'components/Slider'
-import shuffle from 'lodash.shuffle'
+// import shuffle from 'lodash.shuffle'
 
 import config from 'config'
 
@@ -74,7 +74,7 @@ class Home extends React.Component {
 				}
 			})
 			this.setState({
-				hotelPackages: shuffle(hotelPackages),
+				hotelPackages: hotelPackages,
 			})
 		})
 
