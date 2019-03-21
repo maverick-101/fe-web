@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 
 import style from './style.css'
 
+let dragging = false;
 class Prev extends React.Component {
   render() {
     var { currentSlide, slideCount, style, ...props } = this.props
@@ -43,8 +44,8 @@ export default class Fader extends React.Component {
     for(var i = 0; i < Math.ceil(this.props.items.length / this.state.itemsToShow); i ++) {
       var iterate = this.props.items.slice(0 + i * this.state.itemsToShow, this.state.itemsToShow * (i + 1))
       slides.push(
-        <ul className="list-inline text-center" key={i}>
-          {iterate.map((item, index) => <li key={index} style={{width: this.props.width}}>{item}</li>)}
+        <ul className= {`${ dragging ? style.inactive : '' } list-inline text-center`} key={i}>
+          {iterate.map((item, index) => <li className={dragging ? 'inactive' : ''} key={index} style={{width: this.props.width}}>{item}</li>)}
         </ul>
       )
     }
@@ -66,11 +67,13 @@ export default class Fader extends React.Component {
       // autoplay: true,
       speed: 800,
       lazyLoad: true,
+      beforeChange: () => dragging = true,
+      afterChange: () => dragging = false,
       // centerMode: true,
     }
     if(this.props.unSlickTill && window.innerWidth <= this.props.unSlickTill) {
       return (
-        <div className="unslick">
+        <div className={`unslick`}>
           {this.props.items}
         </div>
       )
