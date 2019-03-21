@@ -14,7 +14,7 @@ class Tile extends React.Component {
       <a>
       <div className='text-left' style={{marginBottom: '30px', width:'100%', minWidth: '200px'}}>
         <div className={`${style.experiencePackagesTile}`}>
-          <div className={`${style.bgDiv} ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
+          <div className={`bgDiv ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
           </div>
           <div className={style.experiencePackagesText}>
             <div className='col'>
