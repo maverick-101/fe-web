@@ -199,11 +199,13 @@ class App extends React.Component {
 						{[]}
 					</ReactCSSTransitionGroup>
 					<Header></Header>
+					<div style={{paddingTop: this.props.isMobile ? '65px' : ''}}>
 					{this.renderlayout(
 						this.state.done && React.cloneElement(this.props.full || this.props.main, {
 							done: () => this.hideLoader()
 						})
 					)}
+					</div>
 					<LazyLoad height={400}>
 						{/* <Footer style={{display: 'block !important'}} showFooterLinks={this.state.showFooterLinks}></Footer> */}
 						<Footer />
