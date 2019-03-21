@@ -184,30 +184,13 @@ class PackagePage extends React.Component {
     var { travelPackage, packageGallery, disableSubmit } =  this.state;
     return (
 		<div>
-      {/* <div className={`space-4 ${style.packageCovers}`}>
-        <div className={`bgDiv ${style.coverImages}`} style={{background:`url(${this.data.package.cover.url})` }}></div>
-      <div className={style.coverInfo}>
-        <p className={`inline-block`}>Home</p>
-        <p className={'inline-block'}>Packages</p>
-        <p className={'inline-block'}>Naltar Valley</p>
-      </div>
-      </div> */}
       <div className='space-4'>
         <ImageGallery lazyload={true} items={packageGallery} />
       </div>
       <div className="container space-4">
         <div className="row space-4">
           <div className='col-sm-8'>
-            {/* <ImageGallery
-              items={this.images}
-              ref={i => this._imageGallery = i}
-              showPlayButton={false}
-            /> */}
-            {/* <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p> */}
-            <h2 className='space-4'>Summary</h2>
+            <h3 className='space-4'>Summary</h3>
             <div dangerouslySetInnerHTML={{__html: travelPackage.summary}}></div>
           </div>
           <div className={'col-sm-4'}>
@@ -235,35 +218,10 @@ class PackagePage extends React.Component {
         </div>
         <div className='col-sm-12 no-padding space-4'>
           <div id='description' className='space-4'>
-            <h2 className={`${style.heading} space-4`}>Description</h2>
+            <h3 className={`${style.heading} space-4`}>Description</h3>
             <div dangerouslySetInnerHTML={{__html: travelPackage.description}}></div>
-            {/* <h2 className={`${style.heading} space-4`}>Description</h2>
-            <h4>Overview</h4>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architectonventore veritatis et quasi architect onventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <h5>Overview</h5>
-            <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,  error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,  error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p> */}
           </div>
           <hr/>
-          {/* <div id='location' className='space-4'>
-            <h2 className={`${style.heading} space-4`}>Location</h2>
-              <iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-          </div> */}
           <div id='location' className='row space-4'>
             <div className='col-sm-12'>
               <h1>Location</h1>
@@ -276,7 +234,7 @@ class PackagePage extends React.Component {
           </div>
           <hr/>
           <div id='guide' className='space-8'>
-            <h2 className={`${style.heading} clearfix space-4`}>Travel Guide</h2>
+            <h3 className={`${style.heading} clearfix space-4`}>Travel Guide</h3>
             {
               this.state.travelPackage.travel_modes && this.state.travelPackage.travel_modes.length && this.state.travelPackage.travel_modes.map((mode, index) => {
                 return <div className={`col-sm-12 no-padding clearfix space-4 ${style.travelInfo}`}>
@@ -289,44 +247,16 @@ class PackagePage extends React.Component {
                   <h1 className={`inline-block clearfix ${style.bolder}`}>{mode.departure}</h1>
                     <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p>
                   <h1 className={`inline-block clearfix ${style.bolder}`}>{mode.destination}</h1>
-                    {/* <p className={`${style.divi clearfixder} inline-block`}>&nbsp;&#9679;&nbsp;</p> */}
                   <p>{mode.description}</p>
                 </div>
               })
             }
-            {/* <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia viste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <div>
-              <div id='customize-script-container'></div>
-            </div>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vodit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vlores eos qui ratione voluptatem sequi nesciunt.
-            </p> */}
             <div>
               <hr style={{width: '100%'}}></hr>
             </div>
           </div>
           <div id='price' className='space-4'>
-            <h2 className={`${style.heading} space-4`}>Pricing</h2>
+            <h3 className={`${style.heading} space-4`}>Pricing</h3>
             {
               this.state.travelPackage.price && this.state.travelPackage.price.length && this.state.travelPackage.price.map((price, index) => {
                 return <div className=''>
@@ -357,44 +287,16 @@ class PackagePage extends React.Component {
                       <h1 className={`inline-block clearfix ${style.bolder}`}>{'Shuttle Service'}</h1>
                     </React.Fragment> : null}
                     <h4 className='orange'>Rs. {convertPrice(price.price, 'PKR')}</h4>
-                      {/* <p className={`${style.divider} clearfix inline-block`}>&nbsp;&#9679;&nbsp;</p> */}
                       <p className={''}>{price.description}</p>
                   </div>
                   </div>
               })
             }
-            {/* <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia viste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <div>
-              <div id='customize-script-container'></div>
-            </div>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vodit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <h5>Overview</h5>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vnatus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              Nemo enim ipsam voluptatem quia vlores eos qui ratione voluptatem sequi nesciunt.
-            </p> */}
           </div>
           <hr/>
           <div className='row space-4'>
             <div id='reviews' className='col-sm-12'>
-              <h2 className={`${style.heading} space-4`}>Reviews</h2>
+              <h3 className={`${style.heading} space-4`}>Reviews</h3>
               <div className='row'>
                 <div className='col-sm-12'>
                   {
@@ -461,20 +363,22 @@ class PackagePage extends React.Component {
                       <button disabled={disableSubmit} style={{height: '35px'}} onClick={() => {this.submitReview()}} className='btn btn-block btn-orange'>Submit Review</button>
                     </div>
                   </div>
-                  {/* <iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> */}
                 </div>
               </div>
             </div>
           </div>
           <hr/>
           <div className='col-sm-12 row space-4'>
-            <h2 className={`${style.heading} space-4`}>Recommended Destinations For You</h2>
+            <h3 className={`${style.heading} space-4`}>Recommended Destinations For You</h3>
             <div className='row'>
-							<div className={style.horizontalScrollContainer}>
-							<Fader width={275} maxWidth={1170} unSlickTill={1024} items=
+							<div className={'horizontalScrollContainer'}>
+							{/* <Fader width={275} maxWidth={1170} unSlickTill={1024} items= */}
 								{this.state.locations.map((data, index) => {
-									return <RecommendationTile data={data} />
-								})}></Fader>
+									return <div id='tileCol' className='col-sm-3'>
+                  <RecommendationTile data={data} />
+                  </div>
+								})}
+                {/* ></Fader> */}
 							</div>
 						</div>
             </div>
