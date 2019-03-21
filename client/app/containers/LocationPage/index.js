@@ -79,13 +79,13 @@ class LocationPage extends React.Component {
 		// 	})
 		// })
 
-		axios.get(`${config.apiPath}/fetch/locations-fetch`)
-		.then((response) => {
-			var locations = response.data;
-			this.setState({
-				locations,
-			})
-		})
+		// axios.get(`${config.apiPath}/fetch/locations-fetch`)
+		// .then((response) => {
+		// 	var locations = response.data;
+		// 	this.setState({
+		// 		locations,
+		// 	})
+		// })
 
 		axios.get(`${config.apiPath}/hotel/fetchByLocation/${this.props.params.locationId}`)
 		.then((response) => {
@@ -116,6 +116,13 @@ class LocationPage extends React.Component {
 			this.setState({
 				location,
 			})
+				axios.get(`${config.apiPath}/fetchByCity/location-fetchByCity/${location.city_id}`)
+				.then((locationResponse) => {
+					var locations = locationResponse.data;
+					this.setState({
+						locations,
+					})
+				})
 		})
 		
 	}
@@ -169,10 +176,10 @@ class LocationPage extends React.Component {
 					{ 
 					this.state.hotelPackages.length ?
 					<div className="container space-4">
-							<h2 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h2>
+							<h3 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h3>
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
 							<div className='row'>
-								<div className={style.horizontalScrollContainer}>
+								<div className={'horizontalScrollContainer'}>
 								{/* <Fader width={280} maxWidth={1170} unSlickTill={1024} items={ */}
 									{this.state.hotelPackages.map((data, index) => {
 										return <div className='col-sm-3 no-padding'>
@@ -183,38 +190,55 @@ class LocationPage extends React.Component {
 								</Fader> */}
 								</div>
 							</div>
+							<div className="container space-4">
+								<h4 style={{color: 'orange'}}>Show all experiences</h4>
+							</div>
 						</div>
 					: null
 					}
-					<div className="container space-4">
-						<h4 style={{color: 'orange'}}>Show all experiences</h4>
-					</div>
           <div className="container space-4">
-						<h1>Top Visited Experiences Exp {location.name}</h1>
+						<h3>Top Visited Experiences in {location.name}</h3>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
-						<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
+						<div className='horizontalScrollContainer row'>
+						{/* <Fader width={250} maxWidth={1280} unSlickTill={1024} items= */}
 								{this.data.visitedExperiences.map((data, index) => {
-									return <VisitedExperiences data={data} />
-						})}></Fader>
+									return <div id='tileCol' className='per-row-5'>
+									<VisitedExperiences data={data} />
+									</div>
+						})}
+						</div>
+						{/* ></Fader> */}
 					</div>
 					<div className="container space-4">
 						<h4 style={{color: 'orange'}}>Show all experiences</h4>
 					</div>
           <div className="container space-4">
-						<h1>Recommended for you</h1>
-						<Fader width={250} maxWidth={1280} unSlickTill={1024} items=
+						<h3>Recommended Locations for you</h3>
+						<p className='space-4'>Locations you might be interseted to visit</p>
+						{/* <Fader width={250} maxWidth={1280} unSlickTill={1024} items= */}
+						<div className='horizontalScrollContainer row'>
 						{this.state.locations.map((data, index) => {
-							return <RecommendationTile data={data} />
-						})}></Fader>
+							return <div id='tileCol' className='col-sm-3 padding-col-10'>
+							 <RecommendationTile data={data} />
+							 </div>
+						})}
+						</div>
+						{/* ></Fader> */}
 					</div>
-          <div className="container space-4">
-						<h1>Popular Guides in {location.name}</h1>
+          { this.state.travelerPackages.length ?
+					<div className="container space-4">
+						<h3>Popular Guides in {location.name}</h3>
 						<p className='space-4'>Discover places with one of these popular guides</p>
-						<Fader width={340} maxWidth={1280} unSlickTill={1024} items=
+						<div className='horizontalScrollContainer'>
 						{this.state.travelerPackages.map((data, index) => {
-							return <TravelerPackageTile data={data} />
-						})}></Fader>
+							return <div id='tileCol' className='col-sm-3'>
+							 <TravelerPackageTile data={data} />
+							 </div>
+						})}
+						</div>
 					</div>
+					: null
+				}
 
         </div>
 					
