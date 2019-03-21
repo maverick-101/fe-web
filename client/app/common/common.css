@@ -33,10 +33,30 @@ body {
     font-size: 1.0625em;
   }
 }
+
+.horizontalScrollContainer {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.padding-col-10 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
 .bgDiv {
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
+}
+
+.per-row-5 {
+  width: 20%;
+  padding: 10px;
+  position: relative;
+  min-height: 1px;
+  float: left;
 }
 
 .form-input {
@@ -508,6 +528,25 @@ hr {
 }
 
 @media only screen and (max-width: 767px) {
+  .horizontalScrollContainer {
+    & #tileCol {
+      display: inline-block;
+      min-width: 85vw;
+    }
+  }
+
+  .per-row-5 {
+    padding: 0 15px;
+    float: initial;
+  }
+
+  .multilineHorizontalScroll {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 800px;
+  }
+  
   .bodyClass {
     overflow: hidden;
     height: 100%;
@@ -545,6 +584,7 @@ hr {
       opacity: 1;
     }
   }
+  
   .bodyPadds {
     padding-bottom: 120px !important;
   }
@@ -952,3 +992,4 @@ select::-ms-expand {
     width:100%
    }
  }
+ 
