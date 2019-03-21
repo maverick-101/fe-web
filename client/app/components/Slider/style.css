@@ -38,3 +38,8 @@
     }
   }
 }
+
+.inactive {
+  pointer-events: none;
+  cursor: default;
+}
