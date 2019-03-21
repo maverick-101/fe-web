@@ -554,6 +554,7 @@
   }
   .homeCoverStyle {
     height: 70vh;
+    margin-top: -66px;
   }
   .coverTextWrapper {
     top: 120px;
