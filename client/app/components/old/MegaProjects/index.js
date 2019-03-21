@@ -73,7 +73,7 @@ export default class MegaProjects extends React.Component {
     }
     return (
       <div className="text-center clearfix">
-        <h2 className='gothicHeading'>Mega Projects</h2>
+        <h3 className='gothicHeading'>Mega Projects</h3>
         <div className='headingUnderline'/>
         <p className='space-4'>Most popular projects from around Pakistan</p>
         <div className={style.projects}>
