@@ -63,7 +63,7 @@ class Home extends React.Component {
 				})
 		})
 
-		axios.get(`${config.apiPath}/hotel/fetch`)
+		axios.get(`${config.apiPath}/hotel/fetch?pageSize=8&pageNumber=1`)
 		.then((response) => {
 			var hotelPackages = response.data.map((item) => {
 				return {
@@ -153,7 +153,7 @@ class Home extends React.Component {
 					{ 
 					this.state.hotelPackages.length ?
 					<div className="container space-4">
-							<h2 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h2>
+							<h3 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h3>
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
 							<div className='row'>
 								<div className={style.horizontalScrollContainer}>
@@ -170,7 +170,7 @@ class Home extends React.Component {
 				{ 
 					this.state.travelerPackages.length ?
 					<div className="container space-4">
-						<h2 className={'no-margin-bottom'}>Top Traveller Packages by Tour Guide</h2>
+						<h3 className={'no-margin-bottom'}>Top Traveller Packages by Tour Guide</h3>
 						<p className='space-4'>Discover places with one of these popular guides</p>
 
 						<div className='row'>
@@ -187,7 +187,7 @@ class Home extends React.Component {
 					{ 
 					this.state.locations.length ?
 					<div className="container space-4">
-						<h2 className={'no-margin-bottom'}>Recommended Locations for you</h2>
+						<h3 className={'no-margin-bottom'}>Recommended Locations for you</h3>
 						<p className='space-4'>We recommend you visit these places</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
@@ -204,7 +204,7 @@ class Home extends React.Component {
 					{
 					this.data.visitedExperiences.length ?
 					<div className="container space-4">
-						<h2 className={'no-margin-bottom'}>Top visited experiences</h2>
+						<h3 className={'no-margin-bottom'}>Top visited experiences</h3>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
