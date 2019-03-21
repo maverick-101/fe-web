@@ -14,10 +14,7 @@ import Slider from 'components/Slider'
 // import shuffle from 'lodash.shuffle'
 
 import config from 'config'
-
-
 import style from './style.css'
-import Axios from 'axios';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -138,7 +135,7 @@ class Home extends React.Component {
 				</div>
 					{
 					this.state.featuredHotels.length ?
-					<div className="col-sm-12 space-8 no-padding">
+					<div className="col-sm-12 space-2 no-padding">
 						<div className={`row ${style.horizontalScrollContainer}`}>
 							<Fader width={(window.innerWidth/3)-17} maxWidth={window.innerWidth} unSlickTill={1024}  
 							items={this.state.featuredHotels.map((data, index) => {
