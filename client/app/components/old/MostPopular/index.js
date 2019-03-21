@@ -247,7 +247,7 @@ export default class MostPopular extends React.Component {
 	render() {
 		return (
 			<div className="container hidden-xs">
-				<h2 className='gothicHeading text-center'>Most Popular</h2>
+				<h3 className='gothicHeading text-center'>Most Popular</h3>
 				<div className='headingUnderline'/>
 				<div className="row hidden-xs" style={{marginBottom: '80px', marginTop: '35px', position: "relative", }}>
 					<p style={{position: "absolute", top: 0, left: 0, }}>Search by</p>
