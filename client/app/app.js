@@ -33,6 +33,11 @@ const PackagePage = Loadable({
 	loader: () => import('containers/PackagePage'),
 	loading: () => null
 });
+
+const ExperiencePage = Loadable({
+	loader: () => import('containers/ExperiencePage'),
+	loading: () => null
+});
 import config from 'config';
 
 const store = configureStore(browserHistory)
