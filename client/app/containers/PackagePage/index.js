@@ -374,9 +374,10 @@ class PackagePage extends React.Component {
 							<div className={'horizontalScrollContainer'}>
 							{/* <Fader width={275} maxWidth={1170} unSlickTill={1024} items= */}
 								{this.state.locations.map((data, index) => {
-									return <div id='tileCol' className='col-sm-3'>
+									return index <= 7 ?
+                  <div id='tileCol' className='col-sm-3'>
                   <RecommendationTile data={data} />
-                  </div>
+                  </div> : null
 								})}
                 {/* ></Fader> */}
 							</div>
