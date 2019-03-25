@@ -24,7 +24,7 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' }
 ];
 
-class Home extends React.Component {
+class AllHotels extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -101,4 +101,4 @@ class Home extends React.Component {
 export default connect(store => {
 	return {
 	}
-})(Home)
+})(AllHotels)
