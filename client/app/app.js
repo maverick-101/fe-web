@@ -73,6 +73,7 @@ ReactDOM.hydrate(<Provider store={store}>
 				<Route path="/experience/:experienceId" components={{full: ExperiencePage}}/>
 				<Route path="/experience/:experienceId" components={{full: ExperiencePage}}/>
 				<Route path="/hotels" components={{full: AllHotels}}/>
+				<Route path="/packages" components={{full: AllPackages}}/>
 			</Route>
 		</Router>
 	</Provider>,
