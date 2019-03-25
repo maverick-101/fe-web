@@ -78,7 +78,7 @@ class Home extends React.Component {
 
 		axios.get(`${config.apiPath}/fetchFeaturedHotels/featuredHotel-fetchFeaturedHotels`)
 		.then((response) => {
-			var featuredHotels = response.data;
+			var featuredHotels = _.shuffle(response.data);
 			this.setState({
 				featuredHotels,
 			})
