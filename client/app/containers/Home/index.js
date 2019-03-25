@@ -179,7 +179,7 @@ class Home extends React.Component {
 
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-							<Fader width={280} maxWidth={1170} unSlickTill={1024} items=
+							{/* <Fader width={280} maxWidth={1170} unSlickTill={1024} items= */}
 								{this.state.travelerPackages.map((data, index) => {
 									return index <=7 ?
 									<div id='tileCol' className='col-sm-3 no-padding-right'>
