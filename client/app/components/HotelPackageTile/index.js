@@ -9,7 +9,7 @@ class Tile extends React.Component {
   render() {
     return (
       <a href={`/hotel/${this.props.data.id}`}>
-      <div className='space-4 text-left' style={{margin: 5}}> 
+      <div className='space-4 text-left'> 
         <div className={`${style.hotelPackagesTile}`}>
           <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
           </div>
