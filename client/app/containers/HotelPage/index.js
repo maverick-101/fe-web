@@ -323,7 +323,7 @@ class HotelPage extends React.Component {
           <hr/>
           <div className='row space-8'>
             <div className='col-sm-12 space-4'>
-              <h1>Recommended Hotels For You</h1>
+              <h2>Recommended Hotels For You</h2>
               <div className='row'>
                   <div className={style.horizontalScrollContainer}>
                   {/* <Fader width={320} maxWidth={1280} unSlickTill={1024} items= */}
