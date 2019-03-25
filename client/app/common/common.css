@@ -533,6 +533,9 @@ hr {
       display: inline-block;
       min-width: 85vw;
     }
+    & #tileCol:last-child {
+      padding-right: 20px !important;
+    }
   }
 
   .per-row-5 {
