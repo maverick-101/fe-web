@@ -11,6 +11,7 @@ import axios from 'axios';
 import 'react-select/dist/react-select.css'
 import Fader from 'components/Fader'
 import Slider from 'components/Slider'
+import _ from 'lodash'
 // import shuffle from 'lodash.shuffle'
 
 import config from 'config'
