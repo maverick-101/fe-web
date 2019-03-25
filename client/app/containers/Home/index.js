@@ -200,10 +200,15 @@ class Home extends React.Component {
 						<p className='space-4'>We recommend you visit these places</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-							<Fader width={280} maxWidth={1170} unSlickTill={1024} items=
+							{/* <Fader width={280} maxWidth={1170} unSlickTill={1024} items= */}
 								{this.state.locations.map((data, index) => {
-									return <RecommendationTile data={data} />
-								})}></Fader>
+									return index <=9 ? 
+									 <div id='tileCol' className='per-row-5 no-padding-right'>
+											<RecommendationTile data={data} />
+										</div>
+									: null
+								})}
+								{/* ></Fader> */}
 							</div>
 						</div>
 					</div>
