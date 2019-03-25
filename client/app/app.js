@@ -42,6 +42,10 @@ const AllHotels = Loadable({
 	loader: () => import('containers/AllHotels'),
 	loading: () => null
 });
+const AllPackages = Loadable({
+	loader: () => import('containers/AllPackages'),
+	loading: () => null
+});
 import config from 'config';
 
 const store = configureStore(browserHistory)
