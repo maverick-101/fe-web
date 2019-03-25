@@ -82,13 +82,15 @@ class Home extends React.Component {
     return (
       <div className='container'>
         <h1>All Hotels</h1>
+        <div className='horizontalScrollContainer row'>
         {
           hotelPackages.map((hotel, index) => {
-            return <div className='col-sm-3 no-padding'>
+            return <div id='tileCol' className='col-sm-3 no-padding-right'>
               <HotelPackageTile data={hotel} />
             </div>
           })
         }
+        </div>
       </div>
 		)
   }
