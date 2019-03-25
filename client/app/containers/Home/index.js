@@ -94,7 +94,7 @@ class Home extends React.Component {
 
 		axios.get(`${config.apiPath}/fetch/locations-fetch`)
 		.then((response) => {
-			var locations = response.data;
+			var locations = _.shuffle(response.data);
 			this.setState({
 				locations,
 			})
