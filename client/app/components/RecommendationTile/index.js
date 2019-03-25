@@ -13,9 +13,9 @@ class Tile extends React.Component {
           <div className={`bgDiv ${style.recommendedPackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})` }}/>
           <div className={style.recommendedPackagesText}>
             <div className='col-sm-12 no-padding'>
-            <p className='orange' style={{minWidth: '200px', marginBottom: '6px'}}>{`${this.props.data.city ? `${this.props.data.city.name}, ${this.props.data.city.province}` : ''}`}</p>
-              <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p>
-              <h5 className='no-margin' style={{minWidth: '200px', marginBottom: '6px'}}>{this.props.data.name}</h5>
+              <p className='orange ellipses' style={{minWidth: '200px', fontSize:'14px', marginBottom: '0px'}}>{`${this.props.data.city ? `${this.props.data.city.name}, ${this.props.data.city.province}` : ''}`}</p>
+              <p style={{marginBottom: '0px'}}>{this.props.data.reviews}</p>
+              <h4 className='no-margin ellipses' style={{minWidth: '200px', fontSize:'14px', marginBottom: '0px'}}>{this.props.data.name}</h4>
             </div>
           </div>
         </div>
