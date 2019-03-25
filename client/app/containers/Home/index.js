@@ -154,11 +154,17 @@ class Home extends React.Component {
 							<h3 className={'no-margin-bottom'}>Hotel Resorts & their Packages</h3>
 							<p className='space-4'>Best Hotels and resorts yet affordable for your next trip</p>
 							<div className='row'>
-								<div className={style.horizontalScrollContainer}>
-								<Fader width={280} maxWidth={1170} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
-										return <HotelPackageTile data={data} />
-									})}>
-								</Fader>
+								<div className={'horizontalScrollContainer'}>
+								{/* <Fader width={280} maxWidth={1170} unSlickTill={1024} items= */}
+								{this.state.hotelPackages.map((data, index) => {
+									return index <=7 ?
+										<div id='tileCol' className='col-sm-3 no-padding-right'>
+										<HotelPackageTile data={data} />
+										</div> 
+											: null
+								})}
+									{/* >
+								</Fader> */}
 								</div>
 							</div>
 						</div>
