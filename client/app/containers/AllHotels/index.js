@@ -12,6 +12,8 @@ import 'react-select/dist/react-select.css'
 import Fader from 'components/Fader'
 import Slider from 'components/Slider'
 // import shuffle from 'lodash.shuffle'
+import _ from 'lodash'
+
 
 import config from 'config'
 import style from './style.css'
@@ -71,7 +73,7 @@ class Home extends React.Component {
 				}
 			})
 			this.setState({
-				hotelPackages: hotelPackages,
+				hotelPackages: _.shuffle(hotelPackages),
 			})
 		})
 		
