@@ -72,7 +72,7 @@ class Home extends React.Component {
 				}
 			})
 			this.setState({
-				hotelPackages: hotelPackages,
+				hotelPackages: _.shuffle(hotelPackages),
 			})
 		})
 
