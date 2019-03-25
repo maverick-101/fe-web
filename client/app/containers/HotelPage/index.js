@@ -329,7 +329,7 @@ class HotelPage extends React.Component {
                   {/* <Fader width={320} maxWidth={1280} unSlickTill={1024} items= */}
                   {
                     this.state.hotelPackages.map((data, index) => {
-                      return index <=7 ? <div id='tileCol' className='col-sm-3 no-padding'>
+                      return index <=7 ? <div id='tileCol' className='col-sm-3 no-padding-right'>
                       <HotelPackageTile data={data} />
                       </div> : null
                     })
