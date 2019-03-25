@@ -326,10 +326,16 @@ class HotelPage extends React.Component {
               <h1>Recommended Hotels For You</h1>
               <div className='row'>
                   <div className={style.horizontalScrollContainer}>
-                  <Fader width={320} maxWidth={1280} unSlickTill={1024} items={this.state.hotelPackages.map((data, index) => {
-                      return <HotelPackageTile data={data} />
-                    })}>
-                  </Fader>
+                  {/* <Fader width={320} maxWidth={1280} unSlickTill={1024} items= */}
+                  {
+                    this.state.hotelPackages.map((data, index) => {
+                      return index <=7 ? <div id='tileCol' className='col-sm-3 no-padding'>
+                      <HotelPackageTile data={data} />
+                      </div> : null
+                    })
+                  }
+                    {/* >
+                  </Fader> */}
                   </div>
               </div>
             </div>
