@@ -8,7 +8,7 @@ const absolute = (state = false, action) => {
 		if (~['/'].indexOf(action.payload.pathname)) {
 			return true
 		}
-		if (action.payload.pathname.includes('/hotel')) {
+		if (action.payload.pathname.includes('/hotel/')) {
 			return true
 		}
 		else {
