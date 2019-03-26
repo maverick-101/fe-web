@@ -96,7 +96,7 @@ class PackagePage extends React.Component {
       "user_name": reviewName,
       "rating": rating,
     }
-    axios.post(`${config.apiPath}/save/packageRating-save`, {hotelRating: JSON.stringify(obj)} )
+    axios.post(`${config.apiPath}/save/packageRating-save`, {packageRating: JSON.stringify(obj)} )
     .then((response) => {
       swal({
         title: 'success',
