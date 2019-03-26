@@ -11,7 +11,7 @@ class Tile extends React.Component {
   }
   render() {
     return (
-      <a>
+      <a href={`/experience/${this.props.id}`}>
       <div className='text-left' style={{marginBottom: '30px', width:'100%', minWidth: '200px'}}>
         <div className={`${style.experiencePackagesTile}`}>
           <div className={`bgDiv ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
