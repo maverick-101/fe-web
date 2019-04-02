@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import style from './style.css'
+import placeholder from 'no-image.jpg';
 
 class Tile extends React.Component {
   constructor(props){
@@ -11,16 +12,17 @@ class Tile extends React.Component {
   }
   render() {
     return (
-      <div className='col-sm-3' style={{marginBottom: '30px'}}>
-        <div className={`${style.guidePackagesTile}`}>
-          <div className={`${style.bgDiv} ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
+      <a href={`/experience/${this.props.data.ID}`}>
+      <div className='text-left' style={{marginBottom: '30px', width:'100%', minWidth: '200px'}}>
+        <div className={`${style.experiencePackagesTile}`}>
+          <div className={`bgDiv ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder })` }}>
           </div>
-          <div className={style.guidePackagesText}>
+          <div className={style.experiencePackagesText}>
             <div className='col'>
-              <h5 style={{marginBottom: '6px'}}>{this.props.data.name}</h5>
-              <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p>
+              <h5 style={{marginBottom: '6px'}}>{this.props.data.experience_title}</h5>
+              {/* <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p> */}
               <p style={{marginBottom: '6px'}}>
-                {this.props.data.rating} &nbsp;
+                {this.props.data.star_rating} &nbsp;
                 <i style={{color: '#00b3b3'}} className="fa fa-star"></i>
                 <i style={{color: '#00b3b3'}} className="fa fa-star"></i>
                 <i style={{color: '#00b3b3'}} className="fa fa-star"></i>
@@ -31,6 +33,7 @@ class Tile extends React.Component {
           </div>
         </div>
       </div>
+      </a>
     )
   }
 }

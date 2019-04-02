@@ -95,6 +95,9 @@
 }
 
 .headerWrapper {
+  & .headerLogo {
+    height: 50px;
+  }
   float: left;
   width: 100%;
   padding: 0 14px;
@@ -231,6 +234,12 @@
       & .headerWrapper_logo {
         & svg {
           fill: var(--white);
+        }
+        & .darkLogo {
+          display: none;
+        }
+        & .lightLogo {
+          display: inline;
         }
       }
       & .headerWrapper_addButton {
@@ -377,11 +386,25 @@
         fill: #555;
       } */
     }
+
+    & .darkLogo {
+      display: inline;
+    }
+    & .lightLogo {
+      display: none;
+    }
   }
   &.absolute {
     & .headerWrapper_logo {
       & svg {
         fill: white;
+      }
+
+      & .darkLogo {
+        display: none;
+      }
+      & .lightLogo {
+        display: inline;
       }
     }
     & .hamburger {
@@ -397,6 +420,13 @@
     & .headerWrapper_logo {
       & svg {
         fill: white;
+      }
+
+      & .darkLogo {
+        display: none;
+      }
+      & .lightLogo {
+        display: inline;
       }
     }
     & .hamburger {
@@ -480,6 +510,13 @@
     & svg {
       fill: #fff;
     }
+
+    & .darkLogo {
+      display: none;
+    }
+    & .lightLogo {
+      display: inline;
+    }
   }
   & :local .absolute:hover {
     & .headerWrapper_logo {
@@ -490,6 +527,13 @@
           fill: #555
         }
       }
+
+      & .darkLogo {
+        display: inline;
+      }
+      & .lightLogo {
+        display: none;
+      }
     }
   }
   & :local .absoluteTwo:hover {
@@ -498,11 +542,25 @@
         fill: var(--red);
         transition: fill 0.3s;
       }
+
+      & .darkLogo {
+        display: inline;
+      }
+      & .lightLogo {
+        display: none;
+      }
     }
   }
   & :local .headerContainer:hover {
     & svg {
       fill: var(--red);
+    }
+
+    & .darkLogo {
+      display: inline;
+    }
+    & .lightLogo {
+      display: none;
     }
   }
 }
@@ -543,6 +601,13 @@
   & :local .headerWrapper_logo {
     & svg {
       fill: var(--red) !important;
+    }
+
+    & .darkLogo {
+      display: inline;
+    }
+    & .lightLogo {
+      display: none;
     }
   }
   & :local .hamburger {
@@ -632,12 +697,25 @@
       & svg {
         fill: #fff;
       }
+
+      & .darkLogo {
+        display: none;
+      }
+      & .lightLogo {
+        display: inline;
+      }
     }
     & :local .absolute:hover {
       & .headerWrapper_logo {
         & svg {
           fill: white;
           transition: fill 0.3s;
+        }
+        & .darkLogo {
+          display: none;
+        }
+        & .lightLogo {
+          display: inline;
         }
       }
     }
@@ -646,6 +724,12 @@
         & svg {
           fill: white;
           transition: fill 0.3s;
+        }
+        & .darkLogo {
+          display: none;
+        }
+        & .lightLogo {
+          display: inline;
         }
       }
     }

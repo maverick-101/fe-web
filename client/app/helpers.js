@@ -13,7 +13,7 @@ import sanitizeHtml from 'sanitize-html';
 // }
 
 export function sanitize(html) {
-  return sanitizeHtml(html);
+  return sanitizeHtml(html, {allowedTags: ['p', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'strong']});
 }
 
 export function stripHTML(html) {
@@ -24,19 +24,23 @@ export function stripHTML(html) {
   }
 }
 
-export function convertPrice(price, currency, currencyRates) {
+export function convertPrice(price, currency = 'PKR', currencyRates) {
   if(currency == 'PKR') {
     if(price >= 10000000) {
       // return `${Math.round(price/10000000*100)/100}${price == 20000000 ? '+' : ''} crore`;
-      return `${Math.round(price/10000000*100)/100} crore`;
+      return ` ${Math.round(price/10000000*100)/100} crore `;
     }
     if(price >= 100000) {
       // return `${Math.round(price/100000*100)/100}${price == 300000 ? '+' : ''} lac`;
-      return `${Math.round(price/100000*100)/100} lac`;
+      return ` ${Math.round(price/100000*100)/100} lac `;
     }
-    // if(price >= 1000) {
-    //   return `${Math.round(price/1000*100)/100}k`;
-    // }
+    if(price >= 1000) {
+      // return ` ${Math.round(price/1000*100)/100} Thousand `;
+      // return 
+      var parsedPrice = price.toString().split('');
+      parsedPrice.splice((parsedPrice.length-3), 0, ',');
+      return parsedPrice.join('');
+    }
     return price;
   }
   else {
@@ -246,3 +250,34 @@ export function imgUpload(url, type, watermark = true) {
     }
   }
 }
+
+export const _amenities =  {
+    'free_breakfast': {
+      image: 'http://www.restaurantnews.com/wp-content/uploads/2017/11/Friendlys-Celebrates-Veterans-Day-with-Free-Breakfast-Lunch-or-Dinner-for-Veterans-and-Active-Military.jpg',
+    },
+    'free_wifi': {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/WiFi_Logo.svg/1200px-WiFi_Logo.svg.png',
+    },
+    'hospitals': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859564/hospital.jpg',
+    },
+    'mosque': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/mosque.jpg',
+    },
+    'park_and_playground_/_recreation': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/park_playground.jpg',
+    },
+    'gymnasium': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859564/gymnasium.jpg',
+    },
+    'shopping_mall' : {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/shopping-mall.jpg',
+    },
+    'emergency_and_rescue': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/emergency-rescue.jpg',
+    },
+    'nearby_public_transport_service': {
+      image: 'https://res.cloudinary.com/graanacom/image/upload/v1530859565/transport-public.jpg',
+    },
+};
+

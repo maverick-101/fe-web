@@ -1,0 +1,11 @@
+.smallColumn {
+}
+.largeColumn {
+}
+.guestSelect {
+  -webkit-appearance: none;
+  border-radius: 1px;
+  border: 1px solid #ddd;
+  box-shadow: none;
+  shadow: none;
+}

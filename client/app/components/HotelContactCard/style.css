@@ -1,4 +1,46 @@
 .contactCard {
   border: 1px solid #ddd;
+  border-radius: 2px;
   padding: 10px;
 }
+
+.guestSelect {
+  -webkit-appearance: none;
+  border-radius: 1px;
+  border: 1px solid #ddd;
+  box-shadow: none;
+  shadow: none;
+}
+
+.modalWidth {
+  width: 60vw;
+}
+
+.roomTile {
+  & b {
+    font-size: 16px;
+    color: #e3530d;
+  }
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.roomTileImage {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.roomTileActive {
+  border: 1px solid #e3530d;
+}
+
+.roomPrice {
+  background: #e3530d;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  float: right; 
+  position: absolute;
+  left: 10px;
+}
+

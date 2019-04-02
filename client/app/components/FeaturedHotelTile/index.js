@@ -3,22 +3,29 @@ import { connect } from 'react-redux'
 import { Card, CardText, CardBody, CardTitle, CardImg, Button} from 'reactstrap';
 import TravelerPackageTile from 'components/TravelerPackageTile';
 import HotelPackageTile from 'components/HotelPackageTile';
+import placeholder from 'no-image.jpg';
+import { convertPrice } from 'helpers';
+
 
 import style from './style.css'
 
 
 class Tile extends React.Component {
   render() {
-    return (
-      <div style={{background: `url(${this.props.data.url})`}} className={`col-sm-4 ${style.featuredTile} ${style.bgDiv}`}>
-        <div className={`${style.featuredTilePriceDiv}`}>
-          <p className={'no-padding no-margin'}>
-          <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS</p>
-          {this.props.data.min_price}+ 
-            <p style={{fontSize:'12px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>/Night</p>
-          </p>
+    return (  
+      <a href={`/hotel/${this.props.data.ID}`}>
+      <div style={{width: this.props.width}} className='inline-block text-left space-4'>
+        <div style={{background: `url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
+          <div className={`${style.featuredTilePriceDiv}`}>
+            <p className={'no-padding no-margin'}>
+            <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS.</p>
+            {convertPrice(this.props.data.minimum_price, 'PKR')}+ 
+              <p style={{fontSize:'12px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>/Night</p>
+            </p>
+          </div>
         </div>
-      </div>
+        </div>
+       </a>
     )
   }
 }

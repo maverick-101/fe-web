@@ -21,6 +21,7 @@
 @import '_segment';
 
 body {
+  font-size: 16px;
   & .swal2-container {
     z-index: 10000;
   }
@@ -28,15 +29,61 @@ body {
     border: 0;
     border-radius: 0.25em;
     background: initial;
-    background-color: #ef5350;
+    background-color: #e3530d;
     color: #fff;
     font-size: 1.0625em;
   }
 }
+
+.horizontalScrollContainer {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.padding-col-10 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
 .bgDiv {
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
+}
+
+.per-row-5 {
+  width: 20%;
+  padding: 0 15px;
+  position: relative;
+  min-height: 1px;
+  float: left;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  /* border: 1px solid; */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.bgDivContain {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+
+.widget-container {
+  & header {
+    display: none;
+  }
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .gray {
@@ -161,6 +208,14 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+.btn:focus {
+  color: white;
+}
+
+.btn:hover {
+  color: white;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -202,7 +257,15 @@ svg {
 }
 
 .DateInput {
-  width: 100px !important;
+  width: 35% !important;
+}
+
+.DateRangePickerInput_calendarIcon {
+  padding-bottom: 15px !important;
+  color: #00b3b3 !important;
+  & .DateRangePickerInput_calendarIcon_svg {
+    fill: #00b3b3 !important;
+  }
 }
 
 @media only screen and (max-width: 375px) {
@@ -210,6 +273,15 @@ svg {
     width: 100%;
     margin-bottom: 5px;
   }
+}
+
+.orange {
+  color: #e3530d;
+}
+
+.btn-orange {
+  background: #e3530d;
+  color: white;
 }
 
 .headingUnderline {
@@ -457,6 +529,28 @@ hr {
 }
 
 @media only screen and (max-width: 767px) {
+  .horizontalScrollContainer {
+    & #tileCol {
+      display: inline-block;
+      min-width: 85vw;
+    }
+    & #tileCol:last-child {
+      padding-right: 20px !important;
+    }
+  }
+
+  .per-row-5 {
+    padding: 0 15px;
+    float: initial;
+  }
+
+  .multilineHorizontalScroll {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 800px;
+  }
+  
   .bodyClass {
     overflow: hidden;
     height: 100%;
@@ -469,6 +563,9 @@ hr {
     & .appClass {
       position: absolute;
     }
+  }
+  .image-gallery-content:not(.fullscreen) .image-gallery-image {
+    padding-top: calc(100vh - 200px) !important;
   }
   .appClass {
     overflow-y: scroll;
@@ -491,6 +588,7 @@ hr {
       opacity: 1;
     }
   }
+  
   .bodyPadds {
     padding-bottom: 120px !important;
   }
@@ -533,10 +631,11 @@ hr {
 .image-gallery-content:not(.fullscreen) .image-gallery-image {
   width: 100%;
   height: 0;
-  padding-top: calc(100vh - 245px);
+  padding-top: calc(100vh - 350px);
   position: relative;
   min-height: 70px;
 }
+
 
 .propertyPageGallery .image-gallery-content:not(.fullscreen) .image-gallery-image {
   padding-top: calc(100vh - 305px);
@@ -577,7 +676,7 @@ hr {
   left: 0;
   width: 100%;
   height: 64px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.55);
 }
 .image-gallery-thumbnail {
   width: 90px;
@@ -891,3 +990,10 @@ select::-ms-expand {
   z-index: 2 !important;
   transform: translate3d(0,0,0);
 }
+
+@media(max-width:1170px){
+  .container{
+    width:100%
+   }
+ }
+ 

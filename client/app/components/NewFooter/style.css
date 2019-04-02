@@ -5,6 +5,11 @@
     width: 100%;
 }
 
+.footerLinks {
+    font-size: 18px;
+    margin: 15px;
+}
+
 /* .footerLogo {
     float: left;
     max-width: 40px;

@@ -2,16 +2,25 @@
   padding: 0;
 }
 
+.padding-10 {
+  padding: 0 10px !important;
+}
+
 .no-padding-right {
-  padding-right: 0;
+  padding-right: 0 !important;
 }
 
 .no-padding-left {
-  padding-left: 0;
+  padding-left: 0 !important;
 }
 
 .no-margin {
   margin: 0;
+}
+
+
+.no-margin-bottom {
+  margin-bottom: 0px !important;
 }
 
 .space-0 {
@@ -31,7 +40,7 @@
 }
 
 .space-4 {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .space-5 {

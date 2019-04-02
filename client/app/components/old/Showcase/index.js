@@ -75,7 +75,7 @@ export default class ShowCase extends React.Component {
     return (
       <div style={{padding: "10px 0", margin: "0 -15px"}}>
         <div className={`col-sm-12 col-xs-12`}>
-          <h2 className="text-center gothicHeading">Featured Projects</h2>
+          <h3 className="text-center gothicHeading">Featured Projects</h3>
           <div className='headingUnderline'/>
           <p className="text-center space-4">Most popular projects from each city</p>
         </div>

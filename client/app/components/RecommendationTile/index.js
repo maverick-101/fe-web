@@ -2,22 +2,25 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import style from './style.css'
+import placeholder from 'no-image.jpg'
 
 class Tile extends React.Component {
   render() {
     return (
-      <div className='col-sm-3 space-4'>
-        <div className={`${style.guidePackagesTile}`}>
-          <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
-          </div>
-          <div className={style.guidePackagesText}>
+      <a href={`/location/${this.props.data.ID}`}>
+      <div style={{width:'100%'}} className='space-4  text-left inline-block'>
+        <div className={`${style.recommendedPackagesTile}`}>
+          <div className={`bgDiv ${style.recommendedPackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder})` }}/>
+          <div className={style.recommendedPackagesText}>
             <div className='col-sm-12 no-padding'>
-            <h5 style={{marginBottom: '6px'}}>{this.props.data.name}</h5>
-              <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p>
+              <p className='orange ellipses' style={{minWidth: '200px', fontSize:'14px', marginBottom: '0px'}}>{`${this.props.data.city ? `${this.props.data.city.name}, ${this.props.data.city.province}` : ''}`}</p>
+              <p style={{marginBottom: '0px'}}>{this.props.data.reviews}</p>
+              <h4 className='no-margin ellipses' style={{minWidth: '200px', fontSize:'14px', marginBottom: '0px'}}>{this.props.data.name}</h4>
             </div>
           </div>
         </div>
       </div>
+      </a>
     )
   }
 }

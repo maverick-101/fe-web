@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/saadTrip-web
+hooks:
+  AfterInstall:
+    - location: scripts/restart_nginx.sh
+      timeout: 200
+      runas: root
