@@ -33,6 +33,7 @@ class Home extends React.Component {
 			featuredHotels: [],
 			travelerPackages: [],
 			locations: [],
+			experiences: [],
 		}
 		super(props);
 		this.data = {
@@ -97,6 +98,14 @@ class Home extends React.Component {
 			var locations = _.shuffle(response.data);
 			this.setState({
 				locations,
+			})
+		})
+
+		axios.get(`${config.apiPath}/fetch/experience-fetch`)
+		.then((response) => {
+			var experiences = _.shuffle(response.data);
+			this.setState({
+				experiences,
 			})
 		})
 		
@@ -222,10 +231,15 @@ class Home extends React.Component {
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<div className='row'>
 							<div className={style.horizontalScrollContainer}>
-							<Fader width={225} maxWidth={1170} unSlickTill={1024} items=
-								{this.data.visitedExperiences.map((data, index) => {
-									return <VisitedExperiences data={data} />
-								})}></Fader>
+							{/* <Fader width={225} maxWidth={1170} unSlickTill={1024} items= */}
+								{this.state.experiences.map((data, index) => {
+									return index <=9 ? 
+									<div id='tileCol' className='per-row-5 no-padding-right'>
+									 <VisitedExperiences data={data} />
+									</div>
+									 : null
+								})}
+								{/* ></Fader> */}
 							</div>
 						</div>
 					</div>
