@@ -63,6 +63,7 @@ class ExperiencePage extends React.Component {
 			locations: [],
 			fetchedReviews: [],
 			disableSubmit: [],
+			rating: 5,
 
 		}
 		super(props);
@@ -160,7 +161,6 @@ class ExperiencePage extends React.Component {
 				locations,
 			})
 		})
-		
 	}
 
 	submitReview() {
@@ -225,7 +225,7 @@ class ExperiencePage extends React.Component {
 										<p className='space-4'> <span><i className='fa fa-map-marker fa-lg inline-block'></i></span>{experience.location && experience.location.name || 'location not provided'}</p>
 									</div>
 									<div>
-										<p className='space-4'> <span><i className='fa fa-clock-o fa-lg inline-block'></i></span>+92333-4045050</p>
+										<p className='space-4'> <span><i className='fa fa-clock-o fa-lg inline-block'></i></span>{experience.duration || 'Duration Not Provided'}</p>
 									</div>
 									<div>
 										<p className='space-4'> <span><i className='fa fa-phone fa-lg inline-block'></i></span>+92333-4045050</p>
@@ -249,7 +249,8 @@ class ExperiencePage extends React.Component {
 									<h3>Important Information</h3>
 									<hr className='no-margin space-4'/>
 									<div>
-										<p>Lorem Lorem nulla ullamco voluptate. Anim minim anim occaecat enim amet. Qui magna dolore amet elit mollit aute do veniam aliquip. Officia occaecat exercitation cillum sunt culpa duis minim eu deserunt elit esse non ea. Aliqua amet culpa qui labore voluptate aliquip non mollit duis culpa eiusmod Lorem. Nostrud dolor qui ipsum eu id ea proident aliqua. Ad dolore proident ullamco eiusmod tempor nulla irure ea sunt.</p>
+										<div dangerouslySetInnerHTML={{__html: experience.important_information}}></div>
+										{/* <p>Lorem Lorem nulla ullamco voluptate. Anim minim anim occaecat enim amet. Qui magna dolore amet elit mollit aute do veniam aliquip. Officia occaecat exercitation cillum sunt culpa duis minim eu deserunt elit esse non ea. Aliqua amet culpa qui labore voluptate aliquip non mollit duis culpa eiusmod Lorem. Nostrud dolor qui ipsum eu id ea proident aliqua. Ad dolore proident ullamco eiusmod tempor nulla irure ea sunt.</p> */}
 									</div>
 								</div>
 							</div>
@@ -264,8 +265,8 @@ class ExperiencePage extends React.Component {
 							</div>
 							<div className='col-sm-8 user-photos-wrapper'>
 									{
-										images.map((image) => {
-										return	<div className='col-sm-4 space-4'>
+										experience.guest_gallery.map((image) => {
+										return	<div className='col-sm-4 space-4 no-padding-right'>
 												<img width='100%' height='300px' src={image.url} alt="user photos"/>
 											</div>
 										})
