@@ -21,6 +21,7 @@
 @import '_segment';
 
 body {
+  font-size: 16px;
   & .swal2-container {
     z-index: 10000;
   }
