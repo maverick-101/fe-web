@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Card, CardText, CardBody, CardTitle, CardImg, Button} from 'reactstrap';
-import { convertPrice } from 'helpers'
+import { convertPrice, imgUpload } from 'helpers'
+import placeholder from 'no-image.jpg'
+
 
 import style from './style.css'
 
@@ -11,7 +13,7 @@ class Tile extends React.Component {
       <a href={`/hotel/${this.props.data.id}`}>
       <div className='space-4 text-left'> 
         <div className={`${style.hotelPackagesTile}`}>
-          <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.url})` }}>
+          <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${imgUpload(this.props.data.url, 'h_400') || placeholder})` }}>
           </div>
           {/* <p className={style.tileText}>{this.props.data.name}</p> */}
           <div className={`clearfix ${style.hotelPackagesText}`}>
