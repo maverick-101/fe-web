@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import style from './style.css'
 import placeholder from 'no-image.jpg';
+import StarRatings from 'react-star-ratings';
 
 class Tile extends React.Component {
   constructor(props){
@@ -22,12 +23,20 @@ class Tile extends React.Component {
               <h5 style={{marginBottom: '6px'}}>{this.props.data.experience_title}</h5>
               {/* <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p> */}
               <p style={{marginBottom: '6px'}}>
-                {this.props.data.star_rating} &nbsp;
-                <i style={{color: '#00b3b3'}} className="fa fa-star"></i>
-                <i style={{color: '#00b3b3'}} className="fa fa-star"></i>
-                <i style={{color: '#00b3b3'}} className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
+                {this.props.data.star_rating}&nbsp;Stars
+                <div>
+                <StarRatings
+                rating={this.props.data.star_rating}
+                starRatedColor="#e3530d"
+                numberOfStars={5}
+                starDimension="20px"
+                starSpacing="0px"
+                svgIconViewBox={'0 0 20 20'}
+                gradientPathName={window.location.pathname}
+                svgIconPath="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218"
+                name='rating'
+              />
+              </div>
               </p>
             </div>
           </div>
