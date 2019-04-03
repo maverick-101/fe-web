@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import style from './style.css'
 import placeholder from 'no-image.jpg';
 import StarRatings from 'react-star-ratings';
+import { imgUpload } from '../../helpers'
+
 
 class Tile extends React.Component {
   constructor(props){
@@ -16,7 +18,7 @@ class Tile extends React.Component {
       <a href={`/experience/${this.props.data.ID}`}>
       <div className='text-left' style={{marginBottom: '30px', width:'100%', minWidth: '200px'}}>
         <div className={`${style.experiencePackagesTile}`}>
-          <div className={`bgDiv ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? this.props.data.gallery[0].url : placeholder })` }}>
+          <div className={`bgDiv ${style.experiencePackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? imgUpload(this.props.data.gallery[0].url, 'h_400') : placeholder })` }}>
           </div>
           <div className={style.experiencePackagesText}>
             <div className='col'>
