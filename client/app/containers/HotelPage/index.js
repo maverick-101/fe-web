@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import HotelContactCard from 'components/HotelContactCard';
 import config from 'config'
 import axios from 'axios';
-import { sanitize, _amenities, checkForHttps } from 'helpers';
+import { sanitize, _amenities, checkForHttps, imgUpload } from 'helpers';
 import Lightbox from 'react-image-lightbox'
 import StarRatings from 'react-star-ratings';
 import swal from 'sweetalert2';
@@ -175,8 +175,8 @@ class HotelPage extends React.Component {
       })
       var hotelGallery = hotel.gallery.map((image) => {
         return {
-          original: image.url,
-          thumbnail: image.url,
+          original: imgUpload(image.url, 'h_750'),
+          thumbnail: imgUpload(image.url, 'h_100'),
         }
       })
       this.setState({
@@ -192,7 +192,7 @@ class HotelPage extends React.Component {
 				return {
 					name: item.name,
 					id: item.ID,
-					url: item.gallery && item.gallery.length ? item.gallery[0].url : null
+					url: item.gallery && item.gallery.length ? imgUpload(item.gallery[0].url, 'h_400') : null
 				}
 			})
 			this.setState({
@@ -286,7 +286,7 @@ class HotelPage extends React.Component {
             <div className={`row ${style.amenitiesScroll}`}>
             {hotelImages.map((image) => {
               return <div onClick={() => { this.openLightbox(image._id) }} className={`col-sm-3 inline-block space-4 ${style.amenityDiv}`}>
-                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.Resources[0].url})` }}></div>
+                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${imgUpload(image.Resources[0].url, 'h_400')})` }}></div>
                 <p className={style.tileCaption} style={{margin: '10px, 0'}}>{humanize(image._id)}</p>
               </div>
             })}
