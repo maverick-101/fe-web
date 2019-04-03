@@ -72,7 +72,7 @@ class LocationPage extends React.Component {
 	}
 
 	componentDidMount() {
-
+		this.props.done();
 		// axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
 		// .then((response) => {
 		// 	var travelerPackages = response.data;
