@@ -9,6 +9,7 @@ import VisitedExperiences from 'components/VisitedExperiences';
 import Fader from 'components/Fader';
 import axios from 'axios';
 import config from 'config';
+import _ from 'lodash';
 
 import { DateRangePicker, isInclusivelyAfterDay, isInclusivelyBeforerDay } from 'react-dates';
 
@@ -27,6 +28,7 @@ class LocationPage extends React.Component {
 			location: {},
 			travelerPackages: [],
 			hotelPackages: [],
+			experiences: [],
     }
 		this.data = {
 			travelerPackages: [
@@ -104,9 +106,17 @@ class LocationPage extends React.Component {
 
 		axios.get(`${config.apiPath}/fetchByLocation/packagePage-fetchByLocation/${this.props.params.locationId}`)
 		.then((response) => {
-			var travelerPackages = response.data;
+			var travelerPackages = _.shuffle(response.data);
 			this.setState({
 				travelerPackages,
+			})
+		})
+
+		axios.get(`${config.apiPath}/fetch/experience-fetch`)
+		.then((response) => {
+			var experiences = _.shuffle(response.data);
+			this.setState({
+				experiences,
 			})
 		})
 
@@ -118,7 +128,7 @@ class LocationPage extends React.Component {
 			})
 				axios.get(`${config.apiPath}/fetchByCity/location-fetchByCity/${location.city_id}`)
 				.then((locationResponse) => {
-					var locations = locationResponse.data;
+					var locations = _.shuffle(locationResponse.data);
 					this.setState({
 						locations,
 					})
@@ -201,8 +211,8 @@ class LocationPage extends React.Component {
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
 						<div className='horizontalScrollContainer row'>
 						{/* <Fader width={250} maxWidth={1280} unSlickTill={1024} items= */}
-								{this.data.visitedExperiences.map((data, index) => {
-									return <div id='tileCol' className='per-row-5'>
+								{this.state.experiences.map((data, index) => {
+								return <div id='tileCol' className='per-row-5 no-padding-right'>
 									<VisitedExperiences data={data} />
 									</div>
 						})}
