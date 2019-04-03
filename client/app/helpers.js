@@ -143,7 +143,7 @@ export function imgUpload(url, type, watermark = true) {
     if (a[0] != url) {
       var a = url.split('/upload');
       if (watermark) {
-      var b = a[0] + '/upload/o_40,h_0.15,l_gwm,fl_relative/h_500,q_auto,f_auto' + a[1];
+      var b = a[0] + '/upload/h_500,q_auto,f_auto' + a[1];
       }
       else {
         var b = a[0] + '/upload/h_500,q_auto,f_auto' + a[1];
@@ -158,7 +158,7 @@ export function imgUpload(url, type, watermark = true) {
     if (a[0] != url) {
       var a = url.split('/upload');
       if (watermark) {
-        var b = a[0] + '/upload/o_40,h_0.15,l_gwm,fl_relative/h_100,q_auto,f_auto' + a[1];
+        var b = a[0] + '/upload/h_100,q_auto,f_auto' + a[1];
         }
       else {
         var b = a[0] + '/upload/h_100,q_auto,f_auto' + a[1];
@@ -174,7 +174,7 @@ export function imgUpload(url, type, watermark = true) {
     if (a[0] != url) {
       var a = url.split('/upload');
       if (watermark) {
-        var b = a[0] + '/upload/o_40,h_0.15,l_gwm,fl_relative/h_250,q_auto,f_auto' + a[1];
+        var b = a[0] + '/upload/h_250,q_auto,f_auto' + a[1];
         }
       else {
         var b = a[0] + '/upload/h_250,q_auto,f_auto' + a[1];
@@ -190,7 +190,7 @@ export function imgUpload(url, type, watermark = true) {
     if (a[0] != url) {
       var a = url.split('/upload');
       if (watermark) {
-        var b = a[0] + '/upload/o_40,h_0.15,l_gwm,fl_relative/h_750,q_auto,f_auto' + a[1];
+        var b = a[0] + '/upload/h_750,q_auto,f_auto' + a[1];
         }
       else {
         var b = a[0] + '/upload/h_750,q_auto,f_auto' + a[1];
@@ -206,7 +206,7 @@ export function imgUpload(url, type, watermark = true) {
     if (a[0] != url) {
       var a = url.split('/upload');
       if (watermark) {
-        var b = a[0] + '/upload/o_40,h_0.15,l_gwm,fl_relative/h_400,q_auto,f_auto' + a[1];
+        var b = a[0] + '/upload/h_400,q_auto,f_auto' + a[1];
         }
       else {
         var b = a[0] + '/upload/h_400,q_auto,f_auto' + a[1];
@@ -222,7 +222,7 @@ export function imgUpload(url, type, watermark = true) {
     if (a[0] != url) {
       var a = url.split('/upload');
       if (watermark) {
-        var b = a[0] + '/upload/o_40,h_0.15,l_gwm,fl_relative/h_600,q_auto,f_auto' + a[1];
+        var b = a[0] + '/upload/h_600,q_auto,f_auto' + a[1];
         }
       else {
         var b = a[0] + '/upload/h_600,q_auto,f_auto' + a[1];
@@ -238,7 +238,7 @@ export function imgUpload(url, type, watermark = true) {
     if (a[0] != url) {
       var a = url.split('/upload');
       if (watermark) {
-        var b = a[0] + '/upload/o_40,h_0.15,l_gwm,fl_relative/h_2000,q_auto,f_auto' + a[1];
+        var b = a[0] + '/upload/h_2000,q_auto,f_auto' + a[1];
         }
       else {
         var b = a[0] + '/upload/h_2000,q_auto,f_auto' + a[1];
