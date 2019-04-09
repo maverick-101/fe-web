@@ -10,7 +10,7 @@ import StarRatings from 'react-star-ratings';
 import swal from 'sweetalert2';
 import RecommendationTile from 'components/RecommendationTile';
 import style from './style.css'
-import { convertPrice } from 'helpers'
+import { convertPrice, imgUpload } from 'helpers'
 
 class PackagePage extends React.Component {
 	constructor(props) {
@@ -24,58 +24,6 @@ class PackagePage extends React.Component {
       bookingData: {},
       locations: [],
     }
-    
-    // this.weatherWidget = `<iframe id="forecast_embed" frameborder="0" height="245" width="100%" src="https://darksky.net/widget/default/42.360082,-71.05888/us12/en.js?height=500&title=Full Forecast&textColor=333333&bgColor=FFFFFF&skyColor=333&fontFamily=Default&units=us&htColor=333333&ltColor=C7C7C7&displaySum=yes&displayHeader=yes"></iframe>`
-    this.images = [
-      {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
-		this.data = {
-      package: {
-        cover: {
-          url: require('../../../site-specs/sliced-images/hotel-1.jpg')
-        }
-      },
-			hotelCovers: [
-				{name:'3 Days Trip to Hunza Valley', location: 'Hunza Valley', price:3000, url: require('../../../site-specs/sliced-images/hotel-1.jpg')},
-				{name:'5 Days Trip to Shangrila', location: 'Shangrilla Resorts', price:3000, url: require('../../../site-specs/sliced-images/hotel-2.jpg')},
-				{name:'3 Days Trip to Naran Kaghan', location: 'Naran Kaghan Valley', price:3000, url: require('../../../site-specs/sliced-images/hotel-3.jpg')},
-    ],
-      hotelFeatures : [
-          {name:'Naran Valley', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-01.png')},
-          {name:'Saiful Malook', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-02.png')},
-          {name:'Baltit For', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-03.png')},
-          {name:'SeaView Karachi', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-04.png')},
-          {name:'Shahi Qila', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-05.png')},
-          {name:'Lal Qila', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-01.png')},
-          {name:'Lahore Fort', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-02.png')},
-          {name:'Rawalpindi Stadium', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-03.png')},
-          {name:'Bijli Ghar', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-04.png')},
-          {name:'Air Base', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-05.png')},
-      ],
-      hotelAmenities : [
-        {name:'WiFi', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-01.png')},
-        {name:'TV', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-02.png')},
-        {name:'Bathroom Accessories', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-03.png')},
-        {name:'Bedroom Comforts', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-04.png')},
-    ],
-    reviews: [
-      {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-    ],
-		}
   }
 
   loadWeatherWidget(lat, long) {
@@ -154,8 +102,8 @@ class PackagePage extends React.Component {
       var travelPackage = response.data;
       var packageGallery = travelPackage.gallery.map((image) => {
         return {
-          original: image.url,
-          thumbnail: image.url,
+          original: imgUpload(image.url, 'h_750'),
+          thumbnail: imgUpload(image.url, 'h_100'),
         }
       })
       this.setState({
@@ -332,6 +280,21 @@ class PackagePage extends React.Component {
                       )
                     })
                   }
+                  <div className='col-sm-12 row space-4'>
+                    <h3 className={`${style.heading} space-4`}>Recommended Destinations For You</h3>
+                    <div className='row'>
+                      <div className={'horizontalScrollContainer'}>
+                      {/* <Fader width={275} maxWidth={1170} unSlickTill={1024} items= */}
+                        {this.state.locations.map((data, index) => {
+                          return index <= 7 ?
+                          <div id='tileCol' className='col-sm-3'>
+                          <RecommendationTile data={data} />
+                          </div> : null
+                        })}
+                        {/* ></Fader> */}
+                      </div>
+                    </div>
+                  </div>
                   {this.state.fetchedReviews.length ? <div style={{padding: '0 20px'}}>
                     <hr style={{width: '100%'}}/>
                   </div> : null}
@@ -368,21 +331,6 @@ class PackagePage extends React.Component {
             </div>
           </div>
           <hr/>
-          <div className='col-sm-12 row space-4'>
-            <h3 className={`${style.heading} space-4`}>Recommended Destinations For You</h3>
-            <div className='row'>
-							<div className={'horizontalScrollContainer'}>
-							{/* <Fader width={275} maxWidth={1170} unSlickTill={1024} items= */}
-								{this.state.locations.map((data, index) => {
-									return index <= 7 ?
-                  <div id='tileCol' className='col-sm-3'>
-                  <RecommendationTile data={data} />
-                  </div> : null
-								})}
-                {/* ></Fader> */}
-							</div>
-						</div>
-            </div>
         </div>
       </div>
     </div>
