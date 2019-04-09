@@ -13,6 +13,7 @@ import Fader from 'components/Fader'
 import Slider from 'components/Slider'
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import { imgUpload } from 'helpers';
 
 import StarRatings from 'react-star-ratings';
 
@@ -110,10 +111,11 @@ class ExperiencePage extends React.Component {
 			const gallery = experience.gallery;
 			var galleryImages = gallery.map((img) => {
 				return {
-					original: img.url,
-					thumbnail: img.url,
+					original: imgUpload(img.url, 'h_750'),
+					thumbnail: imgUpload(img.url, 'h_100'),
 				}
 			})
+			console.log(galleryImages);
 			this.setState({
 				experience,
 				galleryImages,
@@ -241,7 +243,7 @@ class ExperiencePage extends React.Component {
 									{
 										experience.guest_gallery.map((image) => {
 										return	<div className='col-sm-4 space-4 no-padding-right'>
-												<img width='100%' height='300px' src={image.url} alt="user photos"/>
+												<img width='100%' height='300px' src={imgUpload(image.url, 'h_400')} alt="user photos"/>
 											</div>
 										})
 									}
