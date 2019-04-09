@@ -36,18 +36,6 @@ class Home extends React.Component {
 			experiences: [],
 		}
 		super(props);
-		this.data = {
-		visitedExperiences: [
-			{name:'Chillas Valley', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-01.png')},
-			{name:'Islamabad Expressway', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-02.png')},
-			{name:'Skardu Hotels', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-03.png')},
-			{name:'Banjosa Lake', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-04.png')},
-			{name:'Lahore Fort', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-05.png')},
-			{name:'Islamabad Expressway', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-06.png')},
-			{name:'Skardu Hotels', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-07.png')},
-			{name:'Banjosa Lake', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-08.png')},
-		],
-		}
 	}
 
 	componentDidMount() {
@@ -223,9 +211,8 @@ class Home extends React.Component {
 					</div>
 					: null
 					}
-
 					{
-					this.data.visitedExperiences.length ?
+					this.state.experiences.length ?
 					<div className="container space-4">
 						<h3 className={'no-margin-bottom'}>Top visited experiences</h3>
 						<p className='space-4'>Book activities led by local hosts on your next trip</p>
@@ -245,10 +232,6 @@ class Home extends React.Component {
 					</div>
 					: null
 					}
-
-					{/* <div className="container space-4">
-						<h4 style={{color: 'orange'}}>Show all experiences</h4>
-					</div> */}
 			</div>
 		)
   }
