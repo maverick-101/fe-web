@@ -11,6 +11,8 @@ import HotelPackageTile from 'components/HotelPackageTile';
 import Fader from 'components/Fader';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import Truncate from 'components/Truncate'
+
 
 
 
@@ -221,7 +223,10 @@ class HotelPage extends React.Component {
           <div className='col-sm-8'>
             <h1>{hotel.name}</h1>
             <h4>{hotel.address}</h4>
-            <div dangerouslySetInnerHTML={{__html: sanitize(hotel.description)}}></div>
+            <Truncate lines={10} more={'Show More'} less={'Show Less'}>
+              <div dangerouslySetInnerHTML={{__html: sanitize(hotel.description)}}></div>
+            </Truncate>
+
             {/* <div className='row'>
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>4 guests</h4>
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>1 Bedroom</h4>
