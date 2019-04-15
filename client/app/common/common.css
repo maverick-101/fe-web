@@ -937,6 +937,10 @@ select::-ms-expand {
    }
  }
 
+ .opacity-80{
+  opacity: 80%;
+ }
+
  .tickerBG {
   height: 35px;	
   overflow: hidden;
