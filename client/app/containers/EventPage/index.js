@@ -313,6 +313,7 @@ class HotelPage extends React.Component {
             </div>
           </div> : null
         }
+        <hr/>
           <div className="row space-4">
             <div className="col-sm-12">
               <h2 className='space-4'>Events in your city</h2>
