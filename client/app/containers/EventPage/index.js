@@ -12,10 +12,6 @@ import Fader from 'components/Fader';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import Truncate from 'components/Truncate'
-
-
-
-
 import placeholder from 'no-image.jpg';
 
 import style from './style.css'
@@ -28,21 +24,27 @@ function humanize(str) {
   return frags.join(' ');
 }
 
+function getSizeOfCol(size) {
+ return size == 0 ? null :
+    (
+      size == 1 ? 12 :
+        (
+          size == 2 ? 6 : (
+            size == 3 ? 4 : (
+              size == 4 ? 4 : (
+                size > 4 ? 3 : null
+              )
+            )
+          )
+          ) 
+    )
+}
+
 class HotelPage extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-      // selectedPhotos: [],
-      // lightboxOpen: false,
-      // rating: 5,
-      // disableSubmit: true,
-      // hotelPackages: [],
-      // hotelRooms:[],
-      // hotelImages: [],
-      // bookingData: {},
-      // fetchedReviews: [],
-      // currentImage: 0,
-      // event:{},
+      events: [],
     }
     this.event = {
       coverImage : 'https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=NI4hhrwV'
@@ -136,6 +138,14 @@ class HotelPage extends React.Component {
           event: response.data,
         })
       })
+
+    axios.get(`${config.apiPath}/fetch/event-fetch`)
+    .then((response) => {
+      var events = _.shuffle(response.data);
+      this.setState({
+        events,
+      })
+    })
   }
   
   // componentDidMount() {
@@ -218,7 +228,7 @@ class HotelPage extends React.Component {
         thumbnail: 'http://lorempixel.com/250/150/nature/3/'
       }
     ]
-    var { event } = this.state;
+    var { event, events } = this.state;
     return (
       <div>
     {    event 
@@ -234,7 +244,7 @@ class HotelPage extends React.Component {
         </div>
         <div className="container space-4">
           <div className="row space-4">
-            <div className='col-sm-8'>
+            <div className='col-sm-12'>
               <h1 className='no-margin-bottom'>{event.title}</h1>
               <h4 className='opacity-80'>{event.Address}</h4>
               <Truncate lines={10} more={'Show More'} less={'Show Less'}>
@@ -264,7 +274,7 @@ class HotelPage extends React.Component {
           <div className='row space-4'>
             <div className="col-sm-12">
               <hr/>
-              <h2 className='space-4'>Event Gallery</h2>
+              <h2 className='space-4'>Event Highlights</h2>
               <div className="row">
               <div className={style.horizontalScrollContainer}>
 							{/* <Fader width={280} maxWidth={1170} unSlickTill={1024} items= */}
@@ -280,126 +290,53 @@ class HotelPage extends React.Component {
               </div>
             </div>
           </div>
-        </div>
           <hr/>
-        <div className='row space-4'>
-            {/* <div className='col-sm-12'>
-              <h1>Amenities</h1>
-              <div className={`row ${style.amenitiesScroll}`}>
-                {this.state.amenityNames.map((name) => {
-                  return <div className={`${style.amenityDiv} col-sm-2 inline-block space-4`}>
-                    <div className={`bgDivContain space-2 ${style.amenityImage}`} style={{background:`url(${_amenities[name].image})` }}></div>
-                    <h5 className={'ellipses no-margin'} style={{margin: '10px, 0'}}>{humanize(name)}</h5>
-                  </div>
-                })}
+          <div className='row space-4'>
+            <div className='col-sm-12'>
+              <h2 className='space-4'>Why Visit</h2>
+              <div dangerouslySetInnerHTML={{__html: sanitize(event.why_list)}}></div>
+            </div>
+          </div>
+          <hr/>
+          {
+            event.event_videos.length ? 
+          <div className='row space-4'>
+            <div className='col-sm-12'>
+            <h2 className='space-4'>Event Videos</h2>
+          {
+            event.event_videos.map((videoUrl, index) => {
+              return <div className={`no-padding col-sm-${getSizeOfCol(event.event_videos.length)}`}>
+                <iframe width="100%" height="300px" src="https://www.youtube.com/embed/yaOPMLfitMc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-                {/* <h4 className='orange'>Show all 9 amenities</h4> */}
-            </div> */}
-      </div>
-          <hr/>
-      <div className='row space-4'>
-            {/* <div className='col-sm-12'>
-              <h1>Location</h1>
-              <div className='row'>
-                <div className='col-sm-12'>
-                  <iframe width="100%" height="500" id="gmap_canvas" src={`https://www.google.com/maps/embed/v1/view?zoom=17&center=${hotel.latitude},${hotel.longitude}&key=AIzaSyC9eODMR7SDxA33WxFzyR1-r7ETFx5PaLw`} frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                </div>
-              </div>
-            </div> */}
-      </div>
-          <hr/>
-      <div className='row space-8'>
-            {/* <div className='col-sm-12 space-4'>
-              <h2>Recommended Hotels For You</h2>
-              <div className='row'>
-                  <div className={style.horizontalScrollContainer}>
-                  {
-                    this.state.hotelPackages.map((data, index) => {
-                      return index <=7 ? <div id='tileCol' className='col-sm-3 no-padding-right'>
-                      <HotelPackageTile data={data} />
-                      </div> : null
-                    })
-                  }
-                  </div>
-              </div>
-            </div> */}
-      </div>
-          <hr/>
-        <div className='row space-4'>
-          {/* <div className='col-sm-12'>
-            <h1>Reviews</h1>
-            <div className='row'>
-              <div className='col-sm-12'>
-                <div className='space-4 clearfix'>
-                {
-                  this.state.fetchedReviews.map((review, index) => {
-                    return (
-                      <div className='col-sm-6 space-2 no-padding'>
-                        <div className='row space-1'>
-                          <div className='vcenter' style={{display: 'inline-block'}}>
-                            <div className={`bgDiv ${style.reviewImage}`} style={{background:`url(${review.user ? review.user.profile_image : placeholder})` }}></div>
-                          </div>
-                          <div style={{display: 'inline-block', paddingTop: '15px'}} className='vcenter'>
-                            <h4 className='no-margin'>{review.user ? review.user.name : (review.name || 'Guest User')}</h4>
-                            <p>5 days ago</p>
-                          </div>
-                          <div style={{display: 'inline-block', paddingTop: '30px'}} className='vcenter'>
-                            <StarRatings
-                              rating={review.rating}
-                              starRatedColor="#e3530d"
-                              numberOfStars={5}
-                              starDimension="20px"
-                              starSpacing="0px"
-                              svgIconViewBox={'0 0 20 20'}
-                              gradientPathName={window.location.pathname}
-                              svgIconPath="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218"
-                              name='rating'
-                            />
-                          </div>
+            })
+          }
+            </div>
+          </div> : null
+        }
+          <div className="row space-4">
+            <div className="col-sm-12">
+              <h2 className='space-4'>Events in your city</h2>
+              <div className='horizontalScrollContainer row'>
+              {
+                events.map((item, index) => {
+                  return (
+                  <div id='tileCol' className='col-sm-3 no-padding-right'>
+                    <a href={`/event/${item.ID}`}>
+                      <div className={style.eventsTileWrapper}>
+                        <div style={{background: `url(${(item.cover_photo && item.cover_photo.url) || placeholder})`}} className={`bgDiv ${style.eventsTile}`}>
                         </div>
-                        <div className='row'>
-                          <div className='col-sm-12'>{review.comment}</div>
-                        </div>
+                        <h5>{item.title}</h5>
+                        <p className='orange'>{item.Address}</p>
                       </div>
-                    )
-                  })
-                }
-                </div>
-                <div style={{padding: '0 20px'}}>
-                  <hr style={{width: '100%'}}/>
-                </div>
-                <div className="">
-                  <h5>Write a Review</h5>
-                  <div className='col-sm-8 no-padding'>
-                    <div className='col-sm-6 no-padding'>
-                      <input ref={r => this.reviewNameInput = r} onChange={(e) => {  this.setState({disableSubmit: e.target.value ? false : true, reviewName: e.target.value}) }} className={style.ratingName} type="text" placeholder="Name"/>
-                    </div>
-                    <textarea ref={r => this.reviewTextarea = r} onChange={(e) => {  this.setState({disableSubmit: e.target.value ? false : true, reviewText: e.target.value}) }} className='hotelRatingInput' placeholder="Tell us about your experience at this place" rows="4" maxlength="500"/>
-                  </div>
-                  <div style={{paddingTop: '60px'}} className='col-sm-4'>
-                    <div style={{height: '85px', padding: '0 15px 15px 15px'}} className='text-center'>
-                      <p>Rate this place</p>
-                      <StarRatings
-                        rating={this.state.rating}
-                        isAggregateRating={true}
-                        starRatedColor="#e3530d"
-                        changeRating={(rating, name) => this.changeRating(rating, name)}
-                        numberOfStars={5}
-                        starDimension="40px"
-                        starSpacing="0px"
-                        svgIconViewBox={'0 0 20 20'}
-                        gradientPathName={window.location.pathname}
-                        svgIconPath="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218"
-                        name='rating'
-                      />
-                    </div>
-                    <button disabled={disableSubmit} style={{height: '35px'}} onClick={() => {this.submitReview()}} className='btn btn-block btn-orange'>Submit Review</button>
-                  </div>
-                </div>
+                    </a>
+                  </div>)
+                })
+              }
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
+      </div>
         </div> : null }
       </div>
 		)
