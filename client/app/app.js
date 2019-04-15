@@ -33,7 +33,6 @@ const PackagePage = Loadable({
 	loader: () => import('containers/PackagePage'),
 	loading: () => null
 });
-
 const ExperiencePage = Loadable({
 	loader: () => import('containers/ExperiencePage'),
 	loading: () => null
