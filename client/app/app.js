@@ -50,6 +50,11 @@ const AllPackages = Loadable({
 	loader: () => import('containers/AllPackages'),
 	loading: () => null
 });
+const AllEvents = Loadable({
+	loader: () => import('containers/AllEvents'),
+	loading: () => null
+});
+
 import config from 'config';
 
 const store = configureStore(browserHistory)
