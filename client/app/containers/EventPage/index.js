@@ -132,6 +132,7 @@ class HotelPage extends React.Component {
   }
 
   componentDidMount() {
+    this.props.done();
     axios.get(`${config.apiPath}/fetchById/event-fetchById/${this.props.params.eventId}`)
       .then((response) => {
         this.setState({
