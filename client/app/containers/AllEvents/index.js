@@ -79,15 +79,17 @@ class AllPackages extends React.Component {
         <div className='horizontalScrollContainer row'>
         {
           events.map((event, index) => {
-            return <div id='tileCol' className='col-sm-3 no-padding-right'>
-							<div className={style.eventsTileWrapper}>
-								<div style={{background: `url(${(event.cover_photo && event.cover_photo.url) || placeholder})`}} className={`bgDiv ${style.eventsTile}`}>
+            return (
+						<div id='tileCol' className='col-sm-3 no-padding-right'>
+							<a href={`/event/${event.ID}`}>
+								<div className={style.eventsTileWrapper}>
+									<div style={{background: `url(${(event.cover_photo && event.cover_photo.url) || placeholder})`}} className={`bgDiv ${style.eventsTile}`}>
+									</div>
+									<h5>{event.title}</h5>
+									<p className='orange'>{event.Address}</p>
 								</div>
-								<h5>{event.title}</h5>
-								<p className='orange'>{event.Address}</p>
-							</div>
-              {/* <TravelerPackageTile data={travelPackage} /> */}
-            </div>
+							</a>
+            </div>)
           })
         }
         </div>
