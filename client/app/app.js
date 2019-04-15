@@ -38,6 +38,10 @@ const ExperiencePage = Loadable({
 	loader: () => import('containers/ExperiencePage'),
 	loading: () => null
 });
+const EventPage = Loadable({
+	loader: () => import('containers/EventPage'),
+	loading: () => null
+});
 const AllHotels = Loadable({
 	loader: () => import('containers/AllHotels'),
 	loading: () => null
