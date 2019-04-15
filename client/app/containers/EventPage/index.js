@@ -306,7 +306,7 @@ class HotelPage extends React.Component {
           {
             event.event_videos.map((videoUrl, index) => {
               return <div className={`no-padding col-sm-${getSizeOfCol(event.event_videos.length)}`}>
-                <iframe width="100%" height="300px" src="https://www.youtube.com/embed/yaOPMLfitMc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="300px" src={`https://www.youtube.com/embed/${videoUrl.url}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             })
           }
