@@ -13,7 +13,7 @@ import sanitizeHtml from 'sanitize-html';
 // }
 
 export function sanitize(html) {
-  return sanitizeHtml(html, {allowedTags: ['p', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'strong']});
+  return sanitizeHtml(html, {allowedTags: ['p', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'strong', 'ul', 'li']});
 }
 
 export function stripHTML(html) {
