@@ -125,6 +125,15 @@ class LocationPage extends React.Component {
 						})}
 						</div>
 						{/* ></Fader> */}
+						{location.video_link && location.video_link.length ? <div className='row space-4'>
+							<div className='col-sm-12'>
+								<h3 className='space-4'>Video</h3>
+								<div>
+									<iframe width="100%" height="500" src={`https://www.youtube.com/embed/${location.video_link[0]}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div> : null
+					}
 					</div>
 					<div className="container space-4">
 						<h4 style={{color: 'orange'}}>Show all experiences</h4>
