@@ -1,3 +1,3 @@
 #!/bin/bash
 service nginx restart
-service codedeployagent restart
+service codedeploy-agent restart
