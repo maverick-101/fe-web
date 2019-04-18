@@ -153,6 +153,17 @@ class PackagePage extends React.Component {
             />
           </div>
         </div>
+        { travelPackage.video_link && travelPackage.video_link.length ?
+        <div className='row space-4'>
+          <div className='col-sm-12'>
+            <h3 className='space-4'>Video</h3>
+            <div>
+              <iframe width="100%" height="500" src={`https://www.youtube.com/embed/${travelPackage.video_link[0]}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div> : null
+        }
+        <hr/>
         <div className='clearfix'>
           <div className={`${style.tab} space-4 clearfix`}>
             <div className={`${style.tabsContainer}`}>
@@ -172,7 +183,7 @@ class PackagePage extends React.Component {
           <hr/>
           <div id='location' className='row space-4'>
             <div className='col-sm-12'>
-              <h1>Location</h1>
+              <h3>Location</h3>
               <div className='row'>
                 <div className='col-sm-12'>
                   <iframe width="100%" height="500" id="gmap_canvas" src={`https://www.google.com/maps/embed/v1/view?zoom=17&center=${travelPackage.latitude},${travelPackage.longitude}&key=AIzaSyC9eODMR7SDxA33WxFzyR1-r7ETFx5PaLw`} frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
@@ -242,6 +253,21 @@ class PackagePage extends React.Component {
             }
           </div>
           <hr/>
+          <div className='col-sm-12 row space-4'>
+            <h3 className={`${style.heading} space-4`}>Recommended Destinations For You</h3>
+            <div className='row'>
+              <div className={'horizontalScrollContainer'}>
+              {/* <Fader width={275} maxWidth={1170} unSlickTill={1024} items= */}
+                {this.state.locations.map((data, index) => {
+                  return index <= 7 ?
+                  <div id='tileCol' className='col-sm-3'>
+                  <RecommendationTile data={data} />
+                  </div> : null
+                })}
+                {/* ></Fader> */}
+              </div>
+            </div>
+          </div>
           <div className='row space-4'>
             <div id='reviews' className='col-sm-12'>
               <h3 className={`${style.heading} space-4`}>Reviews</h3>
@@ -280,21 +306,6 @@ class PackagePage extends React.Component {
                       )
                     })
                   }
-                  <div className='col-sm-12 row space-4'>
-                    <h3 className={`${style.heading} space-4`}>Recommended Destinations For You</h3>
-                    <div className='row'>
-                      <div className={'horizontalScrollContainer'}>
-                      {/* <Fader width={275} maxWidth={1170} unSlickTill={1024} items= */}
-                        {this.state.locations.map((data, index) => {
-                          return index <= 7 ?
-                          <div id='tileCol' className='col-sm-3'>
-                          <RecommendationTile data={data} />
-                          </div> : null
-                        })}
-                        {/* ></Fader> */}
-                      </div>
-                    </div>
-                  </div>
                   {this.state.fetchedReviews.length ? <div style={{padding: '0 20px'}}>
                     <hr style={{width: '100%'}}/>
                   </div> : null}
