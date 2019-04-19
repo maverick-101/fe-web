@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import HotelContactCard from 'components/HotelContactCard';
 import config from 'config'
 import axios from 'axios';
-import { sanitize, _amenities, checkForHttps } from 'helpers';
+import { sanitize, _amenities, checkForHttps, imgUpload } from 'helpers';
 import Lightbox from 'react-image-lightbox'
 import StarRatings from 'react-star-ratings';
 import swal from 'sweetalert2';
@@ -11,6 +11,8 @@ import HotelPackageTile from 'components/HotelPackageTile';
 import Fader from 'components/Fader';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import Truncate from 'components/Truncate'
+
 
 
 
@@ -41,43 +43,6 @@ class HotelPage extends React.Component {
       fetchedReviews: [],
       currentImage: 0,
     }
-		this.data = {
-			hotelCovers: [
-				{name:'3 Days Trip to Hunza Valley', location: 'Hunza Valley', price:3000, url: require('../../../site-specs/sliced-images/hotel-1.jpg')},
-				{name:'5 Days Trip to Shangrila', location: 'Shangrilla Resorts', price:3000, url: require('../../../site-specs/sliced-images/hotel-2.jpg')},
-				{name:'3 Days Trip to Naran Kaghan', location: 'Naran Kaghan Valley', price:3000, url: require('../../../site-specs/sliced-images/hotel-3.jpg')},
-    ],
-      hotelFeatures : [
-          {name:'TV Lounge', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-01.png')},
-          {name:'Main Hall', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-02.png')},
-          {name:'Gallery Sitting', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-03.png')},
-          {name:'Hotel Parking', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-04.png')},
-          {name:'Executive Rooms', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-05.png')},
-          {name:'TV Lounge', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-01.png')},
-          {name:'Main Hall', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-02.png')},
-          {name:'Gallery Sitting', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-03.png')},
-          {name:'Hotel Parking', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-04.png')},
-          {name:'Lobby', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-05.png')},
-      ],
-      hotelAmenities : [
-        {name:'WiFi', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-01.png')},
-        {name:'TV', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-02.png')},
-        {name:'Bathroom Accessories', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-03.png')},
-        {name:'Bedroom Comforts', reviews: '684 reviews', url: require('../../../site-specs/sliced-images/recommended-thumb-04.png')},
-    ],
-    reviews: [
-      {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-      // {user: 'Yasser Zubair', image: require('../../../site-specs/sliced-images/recommended-thumb-01.png'), comments: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
-    ],
-		}
   }
 
   openLightbox(type) {
@@ -175,8 +140,8 @@ class HotelPage extends React.Component {
       })
       var hotelGallery = hotel.gallery.map((image) => {
         return {
-          original: image.url,
-          thumbnail: image.url,
+          original: imgUpload(image.url, 'h_750'),
+          thumbnail: imgUpload(image.url, 'h_100'),
         }
       })
       this.setState({
@@ -192,7 +157,7 @@ class HotelPage extends React.Component {
 				return {
 					name: item.name,
 					id: item.ID,
-					url: item.gallery && item.gallery.length ? item.gallery[0].url : null
+					url: item.gallery && item.gallery.length ? imgUpload(item.gallery[0].url, 'h_400') : null
 				}
 			})
 			this.setState({
@@ -258,7 +223,10 @@ class HotelPage extends React.Component {
           <div className='col-sm-8'>
             <h1>{hotel.name}</h1>
             <h4>{hotel.address}</h4>
-            <div dangerouslySetInnerHTML={{__html: sanitize(hotel.description)}}></div>
+            <Truncate lines={10} more={'Show More'} less={'Show Less'}>
+              <div dangerouslySetInnerHTML={{__html: sanitize(hotel.description)}}></div>
+            </Truncate>
+
             {/* <div className='row'>
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>4 guests</h4>
               <h4 style={{display: 'inline-block', marginLeft: '20px'}}>1 Bedroom</h4>
@@ -286,7 +254,7 @@ class HotelPage extends React.Component {
             <div className={`row ${style.amenitiesScroll}`}>
             {hotelImages.map((image) => {
               return <div onClick={() => { this.openLightbox(image._id) }} className={`col-sm-3 inline-block space-4 ${style.amenityDiv}`}>
-                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${image.Resources[0].url})` }}></div>
+                <div className={`bgDiv ${style.featureImage}`} style={{background:`url(${imgUpload(image.Resources[0].url, 'h_400')})` }}></div>
                 <p className={style.tileCaption} style={{margin: '10px, 0'}}>{humanize(image._id)}</p>
               </div>
             })}
@@ -309,6 +277,17 @@ class HotelPage extends React.Component {
                 {/* <h4 className='orange'>Show all 9 amenities</h4> */}
             </div>
           </div>
+          <hr/>
+          { hotel.video_link && hotel.video_link.length ?
+          <div className='row space-4'>
+            <div className='col-sm-12'>
+              <h1>Video</h1>
+              <div>
+                <iframe width="100%" height="500" src={`https://www.youtube.com/embed/${hotel.video_link[0]}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div> : null
+        }
           <hr/>
           <div className='row space-4'>
             <div className='col-sm-12'>

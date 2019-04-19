@@ -13,6 +13,7 @@ import Fader from 'components/Fader'
 import Slider from 'components/Slider'
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import { imgUpload } from 'helpers';
 
 import StarRatings from 'react-star-ratings';
 
@@ -67,32 +68,6 @@ class ExperiencePage extends React.Component {
 
 		}
 		super(props);
-		this.data = {
-		visitedExperiences: [
-			{name:'Chillas Valley', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-01.png')},
-			{name:'Islamabad Expressway', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-02.png')},
-			{name:'Skardu Hotels', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-03.png')},
-			{name:'Banjosa Lake', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-04.png')},
-			{name:'Lahore Fort', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-05.png')},
-			{name:'Islamabad Expressway', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-06.png')},
-			{name:'Skardu Hotels', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-07.png')},
-			{name:'Banjosa Lake', reviews: '684 reviews', rating: '3.5', url: require('../../../site-specs/sliced-images/top-visited-08.png')},
-		],
-		}
-		this.images = [
-      {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
 	}
 
 	componentDidMount() {
@@ -136,10 +111,11 @@ class ExperiencePage extends React.Component {
 			const gallery = experience.gallery;
 			var galleryImages = gallery.map((img) => {
 				return {
-					original: img.url,
-					thumbnail: img.url,
+					original: imgUpload(img.url, 'h_750'),
+					thumbnail: imgUpload(img.url, 'h_100'),
 				}
 			})
+			console.log(galleryImages);
 			this.setState({
 				experience,
 				galleryImages,
@@ -267,7 +243,7 @@ class ExperiencePage extends React.Component {
 									{
 										experience.guest_gallery.map((image) => {
 										return	<div className='col-sm-4 space-4 no-padding-right'>
-												<img width='100%' height='300px' src={image.url} alt="user photos"/>
+												<img width='100%' height='300px' src={imgUpload(image.url, 'h_400')} alt="user photos"/>
 											</div>
 										})
 									}

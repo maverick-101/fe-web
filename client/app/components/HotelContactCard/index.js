@@ -28,8 +28,6 @@ export default class HotelContactCard extends React.Component {
 			focusedInput: {},
 			showConfirmationModal: false,
 		}
-		this.data = {
-  } 
 }
 
 onContact() {

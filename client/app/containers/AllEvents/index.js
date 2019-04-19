@@ -9,6 +9,8 @@ import VisitedExperiences from 'components/VisitedExperiences';
 import Select from 'react-select';
 import axios from 'axios';
 import 'react-select/dist/react-select.css'
+import placeholder from 'no-image.jpg';
+
 import Fader from 'components/Fader'
 import Slider from 'components/Slider'
 // import shuffle from 'lodash.shuffle'
@@ -27,12 +29,7 @@ class AllPackages extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null,
-			searchBarArray: [],
-			hotelPackages: [],
-			featuredHotels: [],
-			travelerPackages: [],
-			locations: [],
+			events: [],
 		}
 		super(props);
 	}
@@ -49,11 +46,11 @@ class AllPackages extends React.Component {
 		// 		})
     // })
     
-    axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
+    axios.get(`${config.apiPath}/fetch/event-fetch`)
 		.then((response) => {
-			var travelerPackages = _.shuffle(response.data);
+			var events = _.shuffle(response.data);
 			this.setState({
-				travelerPackages,
+				events,
 			})
 		})
 
@@ -75,16 +72,24 @@ class AllPackages extends React.Component {
 	}
 
 	render() {
-		const { travelerPackages } = this.state;
+		const { events } = this.state;
     return (
       <div className='container'>
-        <h1>All Packages</h1>
+        <h1>All Events</h1>
         <div className='horizontalScrollContainer row'>
         {
-          travelerPackages.map((travelPackage, index) => {
-            return <div id='tileCol' className='col-sm-3 no-padding-right'>
-              <TravelerPackageTile data={travelPackage} />
-            </div>
+          events.map((event, index) => {
+            return (
+						<div id='tileCol' className='col-sm-3 no-padding-right'>
+							<a href={`/event/${event.ID}`}>
+								<div className={style.eventsTileWrapper}>
+									<div style={{background: `url(${(event.cover_photo && event.cover_photo.url) || placeholder})`}} className={`bgDiv ${style.eventsTile}`}>
+									</div>
+									<h5>{event.title}</h5>
+									<p className='orange'>{event.Address}</p>
+								</div>
+							</a>
+            </div>)
           })
         }
         </div>

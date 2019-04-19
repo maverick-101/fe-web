@@ -33,9 +33,12 @@ const PackagePage = Loadable({
 	loader: () => import('containers/PackagePage'),
 	loading: () => null
 });
-
 const ExperiencePage = Loadable({
 	loader: () => import('containers/ExperiencePage'),
+	loading: () => null
+});
+const EventPage = Loadable({
+	loader: () => import('containers/EventPage'),
 	loading: () => null
 });
 const AllHotels = Loadable({
@@ -46,6 +49,11 @@ const AllPackages = Loadable({
 	loader: () => import('containers/AllPackages'),
 	loading: () => null
 });
+const AllEvents = Loadable({
+	loader: () => import('containers/AllEvents'),
+	loading: () => null
+});
+
 import config from 'config';
 
 const store = configureStore(browserHistory)
@@ -71,9 +79,10 @@ ReactDOM.hydrate(<Provider store={store}>
 				<Route path="/location/:locationId" components={{full: LocationPage}}/>
 				<Route path="/package/:packageId" components={{full: PackagePage}}/>
 				<Route path="/experience/:experienceId" components={{full: ExperiencePage}}/>
-				<Route path="/experience/:experienceId" components={{full: ExperiencePage}}/>
+				<Route path="/event/:eventId" components={{full: EventPage}}/>
 				<Route path="/hotels" components={{full: AllHotels}}/>
 				<Route path="/packages" components={{full: AllPackages}}/>
+				<Route path="/events" components={{full: AllEvents}}/>
 			</Route>
 		</Router>
 	</Provider>,
