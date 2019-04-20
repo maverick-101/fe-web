@@ -15,7 +15,7 @@ class Tile extends React.Component {
     return (  
       <a href={`/hotel/${this.props.data.ID}`}>
       <div style={{width: this.props.width}} className='inline-block text-left space-4'>
-        <div style={{background: `url(${this.props.data.gallery.length ? imgUpload(this.props.data.gallery[0].url, 'h_400') : placeholder})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
+        <div style={{background: `url(${this.props.data.gallery && this.props.data.gallery.length ? imgUpload(this.props.data.gallery[0].url, 'h_400') : placeholder})`}} className={`${style.featuredTile} ${style.bgDiv}`}>
           <div className={`${style.featuredTilePriceDiv}`}>
             <p className={'no-padding no-margin'}>
             <p style={{fontSize:'11px', color:'white', display: 'inline-block'}} className={'no-padding no-margin'}>RS.</p>

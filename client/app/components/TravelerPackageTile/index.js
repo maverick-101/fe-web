@@ -12,7 +12,7 @@ class Tile extends React.Component {
       <a href={`/package/${this.props.data.ID}`}>
       <div style={{width:'100%'}} className='space-4 inline-block'>
         <div className={`${style.guidePackagesTile}`}>
-          <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.gallery.length ? imgUpload(this.props.data.gallery[0].url, 'h_400') : placeholder })` }}>
+          <div className={`bgDiv ${style.guidePackagesImg}`} style={{background:`url(${this.props.data.gallery && this.props.data.gallery.length ? imgUpload(this.props.data.gallery[0].url, 'h_400') : placeholder })` }}>
           </div>
           <div style={{position: 'relative'}}>
             <p className={`ellipses ${style.tileText}`}>{this.props.data.name}</p>
