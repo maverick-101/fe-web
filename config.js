@@ -8,7 +8,7 @@ const config = {
     lockScreen: false,
   },
   production: {
-    apiPath: 'saaditrips.com/api',
+    apiPath: 'https://saaditrips.com/api',
     domain: 'saaditrips.com',
     revivePath: '',
     lockScreen: false,
