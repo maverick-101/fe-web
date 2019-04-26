@@ -80,14 +80,14 @@ hideModal() {
 					{
 						this.props.type == 'hotel' ? 
 					<div>
-					({
+					{
 							this.props.rooms ? this.props.rooms.map((room, index) => {
 							return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-6'>
 								<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery[0].url}></RoomTile>
 							</div>
 						})
 						: <p>No Rooms Found</p>
-					}) </div>
+					} </div>
 					 : null
 					 }
 				<div className='col-sm-12'>
