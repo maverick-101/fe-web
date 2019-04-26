@@ -278,7 +278,7 @@ class HotelPage extends React.Component {
             </div>
           </div>
           <hr/>
-          { hotel.video_link && hotel.video_link.length ?
+          { hotel.video_link && hotel.video_link.length && hotel.video_link[0] !== 'null'?
           <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Video</h1>
