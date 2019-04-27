@@ -285,10 +285,10 @@ class HotelPage extends React.Component {
               <div>
                 <iframe width="100%" height="500" src={`https://www.youtube.com/embed/${hotel.video_link[0]}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
+              <hr/>
             </div>
           </div> : null
         }
-          <hr/>
           <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Location</h1>
