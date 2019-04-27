@@ -3,6 +3,7 @@ import moment from 'moment'
 import { connect } from 'react-redux'
 import RoomTile from './RoomTile'
 import Modal from 'react-bootstrap/lib/Modal'
+import placeholder from 'no-image.jpg';
 
 import StarRatings from 'react-star-ratings';
 
@@ -84,7 +85,7 @@ hideModal() {
 					{
 							this.props.rooms ? this.props.rooms.map((room, index) => {
 							return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-6'>
-								<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery[0].url}></RoomTile>
+								<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery && room.gallery.length ? room.gallery[0].url : placeholder}></RoomTile>
 							</div>
 						})
 						: <p>No Rooms Found</p>
