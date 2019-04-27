@@ -153,7 +153,7 @@ class PackagePage extends React.Component {
             />
           </div>
         </div>
-        { travelPackage.video_link && travelPackage.video_link.length ?
+        { travelPackage.video_link && travelPackage.video_link.length && travelPackage.video_link[0] !== 'null' ?
         <div className='row space-4'>
           <div className='col-sm-12'>
             <h3 className='space-4'>Video</h3>
