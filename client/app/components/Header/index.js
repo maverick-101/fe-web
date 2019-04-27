@@ -72,7 +72,7 @@ class Header extends React.Component {
 	loginUser(user) {
 		this.props.dispatch(logIn(user))
 			.then((user) => {
-				this.props.dispatch(getCurrentUser());
+				// this.props.dispatch(getCurrentUser());
 				return this.props.dispatch(closeLogin());
 			})
 	}
@@ -390,7 +390,7 @@ class Header extends React.Component {
     window.location.reload()
   }
 	componentDidMount () {
-		this.props.dispatch(setCurrencyRates());
+		// this.props.dispatch(setCurrencyRates());
 		if (document.body.offsetWidth < 768 && (window.location.pathname != '/')) {
 			document.getElementById('appHeader').style.transition = "ease 0.5s";
 			document.getElementById('appHeader').style.transform = "translate3d(0, 0, 0)";
