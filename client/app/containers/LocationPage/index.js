@@ -125,7 +125,7 @@ class LocationPage extends React.Component {
 						})}
 						</div>
 						{/* ></Fader> */}
-						{location.video_link && location.video_link.length ? <div className='row space-4'>
+						{location.video_link && location.video_link.length && location.video_link[0] !== 'null' ? <div className='row space-4'>
 							<div className='col-sm-12'>
 								<h3 className='space-4'>Video</h3>
 								<div>
