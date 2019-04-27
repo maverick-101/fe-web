@@ -76,9 +76,10 @@ hideModal() {
 			</Modal.Header>
 			<Modal.Body>
 				<div className='clearfix'>
-					<h1 className='col-sm-12'>Available Rooms</h1>
-					{
+				{
 						this.props.type == 'hotel' ? 
+					<div>
+					<h1 className='col-sm-12'>Available Rooms</h1>
 					<div>
 					{
 							this.props.rooms ? this.props.rooms.map((room, index) => {
@@ -88,8 +89,9 @@ hideModal() {
 						})
 						: <p>No Rooms Found</p>
 					} </div>
-					 : null
-					 }
+					 </div>
+					: null
+				}
 				<div className='col-sm-12'>
 					<h1 className=''>Contact Information</h1>
 					<form onSubmit={(event)=> {event.preventDefault(); this.props.submitBooking(event)}} >
