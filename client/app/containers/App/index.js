@@ -114,14 +114,14 @@ class App extends React.Component {
 			})
 			this.resize();
 		}
-		this.props.getCurrentUser()
-			.then(response => {
-				// console.log(response)
-				if(response.screen_lock && config.lockScreen) {
-					this.props.lockScreen()
-				}
-				this.setState({done: true})
-			})
+		// this.props.getCurrentUser()
+		// 	.then(response => {
+		// 		// console.log(response)
+		// 		if(response.screen_lock && config.lockScreen) {
+		// 			this.props.lockScreen()
+		// 		}
+		// 		this.setState({done: true})
+		// 	})
 		// this.refs.stickyRefApp ?
 		// 	(this.refs.stickyRefApp.children[0].style.position = "relative",
 		// 	this.refs.stickyRefApp.children[0].style.height = "100%")
@@ -129,6 +129,7 @@ class App extends React.Component {
 		if (window.location.pathname === '/') {
 			this.setState({ showFooterLinks: true });
 		}
+		this.setState({done: true})
 	}
 	resize() {
 		let isMobile = (window.innerWidth <= 760);
