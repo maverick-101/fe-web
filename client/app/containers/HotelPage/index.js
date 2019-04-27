@@ -248,7 +248,7 @@ class HotelPage extends React.Component {
             />
           </div>
         </div>
-        <div className='row space-4'>
+        {hotelImages && hotelImages.length ? <div className='row space-4'>
           <div className='col-sm-12'>
             <h1>Tour this hotel</h1>
             <div className={`row ${style.amenitiesScroll}`}>
@@ -260,10 +260,12 @@ class HotelPage extends React.Component {
             })}
               </div>
               {/* <h4 className='orange'>Explore all 20 photos</h4> */}
+
+            <hr/>
             </div>
-          </div>
-          <hr/>
-          <div className='row space-4'>
+          </div> : null}
+          {
+            this.state.amenityNames && this.state.amenityNames.length ? <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Amenities</h1>
               <div className={`row ${style.amenitiesScroll}`}>
@@ -274,10 +276,11 @@ class HotelPage extends React.Component {
                   </div>
                 })}
               </div>
+              <hr/>
                 {/* <h4 className='orange'>Show all 9 amenities</h4> */}
             </div>
-          </div>
-          <hr/>
+          </div> : null
+        }
           { hotel.video_link && hotel.video_link.length ?
           <div className='row space-4'>
             <div className='col-sm-12'>
@@ -326,42 +329,44 @@ class HotelPage extends React.Component {
               <div className='row'>
                 <div className='col-sm-12'>
                   <div className='space-4 clearfix'>
-                  {
-                    this.state.fetchedReviews.map((review, index) => {
-                      return (
-                        <div className='col-sm-6 space-2 no-padding'>
-                          <div className='row space-1'>
-                            <div className='vcenter' style={{display: 'inline-block'}}>
-                              <div className={`bgDiv ${style.reviewImage}`} style={{background:`url(${review.user ? review.user.profile_image : placeholder})` }}></div>
+                  {this.state.fetchedReviews && this.state.fetchedReviews.length ? <div>
+                    {
+                      this.state.fetchedReviews.map((review, index) => {
+                        return (
+                          <div className='col-sm-6 space-2 no-padding'>
+                            <div className='row space-1'>
+                              <div className='vcenter' style={{display: 'inline-block'}}>
+                                <div className={`bgDiv ${style.reviewImage}`} style={{background:`url(${review.user ? review.user.profile_image : placeholder})` }}></div>
+                              </div>
+                              <div style={{display: 'inline-block', paddingTop: '15px'}} className='vcenter'>
+                                <h4 className='no-margin'>{review.user ? review.user.name : (review.name || 'Guest User')}</h4>
+                                <p>5 days ago</p>
+                              </div>
+                              <div style={{display: 'inline-block', paddingTop: '30px'}} className='vcenter'>
+                                <StarRatings
+                                  rating={review.rating}
+                                  starRatedColor="#e3530d"
+                                  numberOfStars={5}
+                                  starDimension="20px"
+                                  starSpacing="0px"
+                                  svgIconViewBox={'0 0 20 20'}
+                                  gradientPathName={window.location.pathname}
+                                  svgIconPath="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218"
+                                  name='rating'
+                                />
+                              </div>
                             </div>
-                            <div style={{display: 'inline-block', paddingTop: '15px'}} className='vcenter'>
-                              <h4 className='no-margin'>{review.user ? review.user.name : (review.name || 'Guest User')}</h4>
-                              <p>5 days ago</p>
-                            </div>
-                            <div style={{display: 'inline-block', paddingTop: '30px'}} className='vcenter'>
-                              <StarRatings
-                                rating={review.rating}
-                                starRatedColor="#e3530d"
-                                numberOfStars={5}
-                                starDimension="20px"
-                                starSpacing="0px"
-                                svgIconViewBox={'0 0 20 20'}
-                                gradientPathName={window.location.pathname}
-                                svgIconPath="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218"
-                                name='rating'
-                              />
+                            <div className='row'>
+                              <div className='col-sm-12'>{review.comment}</div>
                             </div>
                           </div>
-                          <div className='row'>
-                            <div className='col-sm-12'>{review.comment}</div>
-                          </div>
-                        </div>
-                      )
-                    })
-                  }
-                  </div>
-                  <div style={{padding: '0 20px'}}>
-                    <hr style={{width: '100%'}}/>
+                        )
+                      })
+                    }
+                    </div> :null}
+                    <div>
+                      <hr style={{width: '100%'}}/>
+                    </div>
                   </div>
                   <div className="">
                    <h5>Write a Review</h5>
