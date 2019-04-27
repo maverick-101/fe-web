@@ -169,8 +169,9 @@ class PackagePage extends React.Component {
             <div className={`${style.tabsContainer}`}>
               <p onClick={() => {this.scrollToDiv('description')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'description' ? style.activeItem : null}`}>Description</p>
               <p onClick={() => {this.scrollToDiv('location')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'location' ? style.activeItem : null}`}>Location</p>
-              <p onClick={() => {this.scrollToDiv('guide')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'guide' ? style.activeItem : null}`}>Travel Guide</p>
-              <p onClick={() => {this.scrollToDiv('pricing')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'reviews' ? style.activeItem : null}`}>Pricing</p>
+              {this.state.travelPackage.travel_modes && this.state.travelPackage.travel_modes.length ? <p onClick={() => {this.scrollToDiv('guide')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'guide' ? style.activeItem : null}`}>Travel Guide</p> : null}
+              {this.state.travelPackage.activities && this.state.travelPackage.activities.length ? <p onClick={() => {this.scrollToDiv('activities')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'activities' ? style.activeItem : null}`}>Activities</p> : null}
+              {this.state.travelPackage.price && this.state.travelPackage.price.length ? <p onClick={() => {this.scrollToDiv('pricing')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'pricing' ? style.activeItem : null}`}>Pricing</p> : null}
               <p onClick={() => {this.scrollToDiv('reviews')}} className={`inline-block ${style.tabItem} ${this.state.activeItem == 'reviews' ? style.activeItem : null}`}>Reviews</p>
             </div>
           </div>
@@ -192,7 +193,7 @@ class PackagePage extends React.Component {
             </div>
           </div>
           <hr/>
-          <div id='guide' className='space-8'>
+          {this.state.travelPackage.travel_modes && this.state.travelPackage.travel_modes.length ? <div id='guide' className='space-8'>
             <h3 className={`${style.heading} clearfix space-4`}>Travel Guide</h3>
             {
               this.state.travelPackage.travel_modes && this.state.travelPackage.travel_modes.length && this.state.travelPackage.travel_modes.map((mode, index) => {
@@ -213,8 +214,22 @@ class PackagePage extends React.Component {
             <div>
               <hr style={{width: '100%'}}></hr>
             </div>
-          </div>
-          <div id='price' className='space-4'>
+          </div> : null}
+          {this.state.travelPackage.activities && this.state.travelPackage.activities.length ? <div id='activities' className='space-8'>
+            <h3 className={`${style.heading} clearfix space-4`}>Activities</h3>
+            {
+              this.state.travelPackage.activities && this.state.travelPackage.activities.length && this.state.travelPackage.activities.map((activity, index) => {
+                return activity.status ? <div className={`col-sm-12 no-padding clearfix space-4 ${style.travelInfo}`}>
+                  <h4 style={{fontSize: '16px'}} className='text-capitalize'>{activity.activity_type}</h4>
+                  <p>{activity.description}</p>
+                </div> : null
+              })
+            }
+            <div>
+              <hr style={{width: '100%'}}></hr>
+            </div>
+          </div> : null}
+          {this.state.travelPackage.price && this.state.travelPackage.price.length ? <div id='pricing' className='space-4'>
             <h3 className={`${style.heading} space-4`}>Pricing</h3>
             {
               this.state.travelPackage.price && this.state.travelPackage.price.length && this.state.travelPackage.price.map((price, index) => {
@@ -251,7 +266,7 @@ class PackagePage extends React.Component {
                   </div>
               })
             }
-          </div>
+          </div> : null}
           <hr/>
           <div className='col-sm-12 row space-4'>
             <h3 className={`${style.heading} space-4`}>Recommended Destinations For You</h3>
