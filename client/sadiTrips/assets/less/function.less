@@ -1,0 +1,60 @@
+@fontColor: #333;
+@greenColor: #16bbbb;
+@borderColor: #ddd;
+.bgc(@color){
+	background-color: @color;
+}
+.lg(@degree,@darkColor,@lightColor){
+	background-image: linear-gradient(@degree,@darkColor 0%,@lightColor 100%);
+}
+.btnCustom(){
+	.lg(135deg,#FF690F,#f54629);
+	color: #fff;
+	border-radius: 0px;
+	border: 0px;
+}
+.sideBar(){
+	position: fixed;
+	height: 100vh;
+	left: 0px;
+	background-color: #fff;
+	width: 15vw;
+	top: 0px;
+	z-index: 1;
+	border-right: 1px solid @borderColor;
+	padding-top: 80px;
+
+	.sideBarContent{
+		position: relative;
+		a{
+			display: block;
+			padding: 15px;
+			padding-left: 55px;
+			position: relative;
+			color: @fontColor;
+			transition: 0.4s ease;
+
+			&:hover{
+				color: @greenColor;
+			}
+			img{
+				width: 20px;
+				position: absolute;
+				top: 15px;
+				left: 25px;
+			}
+		}
+	}
+}
+.contentWrap(){
+	height: 100vh;
+	background-color: #f4f4f4;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: 85vw;
+	overflow: scroll;
+	overflow-x: hidden;
+	padding: 25px;
+	padding-top: 80px;
+}

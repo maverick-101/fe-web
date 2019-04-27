@@ -53,6 +53,10 @@ const AllEvents = Loadable({
 	loader: () => import('containers/AllEvents'),
 	loading: () => null
 });
+const Dashboard = Loadable({
+	loader: () => import('containers/Dashboard'),
+	loading: () => null
+});
 
 import config from 'config';
 
@@ -83,6 +87,7 @@ ReactDOM.hydrate(<Provider store={store}>
 				<Route path="/hotels" components={{full: AllHotels}}/>
 				<Route path="/packages" components={{full: AllPackages}}/>
 				<Route path="/events" components={{full: AllEvents}}/>
+				<Route path="/dashboard" components={{full: Dashboard}}/>
 			</Route>
 		</Router>
 	</Provider>,
