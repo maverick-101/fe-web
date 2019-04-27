@@ -157,7 +157,8 @@ class HotelPage extends React.Component {
 				return {
 					name: item.name,
 					id: item.ID,
-					url: item.gallery && item.gallery.length ? imgUpload(item.gallery[0].url, 'h_400') : null
+          url: item.gallery && item.gallery.length ? imgUpload(item.gallery[0].url, 'h_400') : null,
+          minimum_price: item.minimum_price,
 				}
 			})
 			this.setState({
