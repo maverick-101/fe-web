@@ -17,7 +17,7 @@ class Tile extends React.Component {
       <div className={`col-sm-12`}>
         <div className={`col-sm-12 no-padding ${style.roomTile} ${selectedId == room.ID ? style.roomTileActive : ''}`}>
         <div className='col-sm-6 no-padding'>
-          <h5 className={`${style.roomPrice}`} >Rs. {room.price || 'N/A'}</h5>
+          <h5 className={`${style.roomPrice}`} >Rs. {room.price_per_night || 'N/A'}</h5>
           <div className={`bgDiv ${style.roomTileImage}`} style={{height: '125px', background: `url(${this.props.image || placeholder})`}}></div>
         </div>
         <div className='col-sm-6'>
