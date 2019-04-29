@@ -120,6 +120,9 @@ class Home extends React.Component {
 					</div>
 					<div className={`fa fa-search fa-lg ${style.searchIconDiv}`}></div>
 					<div>
+						<div className='searchButtonBar'>
+							<h1 className='searchButtonText'>Search</h1>
+						</div>
 						<Select
 							className={style.selectControl}
 							classNamePrefix={'searchControl'}
