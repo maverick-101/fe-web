@@ -111,7 +111,7 @@ class Home extends React.Component {
     return (
 		<div>
 			<div className="home-screen space-2" style={{paddingLeft: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-				<div className={style.homeCoverStyle} style={{background: `url(${require('../../../site-specs/sliced-images/background-bg.png')})`}}>
+				<div className={style.homeCoverStyle} style={{background: `url(${require('bg-header-e.jpg')})`}}>
 				</div>
 					<div className={style.coverTextWrapper}>
 					<p className={style.coverText}>WHERE TO?</p>
