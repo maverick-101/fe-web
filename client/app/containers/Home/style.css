@@ -13,10 +13,27 @@
 }
 .homeCoverStyle {
   width: 100%;
-  height: 50vh;
+  height: 75vh;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  background-position: center !important;
+  background-position: bottom !important;
+}
+
+.searchButtonBar {
+  padding: 14px 20px;
+    background: #1a8e85;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+    top: 164px;
+    font-size: 12px;
+}
+
+.searchButtonText {
+    font-size: 14px;
+    margin: 0px;
+    color: white;
 }
 
 .coverText {
@@ -36,15 +53,16 @@
     letter-spacing: 2px;
     text-align: center;
     text-transform: capitalize;
+    margin-bottom: 30px;
   }
 }
 
 .selectControl {
-  width: 50vw;
-  padding-top: 30px; 
+  width: 50vw; 
+  border: 15px solid rgba(255,255,255, 0.7);
   & .Select-control {
     height: 42px;
-    border-radius: 10px;
+    border-radius: 2px;
     border: none;
     opacity: 0.9;
   }
@@ -538,16 +556,16 @@
 }
 
 .searchIconDiv {
-  bottom: 15px;
+  bottom: 29px;
   z-index: 9;
-  left: 9px;
+  left: 22px;
   position: absolute;
 }
 
 @media only screen and (max-width: 767px) {
   .searchIconDiv {
-    bottom: 34px;
-    left: 30px;
+    bottom: 29px;
+    left: 24px;
   }
   .coverText {
     font-size: 24px;
@@ -557,7 +575,7 @@
     margin-top: -66px;
   }
   .coverTextWrapper {
-    top: 120px;
+    top: 140px;
     & .subtitle {
       font-size: 14px;
     }
@@ -566,8 +584,9 @@
     margin: -20px 20px;
   }
   .selectControl {
-    width: 100vw;
-    padding: 20px;
+    width: 90vw;
+    /* padding: 20px; */
+    border: 15px solid rgba(255,255,255, 0.7);
   }
   .spacexs {
     margin-bottom: 10px;
