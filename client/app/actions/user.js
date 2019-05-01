@@ -70,7 +70,7 @@ export function signUp(user) {
 	return (dispatch) => {
 		dispatch({type: types.SIGNUP_USER})
 
-    return axios.post(`${config.apiPath}/api/user`, user)
+    return axios.post(`${config.apiPath}/user/save`, user)
 			.then(response => {
 				dispatch({
 					type: types.SIGNUP_USER_SUCCESS,

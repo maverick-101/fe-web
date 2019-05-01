@@ -56,8 +56,9 @@ class Header extends React.Component {
 		this.slideState = !this.slideState
 	}
 	registerUser(user) {
-		this.checkEmail(user.email)
-			.then(exists => !exists ? this.props.dispatch(signUp(user)) : '')
+		// this.checkEmail(user.email)
+		// 	.then(exists => !exists ? this.props.dispatch(signUp(user)) : '')
+			this.props.dispatch(signUp(user))
 			.then((user) => {
 				this.props.dispatch(closeSignup())
 				if (user) {
@@ -181,7 +182,7 @@ class Header extends React.Component {
 						</div>
 					</div>
 					<label>
-						<input type="checkbox"/> I’d like to receive coupons, promotions, surveys, and updates via email about Graana and its partners.
+						<input type="checkbox"/> I’d like to receive coupons, promotions, surveys, and updates via email.
 					</label>
 					<Recaptcha elementID='signup-recaptcha' verifyCallback={ ()=> this.recaptchaVerified() } sitekey="6LcC4zwUAAAAAEeei0rX2ExGx6pPiZ9kqGBtdSDT" render="explicit" onloadCallback={()=> {}} />
 					<button className={`btn btn-block btn-xlg red space-1 ${this.props.user.loading ? 'loading' : ''}`}>Sign Up</button>
@@ -197,13 +198,13 @@ class Header extends React.Component {
 				<Modal.Body>
 					{this.state.showForm ? modalFormBody : modalBody}
 					<p className="small">
-            By signing up, I agree to Graana’s <a href="/graana/terms" className="green">Terms & Conditions</a>.
+            By signing up, I agree to <a href="/graana/terms" className="green">Terms & Conditions</a>.
 					</p>
 					<hr/>
 					<div className="row">
-						<span className="col-sm-8 col-xs-6 vcenter">Already have a Graana account?</span>
+						<span className="col-sm-8 col-xs-6 vcenter">Already have a account?</span>
 						<div className="col-sm-4 col-xs-6 vcenter text-right">
-							<button className="btn red hollow" onClick={() => this.props.dispatch(openLogin())}>Log in</button>
+							{/* <button className="btn red hollow" onClick={() => this.props.dispatch(openLogin())}>Log in</button> */}
 						</div>
 					</div>
 				</Modal.Body>
@@ -497,49 +498,49 @@ class Header extends React.Component {
     return (
 			<header className={`clearfix ${style.headerContainer} ${this.props.user.user ? style.loggedIn : ''} ${this.props.header.absolute ? ((document.body.clientWidth > 768) ? (style.absolute) : '') : ''} ${this.props.header.absoluteTwo ? style.absoluteTwo : ''}`}>
 				{
-				// 	!this.props.isMobile && this.props.prebootFlag ? 
-				// <div className={`${style.miniHeader} hidden-xs`}>
-				// 	<ul className={`list-inline no-margin pull-right ${style.miniHeader_nav}`}>
-				// 		<li className={style.miniHeader_input}>
-				// 			{/* <form onSubmit={event => this.searchByPropertyId(event)}>
-				// 				{this.state.validating ? 
-				// 				<div style={{position: 'absolute', top: '1px', right: '2px', display: 'inline-block', padding: '0px, 10px'}}>
-				// 						<p style={{display: 'inline-block', padding: '0px, 10px'}} className='space-0'>Validating </p>
-				// 						<i className="fa fa-spinner fa-pulse fa-spin" style={{fontSize:'18px'}}/>
-				// 				</div> : null}
-				// 				<input style={{width: '120px'}} required={true} type="number" name="property_id" placeholder="Property ID" autoComplete="off"/>
-				// 			</form> */}
-				// 		</li>
-				// 		{/* <li>
-				// 			<OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.price)} placement="bottom" overlay={priceDropdown}>
-				// 				<div ref="price" style={{position: 'relative'}}>
-				// 					{this.props.user.currency} <i className="fa fa-caret-down"></i>
-				// 				</div>
-				// 			</OverlayTrigger>
-				// 		</li> */}
-				// 		{/* <li>
-				// 			<OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.unit)} placement="bottom" overlay={unitDropdown}>
-				// 				<div ref="unit" style={{position: 'relative'}}>
-				// 					{convertUnit(this.props.user.unit)} <i className="fa fa-caret-down"></i>
-				// 				</div>
-				// 			</OverlayTrigger>
-				// 		</li> */}
-				// 		<li id="signUpBtn" className={style.showLogout}>
-				// 			<a href="#" onClick={event => this.openSignup(event)}>Sign Up</a>
-				// 		</li>
-				// 		<li id="loginBtn" className={style.showLogout}>
-				// 			<a href="#" onClick={event => this.openLogin(event)}>Log In</a>
-				// 		</li>
-				// 		<li className={`pointer ${style.showLogin}`}>
-				// 			{/* <OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.target)} placement="bottom" overlay={userDropdown}>
-				// 				<div ref="target" style={{margin:0, position: 'relative'}}>
-        //           Welcome {this.props.user.user ? this.props.user.user.first_name : ''} <i className="fa fa-caret-down"></i>
-				// 				</div>
-				// 			</OverlayTrigger> */}
-				// 		</li>
-				// 		<li className={`pointer ${style.showLogin}`}><Link  to="/dashboard/leads"><i className="fa fa-envelope"></i>{this.props.user.notifications > 0 ? <span className="badge badge-pill red" style={{ marginLeft: '5px' }}>{this.props.user.notifications}</span>: null}</Link></li>
-				// 	</ul>
-				// </div> : null
+					!this.props.isMobile && this.props.prebootFlag ? 
+				<div className={`${style.miniHeader} hidden-xs`}>
+					<ul className={`list-inline no-margin pull-right ${style.miniHeader_nav}`}>
+						<li className={style.miniHeader_input}>
+							{/* <form onSubmit={event => this.searchByPropertyId(event)}>
+								{this.state.validating ? 
+								<div style={{position: 'absolute', top: '1px', right: '2px', display: 'inline-block', padding: '0px, 10px'}}>
+										<p style={{display: 'inline-block', padding: '0px, 10px'}} className='space-0'>Validating </p>
+										<i className="fa fa-spinner fa-pulse fa-spin" style={{fontSize:'18px'}}/>
+								</div> : null}
+								<input style={{width: '120px'}} required={true} type="number" name="property_id" placeholder="Property ID" autoComplete="off"/>
+							</form> */}
+						</li>
+						{/* <li>
+							<OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.price)} placement="bottom" overlay={priceDropdown}>
+								<div ref="price" style={{position: 'relative'}}>
+									{this.props.user.currency} <i className="fa fa-caret-down"></i>
+								</div>
+							</OverlayTrigger>
+						</li> */}
+						{/* <li>
+							<OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.unit)} placement="bottom" overlay={unitDropdown}>
+								<div ref="unit" style={{position: 'relative'}}>
+									{convertUnit(this.props.user.unit)} <i className="fa fa-caret-down"></i>
+								</div>
+							</OverlayTrigger>
+						</li> */}
+						<li id="signUpBtn" className={style.showLogout}>
+							<a href="#" onClick={event => this.openSignup(event)}>Sign Up</a>
+						</li>
+						<li id="loginBtn" className={style.showLogout}>
+							<a href="#" onClick={event => this.openLogin(event)}>Log In</a>
+						</li>
+						<li className={`pointer ${style.showLogin}`}>
+							{/* <OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.target)} placement="bottom" overlay={userDropdown}>
+								<div ref="target" style={{margin:0, position: 'relative'}}>
+                  Welcome {this.props.user.user ? this.props.user.user.first_name : ''} <i className="fa fa-caret-down"></i>
+								</div>
+							</OverlayTrigger> */}
+						</li>
+						<li className={`pointer ${style.showLogin}`}><Link  to="/dashboard/leads"><i className="fa fa-envelope"></i>{this.props.user.notifications > 0 ? <span className="badge badge-pill red" style={{ marginLeft: '5px' }}>{this.props.user.notifications}</span>: null}</Link></li>
+					</ul>
+				</div> : null
 			}
 				<div id="appHeader" className={style.headerWrapper}>
 					<div id="HeaderLogo" className={style.headerWrapper_logo}>
@@ -558,6 +559,8 @@ class Header extends React.Component {
 						<li><a id="events" href="/events" className={["events"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Events</a></li>
 						<li><a id="blog" href="/blog" className={["blog"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Blog</a></li>
 						<li><a id="contactus" href="/contactus" className={["contactus"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Contact Us</a></li>
+						<li><a id="signin" href="/dashboard" className={["signin"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Dashboard</a></li>
+						{/* <li><a id="signup" href="/signup" className={["signup"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Sign Up</a></li> */}
 					</ul> : null
 				}
 				{ 
@@ -666,11 +669,6 @@ class Header extends React.Component {
 										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Contact us</p>
 								</Link>
 						</li>
-						{/* <li className={style.lead}>
-							<a href="/wanted">
-								<p className={`lead large ${style.wantedButton}`} style={{fontSize: 18, padding: "20px 15px", }}>Wanted</p>
-							</a>
-						</li> */}
 						{/* {this.props.user.user ? <li className={style.lead}>
 							<Link to={this.props.user && this.props.user.user && this.props.user.user.agency && this.props.user.user.agency.developer ? "/dashboard/project-dashboard" : "/dashboard"}>
 								<p className="lead" style={{fontSize: 18, padding: "20px 15px", }}>Dashboard</p>
