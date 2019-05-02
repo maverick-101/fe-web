@@ -71,7 +71,7 @@ hideModal() {
 	render() {
     return (
 		<div className={style.contactCard}>
-		<Modal size='lg' dialogClassName={style.modalWidth} show={this.state.showConfirmationModal} onHide={() => this.hideModal()}>
+		<Modal size='sm' dialogClassName={style.modalWidth} show={this.state.showConfirmationModal} onHide={() => this.hideModal()}>
 			<Modal.Header closeButton>
 				<Modal.Title>Confirm Your Booking</Modal.Title>
 			</Modal.Header>
@@ -80,11 +80,11 @@ hideModal() {
 				{
 						this.props.type == 'hotel' ? 
 					<div>
-					<h1 className='col-sm-12'>Available Rooms</h1>
+						<h3 className='col-sm-12'>Available Rooms</h3>
 					<div>
 					{
 							this.props.rooms ? this.props.rooms.map((room, index) => {
-							return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-6'>
+							return <div  onClick={() => {this.props.updateBookingData('room_id', room.ID); this.setState({selectedId: room.ID})}} className='col-sm-4'>
 								<RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery && room.gallery.length ? room.gallery[0].url : placeholder}></RoomTile>
 							</div>
 						})
@@ -94,7 +94,7 @@ hideModal() {
 					: null
 				}
 				<div className='col-sm-12'>
-					<h1 className=''>Contact Information</h1>
+					<h3 className=''>Contact Information</h3>
 					<form onSubmit={(event)=> {event.preventDefault(); this.props.submitBooking(event)}} >
 						<div className='col-sm-6 space-4 no-padding-left'>
 							<input onChange={e => {this.props.updateBookingData('user_name', e.target.value)}} className='form-input' type="text" placeholder='Name'/>
