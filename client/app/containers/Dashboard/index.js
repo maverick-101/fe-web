@@ -14,7 +14,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import Truncate from 'components/Truncate';
 import placeholder from 'no-image.jpg';
 
-import style from './style.css'
+import './style.css'
 
 
 function humanize(str) {
@@ -206,66 +206,8 @@ class Dashboard extends React.Component {
     var { hotel, hotelImages, hotelGallery, fetchedReviews, selectedPhotos, hotelRooms, disableSubmit } = this.state;
     return (
       <div className="dashboard">
-        <h1>Dashboard</h1>
-
-      <section className="secNav">
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span> 
-            </button>
-            <a className="navbar-brand" href="#">
-              <img src="assets/img/logo.png" alt="" />
-            </a>
-          </div>
-          <div className="collapse navbar-collapse" id="myNavbar">
-            <ul className="nav navbar-nav">
-              <li className=""><a href="#">Home</a></li>
-              <li><a href="#">Rooms</a></li>
-              <li><a href="#">packages</a></li> 
-              <li><a href="#">Blog</a></li> 
-              <li><a href="#">Portfolio</a></li> 
-              <li><a href="#">Shop</a></li> 
-              <li><a href="#">Elements</a></li> 
-            </ul>
-            <ul className="nav navbar-nav navbar-right">
-              <li className="profileLi">
-                <a href="#">
-                  <img src="assets/img/profile.png" alt="" />
-                  User Name <span></span>
-                </a>
-                <div className="dropWrap">
-                  <a href="#">
-                    My Bookings
-                  </a>
-                  <a href="#">
-                    Inbox
-                  </a>
-                  <a href="#">
-                    Saved Properties
-                  </a>
-                  <a href="#">
-                    Reviwes
-                  </a>
-                  <a href="#">
-                    Profile
-                  </a>
-                  <a href="#">
-                    Signout
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      </section>
-
-	<section className="secMainBody">
-		<div className="sideBarMain">
+    <section className="secMainBody row">
+		<div className="sideBarMain col-sm-2">
 			<div className="sideBarContent">
 				<a href="#">
 					<img src="assets/img/icon1.svg" alt="" />
@@ -293,9 +235,10 @@ class Dashboard extends React.Component {
 				</a>
 			</div>
 		</div>
-		<div className="sideBodyMain">
+		<div className="sideBodyMain col-sm-10">
 			<div className="tabMain">
 				<ul className="nav nav-pills">
+          <h1>Dashboard</h1>
 					<li className="active"><a data-toggle="pill" href="#home">Upcoming</a></li>
 					<li><a data-toggle="pill" href="#menu1">Completed</a></li>
 					<li><a data-toggle="pill" href="#menu2">cancelled</a></li>

@@ -99,7 +99,7 @@ class PackagePage extends React.Component {
     this.props.done();
     axios.get(`${config.apiPath}/fetchById/packagePage-fetchById/${this.props.params.packageId}`)
 		.then((response) => {
-      var travelPackage = response.data;
+      var travelPackage = response.data[0];
       var packageGallery = travelPackage.gallery.map((image) => {
         return {
           original: imgUpload(image.url, 'h_750'),

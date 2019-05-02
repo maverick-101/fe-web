@@ -158,7 +158,7 @@ class Header extends React.Component {
 					}
 					</div>
 					<Input type="text" onChange={(e)=>{this.setInputState(e, "phone")}} defaultValue={this.state.inputValues['phone']} name="phone" type='number' placeholder="Contact No." containerClass="space-1" />
-					<h5>Birthday</h5>
+					{/* <h5>Birthday</h5>
 					<div className="row space-2">
 						<div className="col-xs-5">
 							<select name="month" className="form-control">
@@ -180,7 +180,7 @@ class Header extends React.Component {
 								{this.getArray(100).map((val, index) => <option key={index} value={2016 - index}>{2016 - index}</option>)}
 							</select>
 						</div>
-					</div>
+					</div> */}
 					<label>
 						<input type="checkbox"/> I’d like to receive coupons, promotions, surveys, and updates via email.
 					</label>
@@ -204,7 +204,7 @@ class Header extends React.Component {
 					<div className="row">
 						<span className="col-sm-8 col-xs-6 vcenter">Already have a account?</span>
 						<div className="col-sm-4 col-xs-6 vcenter text-right">
-							{/* <button className="btn red hollow" onClick={() => this.props.dispatch(openLogin())}>Log in</button> */}
+							<button className="btn red hollow" onClick={() => this.props.dispatch(openLogin())}>Log in</button>
 						</div>
 					</div>
 				</Modal.Body>

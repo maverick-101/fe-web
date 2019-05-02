@@ -177,15 +177,15 @@ section.secMainBody {
   position: relative;
 }
 section.secMainBody .sideBarMain {
-  position: fixed;
+  /* position: fixed; */
   height: 100vh;
-  left: 0px;
+  /* left: 0px; */
   background-color: #fff;
-  width: 15vw;
-  top: 0px;
+  /* width: 15vw; */
+  /* top: 0px; */
   z-index: 1;
   border-right: 1px solid #ddd;
-  padding-top: 80px;
+  padding-top: 20px;
 }
 section.secMainBody .sideBarMain .sideBarContent {
   position: relative;
@@ -210,14 +210,14 @@ section.secMainBody .sideBarMain .sideBarContent a img {
 section.secMainBody .sideBodyMain {
   height: 100vh;
   background-color: #f4f4f4;
-  position: fixed;
-  top: 0px;
+  /* position: fixed; */
+  /* top: 0px;
   right: 0px;
-  width: 85vw;
+  width: 85vw; */
   overflow: scroll;
   overflow-x: hidden;
   padding: 25px;
-  padding-top: 80px;
+  padding-top: 20px;
 }
 section.secMainBody .tabMain {
   position: relative;
