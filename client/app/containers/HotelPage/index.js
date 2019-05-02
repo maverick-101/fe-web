@@ -12,9 +12,7 @@ import Fader from 'components/Fader';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import Truncate from 'components/Truncate'
-
-
-
+import RoomTile from 'components/HotelContactCard/RoomTile'
 
 import placeholder from 'no-image.jpg';
 
@@ -293,6 +291,23 @@ class HotelPage extends React.Component {
             </div>
           </div> : null
         }
+         { hotelRooms && hotelRooms.length ?
+          <div className='row space-4'>
+            <div className='col-sm-12'>
+              <h1>Available Rooms</h1>
+              <div className='row'>
+              {
+                hotelRooms.map((room, index) => {
+                  return <div className='col-sm-3'>
+                    <RoomTile room={room} selectedId={this.state.selectedId} image={room.gallery && room.gallery.length ? room.gallery[0].url : placeholder}></RoomTile>
+                  </div>
+              })}
+                {/* <iframe width="100%" height="500" src={`https://www.youtube.com/embed/${hotel.video_link[0]}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+              </div>
+              <hr/>
+            </div>
+          </div> : null
+        }
           <div className='row space-4'>
             <div className='col-sm-12'>
               <h1>Location</h1>
@@ -306,7 +321,7 @@ class HotelPage extends React.Component {
           <hr/>
           <div className='row space-8'>
             <div className='col-sm-12 space-4'>
-              <h2>Recommended Hotels For You</h2>
+              <h3 className='space-4'>Recommended Hotels For You</h3>
               <div className='row'>
                   <div className={style.horizontalScrollContainer}>
                   {/* <Fader width={320} maxWidth={1280} unSlickTill={1024} items= */}
