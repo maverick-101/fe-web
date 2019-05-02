@@ -260,6 +260,17 @@ class ExperiencePage extends React.Component {
 							</div>
 						</div>
 					</div>
+					{ experience.video_link && experience.video_link.length && experience.video_link[0] !== 'null' ?
+          <div className='row space-4'>
+            <div className='col-sm-12'>
+              <h2>Video</h2>
+              <div>
+                <iframe width="100%" height="500" src={`https://www.youtube.com/embed/${experience.video_link[0]}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <hr/>
+            </div>
+          </div> : null
+        }
 					<div className='row space-4'>
 							<div id='reviews' className='col-sm-12'>
 								<h2 className={`${style.heading} space-4`}>User Reviews and Ratings</h2>
