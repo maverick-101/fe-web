@@ -22,12 +22,12 @@
     color: #e3530d;
   }
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .roomTileImage {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 .roomTileActive {
