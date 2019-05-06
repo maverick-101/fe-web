@@ -130,15 +130,18 @@ class Header extends React.Component {
 				<div className="separator">
 					<span>or</span>
 				</div>
-				<Formsy onSubmit={(model) => {this.checkEmail(model.email)}} onValidSubmit={model => this.props.user.loading || this.registerUser(model)} ref="signupForm">
+				<Formsy
+				// onSubmit={(model) => {this.checkEmail(model.email)}}
+				onValidSubmit={model => this.props.user.loading || this.registerUser(model)} ref="signupForm">
 					<Input type="text" onChange
 					={(e)=>{this.setInputState(e, "first_name")}} defaultValue={this.state.inputValues['first_name']} name="first_name" display="First name" placeholder="First name*" containerClass="space-1" required/>
 					<Input type="text" onChange={(e)=>{this.setInputState(e, "last_name")}} defaultValue={this.state.inputValues['last_name']} name="last_name" display="Last name" placeholder="Last name*" containerClass="space-1" required/>
 					<Input type="email" onChange={(e)=>{this.setInputState(e, "email")}} defaultValue={this.state.inputValues['email']} name="email" display="Email" placeholder="Email Address*" containerClass="space-1" required validations="isEmail"
-						validationError="Please enter a valid email address"
-						onBlur={(email) => this.checkEmail(email)}
+						// validationError="Please enter a valid email address"
+						// onBlur={(email) => this.checkEmail(email)}
 					/>
-					<div className="col-xs-12 vcenter no-padding">
+					{/* <div className="col-xs-12 vcenter no-padding"> */}
+					<div className="col-xs-12 no-padding">
 					{/* $^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,90}$ */}
 						<Input type={`${this.state.showPasswordSignUp ? "text" : "password"}`} defaultValue={this.state.password} validations={{ matchRegexp: /^(?=.*[A-Za-z])(?=.*\d).{8,30}$/ }} validationErrors={{matchRegexp: 'Your password is not strong enough. Please make sure your passsword contains minimum eight characters, at least one letter and one number'}} name="password" display="Password"  placeholder="Password*" containerClass="space-1" required/>
 						{/* <Input type={`${this.state.showPasswordSignUp ? "text" : "password"}`} name="password" display="Password" placeholder="Password*" containerClass="space-1" required/> */}
@@ -202,8 +205,10 @@ class Header extends React.Component {
 					</p>
 					<hr/>
 					<div className="row">
-						<span className="col-sm-8 col-xs-6 vcenter">Already have a account?</span>
-						<div className="col-sm-4 col-xs-6 vcenter text-right">
+						{/* <span className="col-sm-8 col-xs-6 vcenter">Already have a account?</span> */}
+						<span className="col-sm-8 col-xs-6">Already have a account?</span>
+						{/* <div className="col-sm-4 col-xs-6 vcenter text-right"> */}
+						<div className="col-sm-4 col-xs-6 text-right">
 							<button className="btn red hollow" onClick={() => this.props.dispatch(openLogin())}>Log in</button>
 						</div>
 					</div>
