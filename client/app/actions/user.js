@@ -70,7 +70,13 @@ export function signUp(user) {
 	return (dispatch) => {
 		dispatch({type: types.SIGNUP_USER})
 
-    return axios.post(`${config.apiPath}/user/save`, user)
+		const fd = new FormData();
+		fd.append('user', JSON.stringify(user));
+
+    return axios.post(`${config.apiPath}/user/save`, fd, {
+			// headers: {"Access-Control-Allow-Origin": "https://dev.saaditrips.com"}
+			headers: {"Access-Control-Allow-Origin": "*"}
+		})
 			.then(response => {
 				dispatch({
 					type: types.SIGNUP_USER_SUCCESS,
