@@ -12,12 +12,12 @@ class Footer extends Component {
         <div className="text-right hidden-xs col-sm-8">
           {/* <div className="col-sm-2"></div> */}
           <div className="text-right col-sm-12" style={{marginTop: '35px'}}> 
-              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="mailto:bookings@roomy.pk" target="new"> Home </a>
-              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="mailto:bookings@roomy.pk" target="new"> Hotels </a>
-              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="mailto:bookings@roomy.pk" target="new"> Packages </a>
-              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="mailto:bookings@roomy.pk" target="new"> Events </a>
-              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="mailto:bookings@roomy.pk" target="new"> Blog </a>
-              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="mailto:bookings@roomy.pk" target="new"> Contact Us </a>
+              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="saaditrips.com" target="new"> Home </a>
+              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="saaditrips.com" target="new"> Hotels </a>
+              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="saaditrips.com" target="new"> Packages </a>
+              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="saaditrips.com" target="new"> Events </a>
+              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="saaditrips.com" target="new"> Blog </a>
+              <a style={{fontSize: '18px', margin: '15px'}} className={style.footerLinks} href="saaditrips.com" target="new"> Contact Us </a>
           </div>
         </div>
   </div>
