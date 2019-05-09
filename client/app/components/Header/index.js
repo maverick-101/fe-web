@@ -284,13 +284,14 @@ class Header extends React.Component {
 								<p>Did not get Verification Email? <a onClick={ (e) => { this.resendVerificationEmail(e) } } className={style.verification} style={{textAlign: 'center'}}>Resend Verification Email</a></p> : null
 							}
 							<div className="row space-1">
-								<div className="col-xs-6 vcenter no-padding-right">
+								{/* <div className="col-xs-6 vcenter no-padding-right"> */}
+								<div className="col-xs-6 no-padding-right">
 									<Input value='remember' value={this.state.remember} onChange={() => {this.setState({remember: !this.state.remember})}} className={style.checkBox} name='remember' type="checkbox"/>
 									<label style={{float:'left'}}>
 											Remember me
 									</label>
 								</div>
-								<a href="#" className="green col-xs-6 vcenter text-right" onClick={(event) => this.openForgotPassword(event)}>Forgot Password?</a>
+								<a href="#" className="green col-xs-6 text-right" onClick={(event) => this.openForgotPassword(event)}>Forgot Password?</a>
 							</div>
 						</div>
 						<button className={`btn btn-block btn-xlg red ${this.props.user.loading ? 'loading' : ''}`} style={{'box-shadow': '0px 3px 10px rgba(0,0,0,0.20)',outline: 'none'}}>Log In</button>

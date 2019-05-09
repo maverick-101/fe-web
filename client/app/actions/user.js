@@ -149,7 +149,9 @@ export function logIn(user) {
 	return (dispatch) => {
 		dispatch(beginLogin())
 
-		return axios.post(`${config.apiPath}/api/user/login`, user)
+		let requestBody = { 'user' : JSON.stringify(user)};
+
+		return axios.post(`${config.apiPath}/user/signIn/`, requestBody)
 			.then(response => {
 				dispatch(signupLoginSuccess(types.LOGIN_USER_SUCCESS, response.data))
         return response.data
