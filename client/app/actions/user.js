@@ -11,18 +11,18 @@ function storeToken(token, remember = false) {
 	axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
   if (process.env.NODE_ENV === 'production') {
 		if (remember) {
-			Cookies.set('graana_access_token', `${token}`, { expires: 14, domain: `${config.domain}` })
+			Cookies.set('saadi_access_token', `${token}`, { expires: 14, domain: `${config.domain}` })
 		}
 		else {
-			Cookies.set('graana_access_token', `${token}`, { domain: `${config.domain}` })
+			Cookies.set('saadi_access_token', `${token}`, { domain: `${config.domain}` })
 		}
   }
 	else {
 				if (remember) {
-			Cookies.set('graana_access_token', `${token}`, { expires: 14 })
+			Cookies.set('saadi_access_token', `${token}`, { expires: 14 })
 		}
 		else {
-			Cookies.set('graana_access_token', `${token}`, {domain: config.domain})
+			Cookies.set('saadi_access_token', `${token}`, {domain: config.domain})
 		}
   }
 }
@@ -37,17 +37,17 @@ export function setverifiedToken(token, user) {
 function removeToken() {
 	axios.defaults.headers.common['Authorization'] = ''
   if (process.env.NODE_ENV === 'production') {
-		Cookies.remove('graana_access_token', {domain: `${config.domain}`})
-		Cookies.remove('graana_access_token')
+		Cookies.remove('saadi_access_token', {domain: `${config.domain}`})
+		Cookies.remove('saadi_access_token')
   }
 	else {
-		Cookies.remove('graana_access_token', {domain: `${config.domain}`})
-		Cookies.remove('graana_access_token')
+		Cookies.remove('saadi_access_token', {domain: `${config.domain}`})
+		Cookies.remove('saadi_access_token')
   }
 }
 
 function setHeader(pathname) {
-	var token = Cookies.get('graana_access_token')
+	var token = Cookies.get('saadi_access_token')
 	
   //Don't set header if user logging out
   if(token && pathname != '/logout') {
