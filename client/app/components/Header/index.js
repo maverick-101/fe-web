@@ -73,7 +73,7 @@ class Header extends React.Component {
 	loginUser(user) {
 		this.props.dispatch(logIn(user))
 			.then((user) => {
-				// this.props.dispatch(getCurrentUser());
+				this.props.dispatch(getCurrentUser());
 				return this.props.dispatch(closeLogin());
 			})
 	}
@@ -118,7 +118,7 @@ class Header extends React.Component {
 				<div className="separator">
 					<span>or</span>
 				</div>
-				<button className="btn btn-block btn-xlg red space-2" onClick={() => this.setState({showForm: true})} style={{boxShadow: '0px 3px 10px rgba(0,0,0,0.20)',}}>Signup with Email</button>
+				<button className="btn btn-block btn-xlg green space-2" onClick={() => this.setState({showForm: true})} style={{boxShadow: '0px 3px 10px rgba(0,0,0,0.20)',}}>Signup with Email</button>
 			</div>
 		)
 
@@ -188,7 +188,7 @@ class Header extends React.Component {
 						<input type="checkbox"/> I’d like to receive coupons, promotions, surveys, and updates via email.
 					</label>
 					<Recaptcha elementID='signup-recaptcha' verifyCallback={ ()=> this.recaptchaVerified() } sitekey="6LcC4zwUAAAAAEeei0rX2ExGx6pPiZ9kqGBtdSDT" render="explicit" onloadCallback={()=> {}} />
-					<button className={`btn btn-block btn-xlg red space-1 ${this.props.user.loading ? 'loading' : ''}`}>Sign Up</button>
+					<button className={`btn btn-block btn-xlg green space-1 ${this.props.user.loading ? 'loading' : ''}`}>Sign Up</button>
 				</Formsy>
 			</div>
 		)
@@ -209,7 +209,7 @@ class Header extends React.Component {
 						<span className="col-sm-8 col-xs-6">Already have a account?</span>
 						{/* <div className="col-sm-4 col-xs-6 vcenter text-right"> */}
 						<div className="col-sm-4 col-xs-6 text-right">
-							<button className="btn red hollow" onClick={() => this.props.dispatch(openLogin())}>Log in</button>
+							<button className="btn green hollow" onClick={() => this.props.dispatch(openLogin())}>Log in</button>
 						</div>
 					</div>
 				</Modal.Body>
@@ -294,7 +294,7 @@ class Header extends React.Component {
 								<a href="#" className="green col-xs-6 text-right" onClick={(event) => this.openForgotPassword(event)}>Forgot Password?</a>
 							</div>
 						</div>
-						<button className={`btn btn-block btn-xlg red ${this.props.user.loading ? 'loading' : ''}`} style={{'box-shadow': '0px 3px 10px rgba(0,0,0,0.20)',outline: 'none'}}>Log In</button>
+						<button className={`btn btn-block btn-xlg green ${this.props.user.loading ? 'loading' : ''}`} style={{'box-shadow': '0px 3px 10px rgba(0,0,0,0.20)',outline: 'none'}}>Log In</button>
 					</Formsy>
 					<div className="separator">
 						<span>or</span>
@@ -428,9 +428,9 @@ class Header extends React.Component {
 				<ul className={`list-unstyled no-margin ${style.userNav}`}>
 					<li>
 						<div className={style.hoverItem}>
-							<div className="profile-image vcenter" style={{marginRight: 10}}>
+							{/* <div className="profile-image vcenter" style={{marginRight: 10}}>
 								<img src={this.props.user.user && this.props.user.user.profile_image ? checkForHttps(this.props.user.user.profile_image) : userPlaceholder} alt={this.props.user.user && this.props.user.user.first_name ? this.props.user.user.first_name : 'user'} />
-							</div>
+							</div> */}
 							<div className="vcenter">
 								<p className="black space-0">{this.props.user.user && `${this.props.user.user.first_name} ${this.props.user.user.last_name}`}</p>
 								{/* <p className="small space-0">Edit Profile</p> */}
@@ -538,11 +538,11 @@ class Header extends React.Component {
 							<a href="#" onClick={event => this.openLogin(event)}>Log In</a>
 						</li>
 						<li className={`pointer ${style.showLogin}`}>
-							{/* <OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.target)} placement="bottom" overlay={userDropdown}>
+							{/* <OverlayTrigger trigger={['focus', 'hover']} container={() => ReactDOM.findDOMNode(this.refs.target)} placement="bottom" overlay={userDropdown}> */}
 								<div ref="target" style={{margin:0, position: 'relative'}}>
-                  Welcome {this.props.user.user ? this.props.user.user.first_name : ''} <i className="fa fa-caret-down"></i>
+                  Welcome {this.props.user.user ? `${this.props.user.user.first_name} ${this.props.user.user.last_name}` : ''} <i className="fa fa-caret-down"></i>
 								</div>
-							</OverlayTrigger> */}
+							{/* </OverlayTrigger> */}
 						</li>
 						<li className={`pointer ${style.showLogin}`}><Link  to="/dashboard/leads"><i className="fa fa-envelope"></i>{this.props.user.notifications > 0 ? <span className="badge badge-pill red" style={{ marginLeft: '5px' }}>{this.props.user.notifications}</span>: null}</Link></li>
 					</ul>
