@@ -57,7 +57,9 @@ function setHeader(pathname) {
 
 function signupLoginSuccess(type, payload) {
 	return dispatch => {
-		storeToken(payload.token, payload.remember)
+		// window.alert(payload.Token)
+		// window.alert(payload)
+		storeToken(payload, payload.remember)
     dispatch({
 			type,
 			payload: payload.user,
@@ -115,18 +117,18 @@ export function checkEmail(email) {
 export function getCurrentUser() {
 	return (dispatch, getState) => {
 		setHeader(getState().routing.locationBeforeTransitions.pathname)
-    return axios.get(`${config.apiPath}/api/user/me`)
+    return axios.get(`${config.apiPath}/user/me`)
 			.then(response => {
 				dispatch({
 					type: types.SET_USER_FROM_TOKEN,
 					payload: response.data
 				})
-				dispatch(unblockPropertySave())
-				return axios.get(`${config.apiPath}/api/inquiry/count`)
-					.then(count => {
-						dispatch(notificationRead(count.data))
-          return response.data
-        })
+				// dispatch(unblockPropertySave())
+				// return axios.get(`${config.apiPath}/api/inquiry/count`)
+				// 	.then(count => {
+				// 		dispatch(notificationRead(count.data))
+        //   return response.data
+        // })
 			})
 			.catch(error => {
 				return error.response ? error.response.data : error.message
@@ -153,7 +155,8 @@ export function logIn(user) {
 
 		return axios.post(`${config.apiPath}/user/signIn/`, requestBody)
 			.then(response => {
-				dispatch(signupLoginSuccess(types.LOGIN_USER_SUCCESS, response.data))
+				window.alert(response.data.Token)
+				dispatch(signupLoginSuccess(types.LOGIN_USER_SUCCESS, response.data.Token))
         return response.data
       })
 			.catch(error => {
