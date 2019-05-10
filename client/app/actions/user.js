@@ -155,7 +155,7 @@ export function logIn(user) {
 
 		return axios.post(`${config.apiPath}/user/signIn/`, requestBody)
 			.then(response => {
-				window.alert(response.data.Token)
+				// window.alert(response.data.Token)
 				dispatch(signupLoginSuccess(types.LOGIN_USER_SUCCESS, response.data.Token))
         return response.data
       })
