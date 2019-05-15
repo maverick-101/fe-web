@@ -50,9 +50,9 @@ class AllHotels extends React.Component {
 		// 		})
 		// })
 
-		axios.get(`${config.apiPath}/hotel/fetch`)
+		axios.get(`${config.apiPath}/hotel/fetch?all=true`)
 		.then((response) => {
-			var hotelPackages = response.data.map((item) => {
+			var hotelPackages = response.data && response.data.items.map((item) => {
 				return {
 					name: item.name,
 					id: item.ID,
