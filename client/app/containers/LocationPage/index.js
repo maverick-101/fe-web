@@ -10,7 +10,9 @@ import Fader from 'components/Fader';
 import axios from 'axios';
 import config from 'config';
 import _ from 'lodash';
-import { convertPrice, imgUpload } from 'helpers'
+import { convertPrice, imgUpload, sanitize } from 'helpers'
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 
 import { DateRangePicker, isInclusivelyAfterDay, isInclusivelyBeforerDay } from 'react-dates';
@@ -70,8 +72,15 @@ class LocationPage extends React.Component {
 		axios.get(`${config.apiPath}/fetchById/location-fetchById/${this.props.params.locationId}`)
 		.then((response) => {
 			var location = response.data[0];
+			var locationGallery = location.gallery.map((image) => {
+        return {
+          original: imgUpload(image.url, 'h_750'),
+          thumbnail: imgUpload(image.url, 'h_100'),
+        }
+      })
 			this.setState({
 				location,
+				locationGallery,
 			})
 				axios.get(`${config.apiPath}/fetchByCity/location-fetchByCity/${location.city_id}`)
 				.then((locationResponse) => {
@@ -85,11 +94,20 @@ class LocationPage extends React.Component {
 	}
 
 	render() {
-		var { location } = this.state;
+		var { location, locationGallery } = this.state;
 		console.log('location form satate', location)
     return (
 		<div>
+				{
+					locationGallery && locationGallery.length && <ImageGallery items={locationGallery} />
+				}
         <div className={`${style.largeColumn}`}>
+					{
+						location.description ? <div className={'container space-4'}>
+							<h3>Description</h3>
+							<div dangerouslySetInnerHTML={{__html: sanitize(location.description)}}></div>
+						</div> : null
+					}
 					{ 
 					this.state.hotelPackages.length ?
 					<div className="container space-4">
