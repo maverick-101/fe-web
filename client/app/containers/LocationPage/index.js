@@ -63,7 +63,7 @@ class LocationPage extends React.Component {
 
 		axios.get(`${config.apiPath}/fetch/experience-fetch`)
 		.then((response) => {
-			var experiences = _.shuffle(response.data);
+			var experiences = _.shuffle(response.data && response.data.items);
 			this.setState({
 				experiences,
 			})
