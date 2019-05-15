@@ -619,7 +619,7 @@ class Header extends React.Component {
 							<p className="text-center lead" style={{fontSize: 20, padding: "25px 15px", }}>GUEST USER</p>
 						</li>*/}
 						<li className={style.lead}>
-								<Link to="/home">
+								<Link to="/">
 										<p className={`lead large`} style={{fontSize: 18, padding: "20px 15px", }}>Home</p>
 								</Link>
 						</li>
