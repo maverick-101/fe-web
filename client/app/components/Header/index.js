@@ -528,7 +528,7 @@ class Header extends React.Component {
 					{
 						!this.props.isMobile && this.props.prebootFlag ? 
 					<ul className={`list-inline pull-right hidden-xs no-margin ${style.headerWrapper_nav}`}>
-						<li><a id="home" href="/home" className={["home"].indexOf(window.location.pathname.split('/')[1]) != -1 ? '' : ''}>Home</a></li>
+						<li><a id="home" href="/" className={["home"].indexOf(window.location.pathname.split('/')[1]) != -1 ? '' : ''}>Home</a></li>
 						<li><a id="hotels" href="/hotels" className={["hotels"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Hotels</a></li>
 						<li><a id="packages" href="/packages" className={["packages"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Packages</a></li>
 						{/* <li><a id="Wanted" href="/wanted" className={`${style.headerWrapper_wantedButton}`}>Wanted</a></li> */}
