@@ -20,14 +20,16 @@
 }
 
 .searchButtonBar {
-  padding: 14px 20px;
+    padding: 13.5px 20px;
     background: #1a8e85;
     color: white;
     position: absolute;
     z-index: 1;
-    right: 15px;
-    top: 164px;
+    right: 6px;
+    top: 160px;
     font-size: 12px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .searchButtonText {
@@ -59,7 +61,7 @@
 
 .selectControl {
   width: 50vw; 
-  border: 15px solid rgba(255,255,255, 0.7);
+  border: 10px solid rgba(255,255,255, 0.7);
   & .Select-control {
     height: 42px;
     border-radius: 2px;
@@ -556,9 +558,9 @@
 }
 
 .searchIconDiv {
-  bottom: 29px;
+  bottom: 25px;
   z-index: 9;
-  left: 22px;
+  left: 20px;
   position: absolute;
 }
 
