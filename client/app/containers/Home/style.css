@@ -17,7 +17,6 @@
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
-  opacity: 0.7;
 }
 
 .searchButtonBar {
@@ -564,6 +563,9 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .searchButtonBar {
+    display: none;
+  }
   .searchIconDiv {
     bottom: 29px;
     left: 24px;
