@@ -72,15 +72,15 @@ class ExperiencePage extends React.Component {
 
 	componentDidMount() {
 		this.props.done();
-		axios.get(`${config.apiPath}/fetch/locations-fetch`)
-			.then((response) => {
-				var searchBarArray =  response.data.map((location) => {
-					return {value: location.ID, label: location.name}
-				})
-				this.setState({
-					searchBarArray,
-				})
-		})
+		// axios.get(`${config.apiPath}/fetch/locations-fetch`)
+		// 	.then((response) => {
+		// 		var searchBarArray =  response.data.map((location) => {
+		// 			return {value: location.ID, label: location.name}
+		// 		})
+		// 		this.setState({
+		// 			searchBarArray,
+		// 		})
+		// })
 
 		axios.get(`${config.apiPath}/hotel/fetch?pageSize=8&pageNumber=1`)
 		.then((response) => {
@@ -132,7 +132,7 @@ class ExperiencePage extends React.Component {
 
 		axios.get(`${config.apiPath}/fetch/locations-fetch`)
 		.then((response) => {
-			var locations = response.data;
+			var locations = response.data.items;
 			this.setState({
 				locations,
 			})
