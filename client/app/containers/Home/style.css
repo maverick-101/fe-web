@@ -64,7 +64,7 @@
     height: 42px;
     border-radius: 2px;
     border: none;
-    opacity: 0.9;
+    opacity: 1;
   }
   & .Select-placeholder {
     margin-left: 20px;
