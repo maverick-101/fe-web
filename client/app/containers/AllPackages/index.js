@@ -49,9 +49,9 @@ class AllPackages extends React.Component {
 		// 		})
     // })
     
-    axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
+    axios.get(`${config.apiPath}/fetch/packagePage-fetch`)
 		.then((response) => {
-			var travelerPackages = _.shuffle(response.data);
+			var travelerPackages = _.shuffle(response.data && response.data.items);
 			this.setState({
 				travelerPackages,
 			})
