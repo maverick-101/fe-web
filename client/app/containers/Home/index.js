@@ -40,9 +40,9 @@ class Home extends React.Component {
 
 	componentDidMount() {
 		this.props.done();
-		axios.get(`${config.apiPath}/fetch/locations-fetch`)
+		axios.get(`${config.apiPath}/fetch/locations-fetch?all=true`)
 			.then((response) => {
-				var searchBarArray =  response.data.map((location) => {
+				var searchBarArray =  response.data.items.map((location) => {
 					return {value: location.ID, label: location.name}
 				})
 				this.setState({
@@ -83,7 +83,7 @@ class Home extends React.Component {
 
 		axios.get(`${config.apiPath}/fetch/locations-fetch`)
 		.then((response) => {
-			var locations = _.shuffle(response.data);
+			var locations = _.shuffle(response.data && response.data.items);
 			this.setState({
 				locations,
 			})
@@ -91,7 +91,7 @@ class Home extends React.Component {
 
 		axios.get(`${config.apiPath}/fetch/experience-fetch`)
 		.then((response) => {
-			var experiences = _.shuffle(response.data);
+			var experiences = _.shuffle(response.data && response.data.items);
 			this.setState({
 				experiences,
 			})
@@ -110,7 +110,7 @@ class Home extends React.Component {
 		const { selectedOption } = this.state;
     return (
 		<div>
-			<div className="home-screen space-2" style={{paddingLeft: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+			<div className="home-screen space-2" style={{paddingLeft: '0', backgroundColor:'#000', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
 				<div className={style.homeCoverStyle} style={{background: `url(${require('bg-header-e.jpg')})`}}>
 				</div>
 					<div className={style.coverTextWrapper}>
