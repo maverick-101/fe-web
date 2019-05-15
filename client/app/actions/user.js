@@ -11,18 +11,18 @@ function storeToken(token, remember = false) {
 	axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
   if (process.env.NODE_ENV === 'production') {
 		if (remember) {
-			Cookies.set('graana_access_token', `${token}`, { expires: 14, domain: `${config.domain}` })
+			Cookies.set('saadi_access_token', `${token}`, { expires: 14, domain: `${config.domain}` })
 		}
 		else {
-			Cookies.set('graana_access_token', `${token}`, { domain: `${config.domain}` })
+			Cookies.set('saadi_access_token', `${token}`, { domain: `${config.domain}` })
 		}
   }
 	else {
 				if (remember) {
-			Cookies.set('graana_access_token', `${token}`, { expires: 14 })
+			Cookies.set('saadi_access_token', `${token}`, { expires: 14 })
 		}
 		else {
-			Cookies.set('graana_access_token', `${token}`, {domain: config.domain})
+			Cookies.set('saadi_access_token', `${token}`, {domain: config.domain})
 		}
   }
 }
@@ -37,17 +37,17 @@ export function setverifiedToken(token, user) {
 function removeToken() {
 	axios.defaults.headers.common['Authorization'] = ''
   if (process.env.NODE_ENV === 'production') {
-		Cookies.remove('graana_access_token', {domain: `${config.domain}`})
-		Cookies.remove('graana_access_token')
+		Cookies.remove('saadi_access_token', {domain: `${config.domain}`})
+		Cookies.remove('saadi_access_token')
   }
 	else {
-		Cookies.remove('graana_access_token', {domain: `${config.domain}`})
-		Cookies.remove('graana_access_token')
+		Cookies.remove('saadi_access_token', {domain: `${config.domain}`})
+		Cookies.remove('saadi_access_token')
   }
 }
 
 function setHeader(pathname) {
-	var token = Cookies.get('graana_access_token')
+	var token = Cookies.get('saadi_access_token')
 	
   //Don't set header if user logging out
   if(token && pathname != '/logout') {
@@ -57,7 +57,9 @@ function setHeader(pathname) {
 
 function signupLoginSuccess(type, payload) {
 	return dispatch => {
-		storeToken(payload.token, payload.remember)
+		// window.alert(payload.Token)
+		// window.alert(payload)
+		storeToken(payload, payload.remember)
     dispatch({
 			type,
 			payload: payload.user,
@@ -115,18 +117,18 @@ export function checkEmail(email) {
 export function getCurrentUser() {
 	return (dispatch, getState) => {
 		setHeader(getState().routing.locationBeforeTransitions.pathname)
-    return axios.get(`${config.apiPath}/api/user/me`)
+    return axios.get(`${config.apiPath}/user/me`)
 			.then(response => {
 				dispatch({
 					type: types.SET_USER_FROM_TOKEN,
 					payload: response.data
 				})
-				dispatch(unblockPropertySave())
-				return axios.get(`${config.apiPath}/api/inquiry/count`)
-					.then(count => {
-						dispatch(notificationRead(count.data))
-          return response.data
-        })
+				// dispatch(unblockPropertySave())
+				// return axios.get(`${config.apiPath}/api/inquiry/count`)
+				// 	.then(count => {
+				// 		dispatch(notificationRead(count.data))
+        //   return response.data
+        // })
 			})
 			.catch(error => {
 				return error.response ? error.response.data : error.message
@@ -149,9 +151,12 @@ export function logIn(user) {
 	return (dispatch) => {
 		dispatch(beginLogin())
 
-		return axios.post(`${config.apiPath}/api/user/login`, user)
+		let requestBody = { 'user' : JSON.stringify(user)};
+
+		return axios.post(`${config.apiPath}/user/signIn/`, requestBody)
 			.then(response => {
-				dispatch(signupLoginSuccess(types.LOGIN_USER_SUCCESS, response.data))
+				// window.alert(response.data.Token)
+				dispatch(signupLoginSuccess(types.LOGIN_USER_SUCCESS, response.data.Token))
         return response.data
       })
 			.catch(error => {
