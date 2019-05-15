@@ -94,13 +94,6 @@
   }
 }
 
-.signUpButton {
-  background-color: #1a8e85;
-  border: 2px solid #0a7e75;
-  border-radius: 2px;
-  padding: 5px 15px;
-  color: white;
-}
 
 .headerWrapper {
   & .headerLogo {
@@ -119,6 +112,13 @@
     height: 32px;
   }
   & .headerWrapper_nav {
+    & .signUpButton {
+      background-color: #1a8e85;
+      border: 2px solid #0a7e75;
+      border-radius: 2px;
+      padding: 5px 15px;
+      color: white;
+    }
     &> li {
       padding: 0 10px;
       vertical-align: middle;
