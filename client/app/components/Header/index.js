@@ -535,10 +535,10 @@ class Header extends React.Component {
 						<li><a id="events" href="/events" className={["events"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Events</a></li>
 						<li><a id="blog" href="/blog" className={["blog"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Blog</a></li>
 						<li><a id="contactus" href="/contactus" className={["contactus"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Contact Us</a></li>
-						<li><a id="signin" href="/dashboard" className={["signin"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Dashboard</a></li>
-						<li id="signUpBtn" className={style.showLogout}>
+						{/* <li><a id="signin" href="/dashboard" className={["signin"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Dashboard</a></li> */}
+						{/* <li id="signUpBtn" className={style.showLogout}>
 							<button className={style.signUpButton} href="#" onClick={event => this.openSignup(event)}>Sign Up</button>
-						</li>
+						</li> */}
 						{/* <li><a id="signup" href="/signup" className={["signup"].indexOf(window.location.pathname.split('/')[1]) != -1 ? style.headerWrapper_navActive : ''}>Sign Up</a></li> */}
 					</ul> : null
 				}
