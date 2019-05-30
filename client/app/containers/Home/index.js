@@ -75,7 +75,7 @@ class Home extends React.Component {
 
 		axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
 		.then((response) => {
-			var travelerPackages = _.shuffle(response.data);
+			var travelerPackages = _.shuffle(response.data.items);
 			this.setState({
 				travelerPackages,
 			})
