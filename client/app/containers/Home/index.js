@@ -114,9 +114,9 @@ class Home extends React.Component {
 				<div className={style.homeCoverStyle} style={{background: `url(${require('bg-header-e.jpg')})`}}>
 				</div>
 					<div className={style.coverTextWrapper}>
-					<p className={style.coverText}>WHERE TO?</p>
+					<p className={`hidden-xs ${style.coverText}`}>WHERE TO?</p>
 					<div>
-						<p className={style.subtitle}>Type in Any Location for Travel Guide</p>
+						<p className={`hidden-xs ${style.subtitle}`}>Type in Any Location for Travel Guide</p>
 					</div>
 					<div className={`fa fa-search fa-lg ${style.searchIconDiv}`}></div>
 					<div>

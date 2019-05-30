@@ -176,7 +176,9 @@ class ExperiencePage extends React.Component {
   }
 
 	render() {
+		console.log('mmmmmm\n', this.props.isMobile, '\nmmmmmmm')
 		const { disableSubmit, experience, galleryImages } = this.state;
+		const { isMobile } = this.props;
 		if (!experience) {
 			return <p>Loading Data</p>
 		} else {
@@ -184,14 +186,21 @@ class ExperiencePage extends React.Component {
 		console.log(experience)
 		console.log(experience.longitude)
 			return (
-				<div className='container' style={{marginTop:'20px'}}>
+				<div className='container' style={{marginTop:`${isMobile ? '0px' : '20px'}`}}>
 					<div className='row space-8'>
+							{ isMobile ?
+							<div className='space-4'>
+								<ImageGallery bulletClass='customBullet' showBullets={true} showPlayButton={false} showThumbnails={false} lazyload={true} items={galleryImages} />
+							</div> : null
+						}
 						<div className='sticky-container'>
-							<div className='col-sm-4 sticky-div'>
-								<div className='experience-gallery'>
+						{ !isMobile ?
+						<div className='col-sm-4 sticky-div'>
+									 <div className='experience-gallery'>
 									<ImageGallery bulletClass='customBullet' showBullets={true} showPlayButton={false} showThumbnails={false} lazyload={true} items={galleryImages} />
-								</div>
-							</div>
+								</div> 
+							</div> : null
+							}
 							<div className='col-sm-8'>
 								<div className='experience-details space-8'>
 									<h2 className='no-margin'>{experience.experience_title}</h2>
@@ -233,7 +242,7 @@ class ExperiencePage extends React.Component {
 						</div>
 					</div>
 					<div className='row'>
-						<div className='sticky-container'>
+						{!isMobile ? <div className='sticky-container'>
 							<div className='col-sm-4 sticky-div'>
 								<div style={{paddingTop: '60px'}}>
 									<h2>Guest Photos</h2>
@@ -248,7 +257,16 @@ class ExperiencePage extends React.Component {
 										})
 									}
 							</div>
-						</div>
+						</div> : <div className='col-sm-4'>
+						<h2>Guest Photos</h2>
+						{
+										experience.guest_gallery.map((image) => {
+										return	<div className='col-sm-4 no-padding space-4'>
+												<img width='100%' height='300px' src={imgUpload(image.url, 'h_400')} alt="user photos"/>
+											</div>
+										})
+									}
+						</div> }
 					</div>
 					<div id='location' className='row space-4'>
 						<div className='col-sm-12'>
@@ -352,5 +370,6 @@ class ExperiencePage extends React.Component {
 
 export default connect(store => {
 	return {
+		isMobile: store.user.isMobile,
 	}
 })(ExperiencePage)
