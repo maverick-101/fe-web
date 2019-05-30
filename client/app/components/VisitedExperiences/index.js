@@ -31,7 +31,7 @@ class Tile extends React.Component {
                 rating={this.props.data.star_rating}
                 starRatedColor="#e3530d"
                 numberOfStars={5}
-                starDimension="20px"
+                starDimension="15px"
                 starSpacing="0px"
                 svgIconViewBox={'0 0 20 20'}
                 gradientPathName={window.location.pathname}

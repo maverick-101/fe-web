@@ -57,6 +57,18 @@ const Dashboard = Loadable({
 	loader: () => import('containers/Dashboard'),
 	loading: () => null
 });
+const ContactUs = Loadable({
+	loader: () => import('containers/ContactUs'),
+	loading: () => null
+});
+const Terms = Loadable({
+	loader: () => import('containers/Terms'),
+	loading: () => null
+});
+const AboutUs = Loadable({
+	loader: () => import('containers/AboutUs'),
+	loading: () => null
+});
 
 import config from 'config';
 
@@ -88,6 +100,8 @@ ReactDOM.hydrate(<Provider store={store}>
 				<Route path="/packages" components={{full: AllPackages}}/>
 				<Route path="/events" components={{full: AllEvents}}/>
 				<Route path="/dashboard" components={{full: Dashboard}}/>
+				<Route path="/contactus" components={{full: ContactUs}}/>
+				<Route path="/terms" components={{full: Terms}}/>
 			</Route>
 		</Router>
 	</Provider>,
