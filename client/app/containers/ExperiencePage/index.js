@@ -124,7 +124,7 @@ class ExperiencePage extends React.Component {
 
 		axios.get(`${config.apiPath}/fetchFeaturedPackages/featuredPackage-fetchFeaturedPackages`)
 		.then((response) => {
-			var travelerPackages = response.data;
+			var travelerPackages = response.data.items;
 			this.setState({
 				travelerPackages,
 			})
