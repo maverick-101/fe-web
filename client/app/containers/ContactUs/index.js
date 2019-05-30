@@ -49,11 +49,13 @@ class Contactus extends React.Component {
             <iframe width="100%" height="400" id="gmap_canvas" src={`https://www.google.com/maps/embed/v1/view?zoom=17&center=${'33.720021'},${'73.0720398'}&key=AIzaSyC9eODMR7SDxA33WxFzyR1-r7ETFx5PaLw`} frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
           </div>
           <div className='space-8'></div>
-          { 
-            this.state.locations.length ?
-            <div className="container col-sm-12 space-4">
+
               <h3 className={'no-margin-bottom'}>Recommended Locations for you</h3>
               <p className='space-4'>We recommend you visit these places</p>
+          <div className='horizontalScrollContainer row'>
+          { 
+            this.state.locations.length ?
+            <div className="col-sm-12 space-4">
               <div className='row'>
                 <div className={style.horizontalScrollContainer}>
                 {/* <Fader width={280} maxWidth={1170} unSlickTill={1024} items= */}
@@ -70,6 +72,7 @@ class Contactus extends React.Component {
             </div>
             : null
             }
+            </div>
         </div>
       </div>
 		)
