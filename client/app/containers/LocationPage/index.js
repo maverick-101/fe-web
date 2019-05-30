@@ -162,9 +162,11 @@ class LocationPage extends React.Component {
 						{/* <Fader width={250} maxWidth={1280} unSlickTill={1024} items= */}
 						<div className='horizontalScrollContainer row'>
 						{this.state.locations.map((data, index) => {
-							return <div id='tileCol' className='per-row-5 no-padding-right'>
-							 <RecommendationTile data={data} />
+							return index <=9 ? 
+							<div id='tileCol' className='per-row-5 no-padding-right'>
+								 <RecommendationTile data={data} />
 							 </div>
+						 : null
 						})}
 						</div>
 						{/* ></Fader> */}
