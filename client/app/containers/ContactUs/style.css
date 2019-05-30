@@ -1,0 +1,11 @@
+.aboutCover {
+  height: 200px;
+  margin-bottom: 20px;
+  position: relative;
+  & .heading {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    color: white;
+  }
+}
