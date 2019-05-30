@@ -568,11 +568,11 @@ hr {
     padding-top: calc(100vh - 200px) !important;
   }
   .appClass {
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    overflow-x: hidden;
-    height: 100%;
-    width: 100%;
+    /* overflow-y: scroll; */
+    /* -webkit-overflow-scrolling: touch; */
+    /* overflow-x: hidden; */
+    /* height: 100%;
+    width: 100%; */
   }
   .no-padding-xs {
     padding: 0;
