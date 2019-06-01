@@ -28,22 +28,22 @@ const absoluteTwo = (state = false, action) => {
 		if (~['/hotel'].indexOf(action.payload.pathname)) {
 			return true
 		}
-		else if (~['/graana/terms'].indexOf(action.payload.pathname)) {
+		else if (~['//terms'].indexOf(action.payload.pathname)) {
 			return true
     }
-		else if (~['/graana/policy'].indexOf(action.payload.pathname)) {
+		else if (~['//policy'].indexOf(action.payload.pathname)) {
 			return true
     }
-		else if (~['/graana/about'].indexOf(action.payload.pathname)) {
+		else if (~['//about'].indexOf(action.payload.pathname)) {
 			return true
 		}
-		else if (~['/graana/madewithlove'].indexOf(action.payload.pathname)) {
+		else if (~['//madewithlove'].indexOf(action.payload.pathname)) {
 			return true
     }
-		else if (~['/graana/sitemap'].indexOf(action.payload.pathname)) {
+		else if (~['//sitemap'].indexOf(action.payload.pathname)) {
 			return true
     }
-		else if (~['/graana/contact'].indexOf(action.payload.pathname)) {
+		else if (~['//contact'].indexOf(action.payload.pathname)) {
 			return true
     }
 		else {
@@ -60,22 +60,22 @@ const search = (state = false, action) => {
 		if (~['/'].indexOf(action.payload.pathname)) {
 			return false
     }
-		else if (~['/graana/terms'].indexOf(action.payload.pathname)) {
+		else if (~['//terms'].indexOf(action.payload.pathname)) {
 			return false
     }
-		else if (~['/graana/policy'].indexOf(action.payload.pathname)) {
+		else if (~['//policy'].indexOf(action.payload.pathname)) {
 			return false
 		}
-		else if (~['/graana/madewithlove'].indexOf(action.payload.pathname)) {
+		else if (~['//madewithlove'].indexOf(action.payload.pathname)) {
 			return false
     }
-		else if (~['/graana/about'].indexOf(action.payload.pathname)) {
+		else if (~['//about'].indexOf(action.payload.pathname)) {
 			return false
     }
-		else if (~['/graana/sitemap'].indexOf(action.payload.pathname)) {
+		else if (~['//sitemap'].indexOf(action.payload.pathname)) {
 			return false
     }
-		else if (~['/graana/contact'].indexOf(action.payload.pathname)) {
+		else if (~['//contact'].indexOf(action.payload.pathname)) {
 			return false
     }
 		else {
