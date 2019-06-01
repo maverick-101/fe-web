@@ -57,7 +57,6 @@ export default Component => {
             <div className="panel-body">
               <div style={style.logoWrapper}>
                 <svg style={style.svg}>
-                  <use xlinkHref={`${require('logo.svg')}#logo`}></use>
                 </svg>
               </div>
               <p>Please enter the password to continue</p>
@@ -66,8 +65,7 @@ export default Component => {
                 <button className="btn red btn-b">Submit</button>
               </Formsy>
               <hr />
-              <p className="small">Copyright &#xa9; 2018 Graana Pvt Ltd. All Rights Reserved.</p>
-            </div>
+\            </div>
           </div>
         </div>
       )
