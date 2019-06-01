@@ -201,7 +201,7 @@ class Header extends React.Component {
 				<Modal.Body>
 					{this.state.showForm ? modalFormBody : modalBody}
 					<p className="small">
-            By signing up, I agree to <a href="/graana/terms" className="green">Terms & Conditions</a>.
+            By signing up, I agree to <a href="/terms" className="green">Terms & Conditions</a>.
 					</p>
 					<hr/>
 					<div className="row">
