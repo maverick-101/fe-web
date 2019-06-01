@@ -5,6 +5,7 @@
 }
 .featuredTile {
   height: 300px;
+  position: relative;
 }
 .featuredTilePriceDiv {
   width: auto;
@@ -15,6 +16,7 @@
   font-weight: bolder;
   padding: 5px 15px;
   color: white;
+  position: absolute;
 }
 
 @media only screen and (max-width: 767px) {

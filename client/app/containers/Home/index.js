@@ -52,7 +52,7 @@ class Home extends React.Component {
 
 		axios.get(`${config.apiPath}/hotel/fetch?pageSize=8&pageNumber=1`)
 		.then((response) => {
-			var hotelPackages = response.data.map((item) => {
+			var hotelPackages = response.data.items.map((item) => {
 				return {
 					name: item.name,
 					id: item.ID,

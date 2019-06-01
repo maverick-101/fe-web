@@ -201,7 +201,7 @@ class Header extends React.Component {
 				<Modal.Body>
 					{this.state.showForm ? modalFormBody : modalBody}
 					<p className="small">
-            By signing up, I agree to <a href="/graana/terms" className="green">Terms & Conditions</a>.
+            By signing up, I agree to <a href="/terms" className="green">Terms & Conditions</a>.
 					</p>
 					<hr/>
 					<div className="row">
@@ -310,14 +310,7 @@ class Header extends React.Component {
 							</svg>
 						</span>
 						<span>Continue with Google</span>
-					</button>
-					{/* <hr/>
-					<div className="row">
-						<span className="col-sm-8 col-xs-6 vcenter">Don’t have a Graana account?</span>
-						<div className="col-sm-4 col-xs-6 vcenter text-right">
-							<button className="btn red hollow" onClick={() => this.props.dispatch(openSignup())}>Sign Up</button>
-						</div>
-					</div> */}
+					</button>\
 				</Modal.Body>
 			</Modal>
 		)

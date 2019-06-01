@@ -22,11 +22,11 @@ class Tile extends React.Component {
           </div>
           <div className={style.experiencePackagesText}>
             <div className='col'>
-              <h5 style={{marginBottom: '6px'}}>{this.props.data.experience_title}</h5>
+              <h5 className='text-capitalize' style={{marginBottom: '0px'}}>{this.props.data.experience_title}</h5>
               {/* <p style={{marginBottom: '6px'}}>{this.props.data.reviews}</p> */}
-              <p style={{marginBottom: '6px'}}>
-                {this.props.data.star_rating}&nbsp;Stars
-                <div>
+              <p style={{marginBottom: '6px', display: 'inline-block', fontSize: '14px'}}>
+                {this.props.data.star_rating.toFixed(1)}&nbsp;&nbsp;
+                <div style={{display: 'inline-block'}}>
                 <StarRatings
                 rating={this.props.data.star_rating}
                 starRatedColor="#e3530d"
