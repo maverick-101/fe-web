@@ -4,6 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const Critters = require('critters-webpack-plugin');
 
 var postcssOption = {
   plugins: (loader) => [
@@ -38,6 +39,13 @@ var plugins = [
     test: /\.js$|\.css$|\.html$|\.jpeg$|\.jpg$|\.png$|\.svg$/,
     threshold: 5240,
     minRatio: 0.8
+  }),
+  new Critters({
+    // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
+    preload: 'swap',
+
+    // Don't inline critical font-face rules, but preload the font URLs:
+    preloadFonts: true
   })
 ];
 
