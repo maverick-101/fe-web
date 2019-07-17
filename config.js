@@ -2,14 +2,14 @@ const env = process.env.NODE_ENV || 'development';
 
 const config = {
   development: {
-    apiPath: '',
+    apiPath: 'api/',
     domain: '',
     revivePath: '',
     lockScreen: false,
   },
   production: {
     // apiPath: 'https://saaditrips.com/api',
-    apiPath: '',
+    apiPath: 'api/',
     domain: 'saaditrips.com',
     revivePath: '',
     lockScreen: false,
