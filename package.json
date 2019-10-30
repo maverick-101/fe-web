@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "array.prototype.fill": "^1.0.2",
-    "axios": "^0.15.3",
+    "axios": "^0.18.1",
     "babel-core": "^6.17.0",
     "babel-loader": "7.x.x",
     "babel-polyfill": "^6.26.0",
